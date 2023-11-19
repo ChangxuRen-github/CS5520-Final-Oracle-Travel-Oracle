@@ -54,6 +54,7 @@
 		FCB896672B09CA240042535C /* CS5520-Traverl-Oracle */ = {
 			isa = PBXGroup;
 			children = (
+				FCB896882B09D2DC0042535C /* Screens */,
 				FCB8967F2B09CAF00042535C /* Storyboard */,
 				FCB8967E2B09CACE0042535C /* Resources */,
 				FCB8967D2B09CAB30042535C /* Utility */,
@@ -126,6 +127,37 @@
 			children = (
 			);
 			path = ProgressIndicator;
+			sourceTree = "<group>";
+		};
+		FCB896882B09D2DC0042535C /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				FCB8968B2B09D3080042535C /* RegisterScreen */,
+				FCB8968A2B09D2FD0042535C /* LoginScreen */,
+				FCB896892B09D2F30042535C /* WelcomeScreen */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		FCB896892B09D2F30042535C /* WelcomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = WelcomeScreen;
+			sourceTree = "<group>";
+		};
+		FCB8968A2B09D2FD0042535C /* LoginScreen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LoginScreen;
+			sourceTree = "<group>";
+		};
+		FCB8968B2B09D3080042535C /* RegisterScreen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RegisterScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
