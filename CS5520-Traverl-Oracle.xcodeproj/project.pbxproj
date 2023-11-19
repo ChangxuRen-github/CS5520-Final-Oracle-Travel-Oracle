@@ -12,6 +12,8 @@
 		FCB896702B09CA240042535C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCB8966E2B09CA240042535C /* Main.storyboard */; };
 		FCB896722B09CA250042535C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCB896712B09CA250042535C /* Assets.xcassets */; };
 		FCB896752B09CA250042535C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCB896732B09CA250042535C /* LaunchScreen.storyboard */; };
+		FCB8968D2B09D4BF0042535C /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8968C2B09D4BF0042535C /* WelcomeViewController.swift */; };
+		FCB8968F2B09D54F0042535C /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8968E2B09D54F0042535C /* WelcomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		FCB896712B09CA250042535C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FCB896742B09CA250042535C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FCB896762B09CA250042535C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCB8968C2B09D4BF0042535C /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		FCB8968E2B09D54F0042535C /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +146,8 @@
 		FCB896892B09D2F30042535C /* WelcomeScreen */ = {
 			isa = PBXGroup;
 			children = (
+				FCB8968C2B09D4BF0042535C /* WelcomeViewController.swift */,
+				FCB8968E2B09D54F0042535C /* WelcomeView.swift */,
 			);
 			path = WelcomeScreen;
 			sourceTree = "<group>";
@@ -231,8 +237,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCB8968D2B09D4BF0042535C /* WelcomeViewController.swift in Sources */,
 				FCB896692B09CA240042535C /* AppDelegate.swift in Sources */,
 				FCB8966B2B09CA240042535C /* SceneDelegate.swift in Sources */,
+				FCB8968F2B09D54F0042535C /* WelcomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
