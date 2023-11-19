@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3ECFEEB62B09E34700D05969 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECFEEB52B09E34700D05969 /* LoginView.swift */; };
+		3ECFEEB82B09E3B800D05969 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECFEEB72B09E3B800D05969 /* LoginViewController.swift */; };
+		3ECFEEBA2B09E42600D05969 /* DataFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECFEEB92B09E42600D05969 /* DataFormatter.swift */; };
+		3ECFEEBC2B09E47E00D05969 /* AlertUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECFEEBB2B09E47E00D05969 /* AlertUtil.swift */; };
+		3ECFEEBE2B09E4A100D05969 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECFEEBD2B09E4A100D05969 /* Constants.swift */; };
 		FCB896692B09CA240042535C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB896682B09CA240042535C /* AppDelegate.swift */; };
 		FCB8966B2B09CA240042535C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8966A2B09CA240042535C /* SceneDelegate.swift */; };
 		FCB896702B09CA240042535C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCB8966E2B09CA240042535C /* Main.storyboard */; };
@@ -20,6 +25,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3ECFEEB52B09E34700D05969 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		3ECFEEB72B09E3B800D05969 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		3ECFEEB92B09E42600D05969 /* DataFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFormatter.swift; sourceTree = "<group>"; };
+		3ECFEEBB2B09E47E00D05969 /* AlertUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertUtil.swift; sourceTree = "<group>"; };
+		3ECFEEBD2B09E4A100D05969 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FCB896652B09CA240042535C /* CS5520-Traverl-Oracle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CS5520-Traverl-Oracle.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCB896682B09CA240042535C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCB8966A2B09CA240042535C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,10 +94,12 @@
 		FCB8967D2B09CAB30042535C /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				3ECFEEBB2B09E47E00D05969 /* AlertUtil.swift */,
 				FCB896872B09CF3C0042535C /* ProgressIndicator */,
 				FCB896862B09CF2C0042535C /* Formatter */,
 				FCB896852B09CF220042535C /* Database */,
 				FCB896842B09CF130042535C /* Auth */,
+				3ECFEEBD2B09E4A100D05969 /* Constants.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -129,6 +141,7 @@
 		FCB896862B09CF2C0042535C /* Formatter */ = {
 			isa = PBXGroup;
 			children = (
+				3ECFEEB92B09E42600D05969 /* DataFormatter.swift */,
 			);
 			path = Formatter;
 			sourceTree = "<group>";
@@ -164,6 +177,8 @@
 		FCB8968A2B09D2FD0042535C /* LoginScreen */ = {
 			isa = PBXGroup;
 			children = (
+				3ECFEEB52B09E34700D05969 /* LoginView.swift */,
+				3ECFEEB72B09E3B800D05969 /* LoginViewController.swift */,
 			);
 			path = LoginScreen;
 			sourceTree = "<group>";
@@ -246,13 +261,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3ECFEEBC2B09E47E00D05969 /* AlertUtil.swift in Sources */,
+				3ECFEEB82B09E3B800D05969 /* LoginViewController.swift in Sources */,
 				FCB896912B09D85E0042535C /* ProgressSpinnerDelegate.swift in Sources */,
 				FCB8968D2B09D4BF0042535C /* WelcomeViewController.swift in Sources */,
 				FCB896692B09CA240042535C /* AppDelegate.swift in Sources */,
 				FCB8966B2B09CA240042535C /* SceneDelegate.swift in Sources */,
 				FCB8968F2B09D54F0042535C /* WelcomeView.swift in Sources */,
+				3ECFEEBA2B09E42600D05969 /* DataFormatter.swift in Sources */,
 				FCB896932B09D8980042535C /* ProgressSpinnerViewController.swift in Sources */,
+				3ECFEEB62B09E34700D05969 /* LoginView.swift in Sources */,
 				FCB896952B09D8DB0042535C /* DBManager.swift in Sources */,
+				3ECFEEBE2B09E4A100D05969 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
