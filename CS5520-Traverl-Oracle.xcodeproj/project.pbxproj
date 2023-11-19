@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		FCB896692B09CA240042535C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB896682B09CA240042535C /* AppDelegate.swift */; };
 		FCB8966B2B09CA240042535C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8966A2B09CA240042535C /* SceneDelegate.swift */; };
-		FCB8966D2B09CA240042535C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8966C2B09CA240042535C /* ViewController.swift */; };
 		FCB896702B09CA240042535C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCB8966E2B09CA240042535C /* Main.storyboard */; };
 		FCB896722B09CA250042535C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCB896712B09CA250042535C /* Assets.xcassets */; };
 		FCB896752B09CA250042535C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCB896732B09CA250042535C /* LaunchScreen.storyboard */; };
@@ -19,7 +18,6 @@
 		FCB896652B09CA240042535C /* CS5520-Traverl-Oracle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CS5520-Traverl-Oracle.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCB896682B09CA240042535C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCB8966A2B09CA240042535C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FCB8966C2B09CA240042535C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FCB8966F2B09CA240042535C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FCB896712B09CA250042535C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FCB896742B09CA250042535C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,15 +54,110 @@
 		FCB896672B09CA240042535C /* CS5520-Traverl-Oracle */ = {
 			isa = PBXGroup;
 			children = (
-				FCB896682B09CA240042535C /* AppDelegate.swift */,
-				FCB8966A2B09CA240042535C /* SceneDelegate.swift */,
-				FCB8966C2B09CA240042535C /* ViewController.swift */,
-				FCB8966E2B09CA240042535C /* Main.storyboard */,
-				FCB896712B09CA250042535C /* Assets.xcassets */,
-				FCB896732B09CA250042535C /* LaunchScreen.storyboard */,
+				FCB896802B09CB580042535C /* Screens */,
+				FCB8967F2B09CAF00042535C /* Storyboard */,
+				FCB8967E2B09CACE0042535C /* Resources */,
+				FCB8967D2B09CAB30042535C /* Utility */,
+				FCB8967C2B09CAAA0042535C /* Models */,
 				FCB896762B09CA250042535C /* Info.plist */,
 			);
 			path = "CS5520-Traverl-Oracle";
+			sourceTree = "<group>";
+		};
+		FCB8967C2B09CAAA0042535C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FCB8967D2B09CAB30042535C /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				FCB896872B09CF3C0042535C /* ProgressIndicator */,
+				FCB896862B09CF2C0042535C /* Formatter */,
+				FCB896852B09CF220042535C /* DataBase */,
+				FCB896842B09CF130042535C /* Auth */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		FCB8967E2B09CACE0042535C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FCB896682B09CA240042535C /* AppDelegate.swift */,
+				FCB8966A2B09CA240042535C /* SceneDelegate.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FCB8967F2B09CAF00042535C /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				FCB896712B09CA250042535C /* Assets.xcassets */,
+				FCB8966E2B09CA240042535C /* Main.storyboard */,
+				FCB896732B09CA250042535C /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		FCB896802B09CB580042535C /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				FCB896832B09CB820042535C /* WelcomeScreen */,
+				FCB896822B09CB720042535C /* RegisterScreen */,
+				FCB896812B09CB660042535C /* LoginScreen */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		FCB896812B09CB660042535C /* LoginScreen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LoginScreen;
+			sourceTree = "<group>";
+		};
+		FCB896822B09CB720042535C /* RegisterScreen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RegisterScreen;
+			sourceTree = "<group>";
+		};
+		FCB896832B09CB820042535C /* WelcomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = WelcomeScreen;
+			sourceTree = "<group>";
+		};
+		FCB896842B09CF130042535C /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		FCB896852B09CF220042535C /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
+		FCB896862B09CF2C0042535C /* Formatter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Formatter;
+			sourceTree = "<group>";
+		};
+		FCB896872B09CF3C0042535C /* ProgressIndicator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ProgressIndicator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +231,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCB8966D2B09CA240042535C /* ViewController.swift in Sources */,
 				FCB896692B09CA240042535C /* AppDelegate.swift in Sources */,
 				FCB8966B2B09CA240042535C /* SceneDelegate.swift in Sources */,
 			);
