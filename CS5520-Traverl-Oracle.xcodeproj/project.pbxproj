@@ -14,6 +14,9 @@
 		FCB896752B09CA250042535C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCB896732B09CA250042535C /* LaunchScreen.storyboard */; };
 		FCB8968D2B09D4BF0042535C /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8968C2B09D4BF0042535C /* WelcomeViewController.swift */; };
 		FCB8968F2B09D54F0042535C /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB8968E2B09D54F0042535C /* WelcomeView.swift */; };
+		FCB896912B09D85E0042535C /* ProgressSpinnerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB896902B09D85E0042535C /* ProgressSpinnerDelegate.swift */; };
+		FCB896932B09D8980042535C /* ProgressSpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB896922B09D8980042535C /* ProgressSpinnerViewController.swift */; };
+		FCB896952B09D8DB0042535C /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB896942B09D8DB0042535C /* DBManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		FCB896762B09CA250042535C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCB8968C2B09D4BF0042535C /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		FCB8968E2B09D54F0042535C /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		FCB896902B09D85E0042535C /* ProgressSpinnerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressSpinnerDelegate.swift; sourceTree = "<group>"; };
+		FCB896922B09D8980042535C /* ProgressSpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressSpinnerViewController.swift; sourceTree = "<group>"; };
+		FCB896942B09D8DB0042535C /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +86,7 @@
 			children = (
 				FCB896872B09CF3C0042535C /* ProgressIndicator */,
 				FCB896862B09CF2C0042535C /* Formatter */,
-				FCB896852B09CF220042535C /* DataBase */,
+				FCB896852B09CF220042535C /* Database */,
 				FCB896842B09CF130042535C /* Auth */,
 			);
 			path = Utility;
@@ -112,11 +118,12 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
-		FCB896852B09CF220042535C /* DataBase */ = {
+		FCB896852B09CF220042535C /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				FCB896942B09D8DB0042535C /* DBManager.swift */,
 			);
-			path = DataBase;
+			path = Database;
 			sourceTree = "<group>";
 		};
 		FCB896862B09CF2C0042535C /* Formatter */ = {
@@ -129,6 +136,8 @@
 		FCB896872B09CF3C0042535C /* ProgressIndicator */ = {
 			isa = PBXGroup;
 			children = (
+				FCB896902B09D85E0042535C /* ProgressSpinnerDelegate.swift */,
+				FCB896922B09D8980042535C /* ProgressSpinnerViewController.swift */,
 			);
 			path = ProgressIndicator;
 			sourceTree = "<group>";
@@ -237,10 +246,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCB896912B09D85E0042535C /* ProgressSpinnerDelegate.swift in Sources */,
 				FCB8968D2B09D4BF0042535C /* WelcomeViewController.swift in Sources */,
 				FCB896692B09CA240042535C /* AppDelegate.swift in Sources */,
 				FCB8966B2B09CA240042535C /* SceneDelegate.swift in Sources */,
 				FCB8968F2B09D54F0042535C /* WelcomeView.swift in Sources */,
+				FCB896932B09D8980042535C /* ProgressSpinnerViewController.swift in Sources */,
+				FCB896952B09D8DB0042535C /* DBManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
