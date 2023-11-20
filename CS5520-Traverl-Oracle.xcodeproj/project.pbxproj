@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		349696702B0B1BAC00E687E0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3496966F2B0B1BAC00E687E0 /* RegisterViewController.swift */; };
+		349696722B0B1CFD00E687E0 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349696712B0B1CFD00E687E0 /* RegisterView.swift */; };
+		349696762B0B1E2F00E687E0 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349696752B0B1E2F00E687E0 /* AuthManager.swift */; };
+		349696782B0B1E8500E687E0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349696772B0B1E8500E687E0 /* User.swift */; };
+		3496967A2B0B1EDA00E687E0 /* UIElementUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349696792B0B1EDA00E687E0 /* UIElementUtil.swift */; };
 		3ECFEEB62B09E34700D05969 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECFEEB52B09E34700D05969 /* LoginView.swift */; };
 		3ECFEEB82B09E3B800D05969 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECFEEB72B09E3B800D05969 /* LoginViewController.swift */; };
 		3ECFEEBA2B09E42600D05969 /* DataFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECFEEB92B09E42600D05969 /* DataFormatter.swift */; };
@@ -25,6 +30,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3496966F2B0B1BAC00E687E0 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		349696712B0B1CFD00E687E0 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		349696752B0B1E2F00E687E0 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		349696772B0B1E8500E687E0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		349696792B0B1EDA00E687E0 /* UIElementUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElementUtil.swift; sourceTree = "<group>"; };
 		3ECFEEB52B09E34700D05969 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3ECFEEB72B09E3B800D05969 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3ECFEEB92B09E42600D05969 /* DataFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFormatter.swift; sourceTree = "<group>"; };
@@ -87,6 +97,7 @@
 		FCB8967C2B09CAAA0042535C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				349696772B0B1E8500E687E0 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -100,6 +111,7 @@
 				FCB896852B09CF220042535C /* Database */,
 				FCB896842B09CF130042535C /* Auth */,
 				3ECFEEBD2B09E4A100D05969 /* Constants.swift */,
+				349696792B0B1EDA00E687E0 /* UIElementUtil.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -126,6 +138,7 @@
 		FCB896842B09CF130042535C /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				349696752B0B1E2F00E687E0 /* AuthManager.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -186,6 +199,8 @@
 		FCB8968B2B09D3080042535C /* RegisterScreen */ = {
 			isa = PBXGroup;
 			children = (
+				3496966F2B0B1BAC00E687E0 /* RegisterViewController.swift */,
+				349696712B0B1CFD00E687E0 /* RegisterView.swift */,
 			);
 			path = RegisterScreen;
 			sourceTree = "<group>";
@@ -264,13 +279,18 @@
 				3ECFEEBC2B09E47E00D05969 /* AlertUtil.swift in Sources */,
 				3ECFEEB82B09E3B800D05969 /* LoginViewController.swift in Sources */,
 				FCB896912B09D85E0042535C /* ProgressSpinnerDelegate.swift in Sources */,
+				349696722B0B1CFD00E687E0 /* RegisterView.swift in Sources */,
+				349696782B0B1E8500E687E0 /* User.swift in Sources */,
+				349696762B0B1E2F00E687E0 /* AuthManager.swift in Sources */,
 				FCB8968D2B09D4BF0042535C /* WelcomeViewController.swift in Sources */,
 				FCB896692B09CA240042535C /* AppDelegate.swift in Sources */,
+				3496967A2B0B1EDA00E687E0 /* UIElementUtil.swift in Sources */,
 				FCB8966B2B09CA240042535C /* SceneDelegate.swift in Sources */,
 				FCB8968F2B09D54F0042535C /* WelcomeView.swift in Sources */,
 				3ECFEEBA2B09E42600D05969 /* DataFormatter.swift in Sources */,
 				FCB896932B09D8980042535C /* ProgressSpinnerViewController.swift in Sources */,
 				3ECFEEB62B09E34700D05969 /* LoginView.swift in Sources */,
+				349696702B0B1BAC00E687E0 /* RegisterViewController.swift in Sources */,
 				FCB896952B09D8DB0042535C /* DBManager.swift in Sources */,
 				3ECFEEBE2B09E4A100D05969 /* Constants.swift in Sources */,
 			);
