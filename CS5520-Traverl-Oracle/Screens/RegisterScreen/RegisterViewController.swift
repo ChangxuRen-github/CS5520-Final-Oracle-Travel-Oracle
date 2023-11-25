@@ -130,7 +130,8 @@ extension RegisterViewController {
                     var user = User(uid: authResult?.user.uid ?? "No UID",
                                     email: email,
                                     displayName: name,
-                                    conversationIds: [])
+                                    conversationIds: [],
+                                    savedStoreIds: [])
                     user.createdAt = nil
                     self.setNameOfTheUserInFirebaseAuth(user: user)
                 }

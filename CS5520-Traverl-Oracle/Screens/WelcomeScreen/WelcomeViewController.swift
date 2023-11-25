@@ -53,11 +53,13 @@ class WelcomeViewController: UIViewController {
     
     func transitionToHomeScreen() {
         print("Transition to Home screen.")
+        /*
         let conversationsViewController = ConversationsViewController()
         var viewControllers = self.navigationController!.viewControllers
         viewControllers.removeAll()
         viewControllers.append(conversationsViewController)
         self.navigationController?.setViewControllers(viewControllers, animated: true)
+         */
     }
     
     func transitionToLoginPage() {

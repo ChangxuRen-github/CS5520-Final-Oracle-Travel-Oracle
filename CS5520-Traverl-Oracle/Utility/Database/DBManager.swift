@@ -16,8 +16,10 @@ final class DBManager {
     let CONVERSATIONS_COLLECTION = "conversations"
     let MESSAGES_SUBCOLLECTION = "messages"
     let USER_COLLECTION = "Users"
+    let STORE_COLLECTION = "Stores"
     let USER_PROFILE_IMAGE = "UserProfileImages"
     let CONVERSATION_IMAGES = "ConversationImages"
+    let STORE_IMAGES = "StoreImages"
     
     // A public share dbManager instance
     public static let dbManager = DBManager()
@@ -293,6 +295,73 @@ extension DBManager {
                 completion(false)
             } else {
                 completion(true)
+            }
+        }
+    }
+}
+
+// Store management
+extension DBManager {
+    // Add a new store
+    public func addStore(with store: Store, with images: [UIImage], completion: @escaping (Result<Store, Error>) -> Void) {
+        var store = store
+        let dispatchGroup = DispatchGroup()
+        var imageUrls = [String]()
+
+        for image in images {
+            dispatchGroup.enter()
+            uploadStoreImages(image: image) { result in
+                switch result {
+                case .success(let url):
+                    imageUrls.append(url)
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+                dispatchGroup.leave()
+            }
+        }
+
+        dispatchGroup.notify(queue: .main) {
+            store.images = imageUrls
+            self.addStore(store: store, completion: completion)
+        }
+    }
+    
+    private func addStore(store: Store, completion: @escaping (Result<Store, Error>) -> Void) {
+        do {
+            try self.database.collection(self.STORE_COLLECTION).document(store.id).setData(from: store) { error in
+                if let error = error {
+                    print("Error: writing store to firestore failed with \(error)")
+                    completion(.failure(error))
+                } else {
+                    completion(.success(store))
+                }
+            }
+        } catch let error {
+            completion(.failure(error))
+        }
+    }
+    
+    // Upload store images
+    private func uploadStoreImages(image: UIImage, completion: @escaping (Result<String, Error>) -> Void) {
+        if let imageData = image.jpegData(compressionQuality: 80) {
+            let storageRef = storage.reference()
+            let imagesRepo = storageRef.child(STORE_IMAGES)
+            let imageRef = imagesRepo.child("\(UUID().uuidString).jpg")
+            
+            imageRef.putData(imageData, metadata: nil) { metadata, error in
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                }
+                
+                imageRef.downloadURL { url, error in
+                    if let error = error {
+                        completion(.failure(error))
+                    } else if let url = url {
+                        completion(.success(url.absoluteString))
+                    }
+                }
             }
         }
     }

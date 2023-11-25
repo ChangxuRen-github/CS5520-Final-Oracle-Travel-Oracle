@@ -99,11 +99,13 @@ class LoginViewController: UIViewController {
     func transitionToConversationsScreen() {
         // TODO: transition to conversations screen - Done
         print("Transition to conversations screen.")
+        /*
         let conversationsViewController = ConversationsViewController()
         var viewControllers = self.navigationController!.viewControllers
         viewControllers.removeAll()
         viewControllers.append(conversationsViewController)
         self.navigationController?.setViewControllers(viewControllers, animated: true)
+         */
     }
     
     func hideKeyboardOnTapOutside() {
