@@ -47,6 +47,8 @@
 		FCB896912B09D85E0042535C /* ProgressSpinnerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB896902B09D85E0042535C /* ProgressSpinnerDelegate.swift */; };
 		FCB896932B09D8980042535C /* ProgressSpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB896922B09D8980042535C /* ProgressSpinnerViewController.swift */; };
 		FCB896952B09D8DB0042535C /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB896942B09D8DB0042535C /* DBManager.swift */; };
+		FCBF29222B16916600C44BA1 /* StoreDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF29212B16916600C44BA1 /* StoreDetailView.swift */; };
+		FCBF29242B16917400C44BA1 /* StoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF29232B16917400C44BA1 /* StoreDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +89,8 @@
 		FCB896902B09D85E0042535C /* ProgressSpinnerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressSpinnerDelegate.swift; sourceTree = "<group>"; };
 		FCB896922B09D8980042535C /* ProgressSpinnerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressSpinnerViewController.swift; sourceTree = "<group>"; };
 		FCB896942B09D8DB0042535C /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		FCBF29212B16916600C44BA1 /* StoreDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailView.swift; sourceTree = "<group>"; };
+		FCBF29232B16917400C44BA1 /* StoreDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,6 +266,7 @@
 		FCB896882B09D2DC0042535C /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				FCBF29202B16913B00C44BA1 /* StoreDetailScreen */,
 				3412A9D22B167EBA0025733F /* FilterScreen */,
 				3412A9CD2B167E4F0025733F /* AddPlaceScreen */,
 				3E058DE22B1289BE004F6F99 /* AddReviewScreen */,
@@ -298,6 +303,15 @@
 				349696712B0B1CFD00E687E0 /* RegisterView.swift */,
 			);
 			path = RegisterScreen;
+			sourceTree = "<group>";
+		};
+		FCBF29202B16913B00C44BA1 /* StoreDetailScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FCBF29212B16916600C44BA1 /* StoreDetailView.swift */,
+				FCBF29232B16917400C44BA1 /* StoreDetailViewController.swift */,
+			);
+			path = StoreDetailScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -393,6 +407,7 @@
 				349696722B0B1CFD00E687E0 /* RegisterView.swift in Sources */,
 				349696782B0B1E8500E687E0 /* User.swift in Sources */,
 				3412A9CF2B167E750025733F /* AddPlaceView.swift in Sources */,
+				FCBF29222B16916600C44BA1 /* StoreDetailView.swift in Sources */,
 				349696762B0B1E2F00E687E0 /* AuthManager.swift in Sources */,
 				FCB8968D2B09D4BF0042535C /* WelcomeViewController.swift in Sources */,
 				FCB896692B09CA240042535C /* AppDelegate.swift in Sources */,
@@ -405,6 +420,7 @@
 				3ECFEEBA2B09E42600D05969 /* DataFormatter.swift in Sources */,
 				FC40EE0F2B11C578000882D0 /* Conversation.swift in Sources */,
 				3412A9D82B167F140025733F /* FilterScreenTableViewCell.swift in Sources */,
+				FCBF29242B16917400C44BA1 /* StoreDetailViewController.swift in Sources */,
 				3E058DE62B1289F8004F6F99 /* AddReviewViewController.swift in Sources */,
 				3E058DE82B12A1FC004F6F99 /* UIColorExtension.swift in Sources */,
 				FCB896932B09D8980042535C /* ProgressSpinnerViewController.swift in Sources */,
