@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3412A9CF2B167E750025733F /* AddPlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3412A9CE2B167E750025733F /* AddPlaceView.swift */; };
+		3412A9D12B167EA70025733F /* AddPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3412A9D02B167EA70025733F /* AddPlaceViewController.swift */; };
+		3412A9D42B167EE00025733F /* FilterScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3412A9D32B167EE00025733F /* FilterScreenViewController.swift */; };
+		3412A9D62B167EF90025733F /* FilterScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3412A9D52B167EF90025733F /* FilterScreenView.swift */; };
+		3412A9D82B167F140025733F /* FilterScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3412A9D72B167F140025733F /* FilterScreenTableViewCell.swift */; };
 		349696702B0B1BAC00E687E0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3496966F2B0B1BAC00E687E0 /* RegisterViewController.swift */; };
 		349696722B0B1CFD00E687E0 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349696712B0B1CFD00E687E0 /* RegisterView.swift */; };
 		349696762B0B1E2F00E687E0 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349696752B0B1E2F00E687E0 /* AuthManager.swift */; };
@@ -45,6 +50,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3412A9CE2B167E750025733F /* AddPlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlaceView.swift; sourceTree = "<group>"; };
+		3412A9D02B167EA70025733F /* AddPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlaceViewController.swift; sourceTree = "<group>"; };
+		3412A9D32B167EE00025733F /* FilterScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterScreenViewController.swift; sourceTree = "<group>"; };
+		3412A9D52B167EF90025733F /* FilterScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterScreenView.swift; sourceTree = "<group>"; };
+		3412A9D72B167F140025733F /* FilterScreenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterScreenTableViewCell.swift; sourceTree = "<group>"; };
 		3496966F2B0B1BAC00E687E0 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		349696712B0B1CFD00E687E0 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		349696752B0B1E2F00E687E0 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
@@ -95,6 +105,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3412A9CD2B167E4F0025733F /* AddPlaceScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3412A9CE2B167E750025733F /* AddPlaceView.swift */,
+				3412A9D02B167EA70025733F /* AddPlaceViewController.swift */,
+			);
+			path = AddPlaceScreen;
+			sourceTree = "<group>";
+		};
+		3412A9D22B167EBA0025733F /* FilterScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3412A9D32B167EE00025733F /* FilterScreenViewController.swift */,
+				3412A9D52B167EF90025733F /* FilterScreenView.swift */,
+				3412A9D72B167F140025733F /* FilterScreenTableViewCell.swift */,
+			);
+			path = FilterScreen;
+			sourceTree = "<group>";
+		};
 		3E058DE22B1289BE004F6F99 /* AddReviewScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,6 +262,8 @@
 		FCB896882B09D2DC0042535C /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				3412A9D22B167EBA0025733F /* FilterScreen */,
+				3412A9CD2B167E4F0025733F /* AddPlaceScreen */,
 				3E058DE22B1289BE004F6F99 /* AddReviewScreen */,
 				FC40EDFB2B11BF76000882D0 /* TestScreen */,
 				FCB8968B2B09D3080042535C /* RegisterScreen */,
@@ -354,11 +385,14 @@
 				FC40EDFF2B11BFAA000882D0 /* TestView.swift in Sources */,
 				3ECFEEBC2B09E47E00D05969 /* AlertUtil.swift in Sources */,
 				3ECFEEB82B09E3B800D05969 /* LoginViewController.swift in Sources */,
+				3412A9D42B167EE00025733F /* FilterScreenViewController.swift in Sources */,
+				3412A9D62B167EF90025733F /* FilterScreenView.swift in Sources */,
 				FCB896912B09D85E0042535C /* ProgressSpinnerDelegate.swift in Sources */,
 				FC40EDF82B11AF41000882D0 /* Store.swift in Sources */,
 				FC40EE112B11C598000882D0 /* MessageDAO.swift in Sources */,
 				349696722B0B1CFD00E687E0 /* RegisterView.swift in Sources */,
 				349696782B0B1E8500E687E0 /* User.swift in Sources */,
+				3412A9CF2B167E750025733F /* AddPlaceView.swift in Sources */,
 				349696762B0B1E2F00E687E0 /* AuthManager.swift in Sources */,
 				FCB8968D2B09D4BF0042535C /* WelcomeViewController.swift in Sources */,
 				FCB896692B09CA240042535C /* AppDelegate.swift in Sources */,
@@ -366,9 +400,11 @@
 				FC40EDFD2B11BF98000882D0 /* TestViewController.swift in Sources */,
 				FCB8966B2B09CA240042535C /* SceneDelegate.swift in Sources */,
 				FC40EDFA2B11BE77000882D0 /* Tag.swift in Sources */,
+				3412A9D12B167EA70025733F /* AddPlaceViewController.swift in Sources */,
 				FCB8968F2B09D54F0042535C /* WelcomeView.swift in Sources */,
 				3ECFEEBA2B09E42600D05969 /* DataFormatter.swift in Sources */,
 				FC40EE0F2B11C578000882D0 /* Conversation.swift in Sources */,
+				3412A9D82B167F140025733F /* FilterScreenTableViewCell.swift in Sources */,
 				3E058DE62B1289F8004F6F99 /* AddReviewViewController.swift in Sources */,
 				3E058DE82B12A1FC004F6F99 /* UIColorExtension.swift in Sources */,
 				FCB896932B09D8980042535C /* ProgressSpinnerViewController.swift in Sources */,
