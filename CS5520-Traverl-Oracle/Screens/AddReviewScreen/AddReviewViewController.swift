@@ -103,7 +103,7 @@ class AddReviewViewController: UIViewController, UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         if textView.textColor == UIColor.lightGray {
             textView.text = nil
-            textView.textColor = UIColor.black // 或者任何非 placeholder 的颜色
+            textView.textColor = UIColor.black
         }
     }
 
