@@ -142,4 +142,21 @@ class UIElementUtil {
         searchBar.placeholder = placeHolder
         return searchBar
     }
+    
+    static func createAndAddCategotyImageButton(withImageName imageName: String, title: String) -> UIButton {
+            let button = CategoryImageButton(type: .custom)
+            button.setImage(UIImage(named: imageName), for: .normal)
+            button.setTitle(title, for: .normal)
+
+            // Set up size and color
+            button.titleLabel?.font = UIFont.systemFont(ofSize: 24)
+            button.setTitleColor(.white, for: .normal)
+            button.translatesAutoresizingMaskIntoConstraints = false
+
+            // Set size constraints
+            button.widthAnchor.constraint(equalToConstant: 370).isActive = true
+            button.heightAnchor.constraint(equalToConstant: 100).isActive = true
+
+            return button
+        }
 }

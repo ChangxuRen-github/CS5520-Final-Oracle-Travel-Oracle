@@ -20,6 +20,9 @@
 		3E058DE42B1289E7004F6F99 /* AddReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E058DE32B1289E7004F6F99 /* AddReviewView.swift */; };
 		3E058DE62B1289F8004F6F99 /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E058DE52B1289F8004F6F99 /* AddReviewViewController.swift */; };
 		3E058DE82B12A1FC004F6F99 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E058DE72B12A1FC004F6F99 /* UIColorExtension.swift */; };
+		3E35C5072B17D5120020C725 /* CategoryImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E35C5062B17D5120020C725 /* CategoryImageButton.swift */; };
+		3E35C50A2B17D5450020C725 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E35C5092B17D5450020C725 /* CategoryView.swift */; };
+		3E35C50C2B17D55B0020C725 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E35C50B2B17D55B0020C725 /* CategoryViewController.swift */; };
 		3ECFEEB62B09E34700D05969 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECFEEB52B09E34700D05969 /* LoginView.swift */; };
 		3ECFEEB82B09E3B800D05969 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECFEEB72B09E3B800D05969 /* LoginViewController.swift */; };
 		3ECFEEBA2B09E42600D05969 /* DataFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECFEEB92B09E42600D05969 /* DataFormatter.swift */; };
@@ -65,6 +68,9 @@
 		3E058DE32B1289E7004F6F99 /* AddReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewView.swift; sourceTree = "<group>"; };
 		3E058DE52B1289F8004F6F99 /* AddReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
 		3E058DE72B12A1FC004F6F99 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		3E35C5062B17D5120020C725 /* CategoryImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryImageButton.swift; sourceTree = "<group>"; };
+		3E35C5092B17D5450020C725 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		3E35C50B2B17D55B0020C725 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		3ECFEEB52B09E34700D05969 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3ECFEEB72B09E3B800D05969 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3ECFEEB92B09E42600D05969 /* DataFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFormatter.swift; sourceTree = "<group>"; };
@@ -137,6 +143,23 @@
 			path = AddReviewScreen;
 			sourceTree = "<group>";
 		};
+		3E35C5052B17D4F60020C725 /* CustomizedButton */ = {
+			isa = PBXGroup;
+			children = (
+				3E35C5062B17D5120020C725 /* CategoryImageButton.swift */,
+			);
+			path = CustomizedButton;
+			sourceTree = "<group>";
+		};
+		3E35C5082B17D5280020C725 /* CategoryScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3E35C5092B17D5450020C725 /* CategoryView.swift */,
+				3E35C50B2B17D55B0020C725 /* CategoryViewController.swift */,
+			);
+			path = CategoryScreen;
+			sourceTree = "<group>";
+		};
 		FC40EDFB2B11BF76000882D0 /* TestScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				3ECFEEBB2B09E47E00D05969 /* AlertUtil.swift */,
+				3E35C5052B17D4F60020C725 /* CustomizedButton */,
 				FCB896872B09CF3C0042535C /* ProgressIndicator */,
 				FCB896862B09CF2C0042535C /* Formatter */,
 				FCB896852B09CF220042535C /* Database */,
@@ -266,6 +290,7 @@
 		FCB896882B09D2DC0042535C /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				3E35C5082B17D5280020C725 /* CategoryScreen */,
 				FCBF29202B16913B00C44BA1 /* StoreDetailScreen */,
 				3412A9D22B167EBA0025733F /* FilterScreen */,
 				3412A9CD2B167E4F0025733F /* AddPlaceScreen */,
@@ -399,6 +424,7 @@
 				FC40EDFF2B11BFAA000882D0 /* TestView.swift in Sources */,
 				3ECFEEBC2B09E47E00D05969 /* AlertUtil.swift in Sources */,
 				3ECFEEB82B09E3B800D05969 /* LoginViewController.swift in Sources */,
+				3E35C5072B17D5120020C725 /* CategoryImageButton.swift in Sources */,
 				3412A9D42B167EE00025733F /* FilterScreenViewController.swift in Sources */,
 				3412A9D62B167EF90025733F /* FilterScreenView.swift in Sources */,
 				FCB896912B09D85E0042535C /* ProgressSpinnerDelegate.swift in Sources */,
@@ -411,6 +437,7 @@
 				349696762B0B1E2F00E687E0 /* AuthManager.swift in Sources */,
 				FCB8968D2B09D4BF0042535C /* WelcomeViewController.swift in Sources */,
 				FCB896692B09CA240042535C /* AppDelegate.swift in Sources */,
+				3E35C50C2B17D55B0020C725 /* CategoryViewController.swift in Sources */,
 				3496967A2B0B1EDA00E687E0 /* UIElementUtil.swift in Sources */,
 				FC40EDFD2B11BF98000882D0 /* TestViewController.swift in Sources */,
 				FCB8966B2B09CA240042535C /* SceneDelegate.swift in Sources */,
@@ -424,6 +451,7 @@
 				3E058DE62B1289F8004F6F99 /* AddReviewViewController.swift in Sources */,
 				3E058DE82B12A1FC004F6F99 /* UIColorExtension.swift in Sources */,
 				FCB896932B09D8980042535C /* ProgressSpinnerViewController.swift in Sources */,
+				3E35C50A2B17D5450020C725 /* CategoryView.swift in Sources */,
 				3ECFEEB62B09E34700D05969 /* LoginView.swift in Sources */,
 				3E058DE42B1289E7004F6F99 /* AddReviewView.swift in Sources */,
 				349696702B0B1BAC00E687E0 /* RegisterViewController.swift in Sources */,
