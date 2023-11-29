@@ -23,6 +23,8 @@
 		3E35C5072B17D5120020C725 /* CategoryImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E35C5062B17D5120020C725 /* CategoryImageButton.swift */; };
 		3E35C50A2B17D5450020C725 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E35C5092B17D5450020C725 /* CategoryView.swift */; };
 		3E35C50C2B17D55B0020C725 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E35C50B2B17D55B0020C725 /* CategoryViewController.swift */; };
+		3E35C50F2B17E1820020C725 /* StoreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E35C50E2B17E1820020C725 /* StoreListView.swift */; };
+		3E35C5112B17E1900020C725 /* StoreListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E35C5102B17E1900020C725 /* StoreListViewController.swift */; };
 		3ECFEEB62B09E34700D05969 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECFEEB52B09E34700D05969 /* LoginView.swift */; };
 		3ECFEEB82B09E3B800D05969 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECFEEB72B09E3B800D05969 /* LoginViewController.swift */; };
 		3ECFEEBA2B09E42600D05969 /* DataFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECFEEB92B09E42600D05969 /* DataFormatter.swift */; };
@@ -71,6 +73,8 @@
 		3E35C5062B17D5120020C725 /* CategoryImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryImageButton.swift; sourceTree = "<group>"; };
 		3E35C5092B17D5450020C725 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		3E35C50B2B17D55B0020C725 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		3E35C50E2B17E1820020C725 /* StoreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListView.swift; sourceTree = "<group>"; };
+		3E35C5102B17E1900020C725 /* StoreListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListViewController.swift; sourceTree = "<group>"; };
 		3ECFEEB52B09E34700D05969 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3ECFEEB72B09E3B800D05969 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3ECFEEB92B09E42600D05969 /* DataFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFormatter.swift; sourceTree = "<group>"; };
@@ -158,6 +162,15 @@
 				3E35C50B2B17D55B0020C725 /* CategoryViewController.swift */,
 			);
 			path = CategoryScreen;
+			sourceTree = "<group>";
+		};
+		3E35C50D2B17E1690020C725 /* StoreListScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3E35C50E2B17E1820020C725 /* StoreListView.swift */,
+				3E35C5102B17E1900020C725 /* StoreListViewController.swift */,
+			);
+			path = StoreListScreen;
 			sourceTree = "<group>";
 		};
 		FC40EDFB2B11BF76000882D0 /* TestScreen */ = {
@@ -290,6 +303,7 @@
 		FCB896882B09D2DC0042535C /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				3E35C50D2B17E1690020C725 /* StoreListScreen */,
 				3E35C5082B17D5280020C725 /* CategoryScreen */,
 				FCBF29202B16913B00C44BA1 /* StoreDetailScreen */,
 				3412A9D22B167EBA0025733F /* FilterScreen */,
@@ -423,6 +437,7 @@
 			files = (
 				FC40EDFF2B11BFAA000882D0 /* TestView.swift in Sources */,
 				3ECFEEBC2B09E47E00D05969 /* AlertUtil.swift in Sources */,
+				3E35C5112B17E1900020C725 /* StoreListViewController.swift in Sources */,
 				3ECFEEB82B09E3B800D05969 /* LoginViewController.swift in Sources */,
 				3E35C5072B17D5120020C725 /* CategoryImageButton.swift in Sources */,
 				3412A9D42B167EE00025733F /* FilterScreenViewController.swift in Sources */,
@@ -457,6 +472,7 @@
 				349696702B0B1BAC00E687E0 /* RegisterViewController.swift in Sources */,
 				FCB896952B09D8DB0042535C /* DBManager.swift in Sources */,
 				3ECFEEBE2B09E4A100D05969 /* Constants.swift in Sources */,
+				3E35C50F2B17E1820020C725 /* StoreListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

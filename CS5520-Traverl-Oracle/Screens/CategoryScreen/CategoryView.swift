@@ -33,7 +33,7 @@ class CategoryView: UIView {
         restaurantButton = UIElementUtil.createAndAddCategotyImageButton(withImageName: "restaurantImage", title: "Restaurant")
         contentWrapper.addSubview(restaurantButton)
         
-        coffeeShopButton = UIElementUtil.createAndAddCategotyImageButton(withImageName: "coffeeshopImage", title: "Coffee Shop")
+        coffeeShopButton = UIElementUtil.createAndAddCategotyImageButton(withImageName: "coffeeshopImage", title: "Coffee Shops")
         contentWrapper.addSubview(coffeeShopButton)
         
         shoppingButton = UIElementUtil.createAndAddCategotyImageButton(withImageName: "shoppingImage", title: "Shopping")
