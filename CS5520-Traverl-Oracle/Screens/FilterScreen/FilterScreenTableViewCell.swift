@@ -11,46 +11,49 @@ import UIKit
 class FilterScreenCell: UITableViewCell {
     static let identifier = "FilterScreenCell"
 
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        // Additional label styling
-        return label
-    }()
-    
-    let picker: UIPickerView = {
-        let pickerView = UIPickerView()
-        pickerView.translatesAutoresizingMaskIntoConstraints = false
-        // Additional picker styling
-        return pickerView
-    }()
-    
+    let label = UILabel()
+    let optionsButton = UIButton()
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.addSubview(titleLabel)
-        contentView.addSubview(picker)
-        setupConstraints()
+        setupLabel()
+        setupOptionsButton()
+        applyConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    private func setupLabel() {
+        label.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(label)
+
+    }
     
-    private func setupConstraints() {
+    private func setupOptionsButton() {
+        optionsButton.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(optionsButton)
+        optionsButton.setTitleColor(.systemBlue, for: .normal)
+    }
+    
+    private func applyConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            
-            picker.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            picker.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            picker.widthAnchor.constraint(equalToConstant: 100)
+            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            optionsButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            optionsButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
         ])
     }
-    
-    func configure(with title: String) {
-        titleLabel.text = title
+
+    func configure(with title: String, selectedOption: String) {
+        label.text = title
+        optionsButton.setTitle(selectedOption, for: .normal)
+        optionsButton.setTitleColor(selectedOption == "All" ? .black : .systemBlue, for: .normal)
     }
 }
+
+
 
 
 

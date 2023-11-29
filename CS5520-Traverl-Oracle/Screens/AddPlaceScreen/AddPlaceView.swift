@@ -30,7 +30,8 @@ class AddPlaceView: UIView {
     var cameraButton: UIButton!
     var selectedImages: [UIImage] = []
     var imageViews: [UIImageView] = []
-
+    var selectedPrice: String?
+    var selectedCategory: String?
     var addNewPlaceButton = UIButton()
     
 
@@ -55,7 +56,7 @@ class AddPlaceView: UIView {
         initConstraints()
         
     }
-    
+
     
     func setupTitleLable() {
         titleLabel.text = "Title"
@@ -207,9 +208,10 @@ class AddPlaceView: UIView {
         pricePicker = UIPickerView()
 
         priceTextField = UITextField()
+        priceTextField.isUserInteractionEnabled = false
         let placeholderAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.lightGray,  // 设置字体颜色为浅灰色
-            .font: UIFont.boldSystemFont(ofSize: 16) // 设置字体大小为 16
+            .foregroundColor: UIColor.lightGray,
+            .font: UIFont.boldSystemFont(ofSize: 16)
         ]
         let attributedPlaceholder = NSAttributedString(string: "Select...", attributes: placeholderAttributes)
 
@@ -243,6 +245,7 @@ class AddPlaceView: UIView {
         categoryPicker = UIPickerView()
 
         categoryTextField = UITextField()
+        categoryTextField.isUserInteractionEnabled = false
         let placeholderAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.lightGray,
             .font: UIFont.boldSystemFont(ofSize: 16)

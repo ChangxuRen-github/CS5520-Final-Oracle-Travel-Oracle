@@ -9,33 +9,31 @@ import UIKit
 
 class FilterScreenView: UIView {
     
-    let tableView: UITableView = {
-        let tableView = UITableView(frame: .zero, style: .plain)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        return tableView
-    }()
-    
+    let tableView = UITableView()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addSubview(tableView)
-        setupConstraints()
+        backgroundColor = .white
+        layoutTableView()
     }
     
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        addSubview(tableView)
-        setupConstraints()
+        fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupConstraints() {
+    private func layoutTableView() {
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(tableView)
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: topAnchor),
-            tableView.leftAnchor.constraint(equalTo: leftAnchor),
-            tableView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            tableView.rightAnchor.constraint(equalTo: rightAnchor)
+            tableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }
+
+
 
 
 

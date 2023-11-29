@@ -8,14 +8,14 @@
 import Foundation
 
 struct Tag: Codable {
-    let price: String
-    let goodForBreakfast: String
-    let goodForLunch: String
-    let goodForDinner: String
-    let takesReservations: String
-    let vegetarianFriendly: String
-    let cuisine: String
-    let liveMusic: String
-    let outdoorSeating: String
-    let freeWIFI: String
+//    var price: String
+    var goodForBreakfast: String
+    var goodForLunch: String
+    var goodForDinner: String
+    var takesReservations: String
+    var vegetarianFriendly: String
+    var cuisine: String
+    var liveMusic: String
+    var outdoorSeating: String
+    var freeWIFI: String
 }

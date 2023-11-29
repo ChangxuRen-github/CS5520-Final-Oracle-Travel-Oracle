@@ -7,37 +7,36 @@
 
 import UIKit
 
-class FilterScreenController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPickerViewDataSource, UIPickerViewDelegate {
-    
+class FilterScreenController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var tableView: UITableView!
     
-    // Define a struct that represents a section in the table view
-    struct FilterSection {
-        let headerTitle: String
-        let pickerData: [String]
-    }
+    var tag: Tag = Tag(goodForBreakfast: "All", goodForLunch: "All", goodForDinner: "All", takesReservations: "All", vegetarianFriendly: "All", cuisine: "All", liveMusic: "All", outdoorSeating: "All", freeWIFI: "All")
     
-    // Define your sections and corresponding picker data
-    var filterSections: [FilterSection] = [
-        FilterSection(headerTitle: "Price", pickerData: ["All", "$", "$$", "$$$", "$$$$"]),
-        FilterSection(headerTitle: "Good for Breakfast", pickerData: ["All", "Yes", "No"]),
-        FilterSection(headerTitle: "Good for Lunch", pickerData: ["All", "Yes", "No"]),
-        FilterSection(headerTitle: "Good for Dinner", pickerData: ["All", "Yes", "No"]),
-        FilterSection(headerTitle: "Takes Reservations", pickerData: ["All", "Yes", "No"]),
-        FilterSection(headerTitle: "Vegetarian Friendly", pickerData: ["All", "Yes", "No"]),
-        FilterSection(headerTitle: "Cuisine", pickerData: ["All", "Italian", "Chinese", "American", "Other"]),
-        FilterSection(headerTitle: "Live Music", pickerData: ["All", "Yes", "No"]),
-        FilterSection(headerTitle: "Outdoor Seating", pickerData: ["All", "Yes", "No"]),
-        FilterSection(headerTitle: "Free Wi-Fi", pickerData: ["All", "Yes", "No"])
+    let filterTitles: [String] = [
+        "Good for Breakfast", "Good for Lunch", "Good for Dinner",
+        "Takes Reservations", "Vegetarian Friendly", "Cuisine",
+        "Live Music", "Outdoor Seating", "Free Wi-Fi"
     ]
     
+    let filterOptions: [String: [String]] = [
+        "Good for Breakfast": ["All", "Yes", "No"],
+        "Good for Lunch": ["All", "Yes", "No"],
+        "Good for Dinner": ["All", "Yes", "No"],
+        "Takes Reservations": ["All", "Yes", "No"],
+        "Vegetarian Friendly": ["All", "Yes", "No"],
+        "Cuisine": ["All", "Italian", "Chinese", "American", "Other"],
+        "Live Music": ["All", "Yes", "No"],
+        "Outdoor Seating": ["All", "Yes", "No"],
+        "Free Wi-Fi": ["All", "Yes", "No"]
+    ]
+
     override func loadView() {
         super.loadView()
         setupTableView()
     }
     
     private func setupTableView() {
-        tableView = UITableView(frame: self.view.bounds, style: .grouped)
+        tableView = UITableView(frame: view.bounds, style: .plain)
         tableView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         tableView.delegate = self
         tableView.dataSource = self
@@ -47,73 +46,71 @@ class FilterScreenController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        super.viewDidLoad()
         title = "Filters"
-        
-        let doneButton = UIBarButtonItem(
-            title: "Done",
-            style: .plain,
-            target: self,
-            action: #selector(onDoneButtonTapped)
-        )
-        
-        doneButton.tintColor = UIColor.red
-        navigationItem.rightBarButtonItem = doneButton
+        tableView.separatorStyle = .none
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneTapped))
+        navigationItem.rightBarButtonItem?.tintColor = UIColor(hexString: "#c1372d")
     }
     
-    @objc func onDoneButtonTapped() {
-        print("save data")
-    }
-    
-    // UITableViewDataSource
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return filterSections.count
+    @objc private func doneTapped() {
+        navigationController?.popViewController(animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1 // One picker per section
+        return filterTitles.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let totalCellHeight = tableView.frame.height
+        let numberOfCells = CGFloat(filterTitles.count)
+        return totalCellHeight / numberOfCells
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: FilterScreenCell.identifier, for: indexPath) as! FilterScreenCell
-        let filterSection = filterSections[indexPath.section]
-        
-        cell.configure(with: filterSection.headerTitle)
-        cell.picker.tag = indexPath.section
-        cell.picker.dataSource = self
-        cell.picker.delegate = self
-        
-        // Default to the first option ("All")
-        cell.picker.selectRow(0, inComponent: 0, animated: false)
-        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: FilterScreenCell.identifier, for: indexPath) as? FilterScreenCell else {
+            fatalError("Could not dequeue FilterScreenCell")
+        }
+
+        let filterTitle = filterTitles[indexPath.row]
+        let selectedOption = selectedValue(for: filterTitle)
+        cell.configure(with: filterTitle, selectedOption: selectedOption)
+
+        cell.optionsButton.addAction(UIAction(title: "", handler: { [weak self] _ in
+            self?.presentOptions(for: filterTitle, from: cell.optionsButton)
+        }), for: .touchUpInside)
+
         return cell
     }
-    
-    // UITableViewDelegate
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return filterSections[section].headerTitle
+
+    private func presentOptions(for filter: String, from sourceButton: UIButton) {
+        let options = filterOptions[filter] ?? ["All"]
+        var actions: [UIAction] = []
+        
+        for option in options {
+            actions.append(UIAction(title: option, handler: { [weak self] _ in
+                self?.updateTag(for: filter, with: option)
+                // Update the button title to reflect the selected option
+                sourceButton.setTitle(option, for: .normal)
+            }))
+        }
+        
+        let menu = UIMenu(title: "", children: actions)
+        sourceButton.menu = menu
+        sourceButton.showsMenuAsPrimaryAction = true
+    }
+
+    private func indexPathForCellContaining(view: UIView) -> IndexPath? {
+        let point = view.convert(CGPoint.zero, to: tableView)
+        return tableView.indexPathForRow(at: point)
     }
     
-    // UIPickerViewDataSource
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+    private func selectedValue(for filter: String) -> String {
+        // 
+        return "All"
     }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return filterSections[pickerView.tag].pickerData.count
-    }
-    
-    // UIPickerViewDelegate
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return filterSections[pickerView.tag].pickerData[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        // Here you can handle the selection of a specific option in the picker
-        let option = filterSections[pickerView.tag].pickerData[row]
-        print("Selected \(option) for \(filterSections[pickerView.tag].headerTitle)")
+
+    private func updateTag(for filter: String, with value: String) {
+        //
     }
 }
-
 
