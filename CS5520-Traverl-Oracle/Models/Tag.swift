@@ -8,7 +8,6 @@
 import Foundation
 
 struct Tag: Codable {
-//    var price: String
     var goodForBreakfast: String
     var goodForLunch: String
     var goodForDinner: String

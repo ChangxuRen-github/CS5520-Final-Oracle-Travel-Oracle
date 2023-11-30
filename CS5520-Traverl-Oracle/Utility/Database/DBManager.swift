@@ -13,10 +13,11 @@ import FirebaseStorage
 
 final class DBManager {
     // Constants
-    let CONVERSATIONS_COLLECTION = "conversations"
-    let MESSAGES_SUBCOLLECTION = "messages"
+    let CONVERSATIONS_COLLECTION = "Conversations"
+    let MESSAGES_SUBCOLLECTION = "Messages"
     let USER_COLLECTION = "Users"
     let STORE_COLLECTION = "Stores"
+    let REVIEWS_SUBCOLLECTION = "Reviews"
     let USER_PROFILE_IMAGE = "UserProfileImages"
     let CONVERSATION_IMAGES = "ConversationImages"
     let STORE_IMAGES = "StoreImages"

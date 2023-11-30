@@ -108,6 +108,18 @@ class UIElementUtil {
         return imageView
     }
     
+    // create customized image view without tintcolor
+    static func createAndAddImageView(to view: UIView, imageName: String) -> UIImageView {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: imageName)
+        imageView.contentMode = .scaleToFill
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 10
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(imageView)
+        return imageView
+    }
+    
     // create customized table view
     static func createAndAddTablesView(to view: UIView) -> UITableView {
         let tableView = UITableView()

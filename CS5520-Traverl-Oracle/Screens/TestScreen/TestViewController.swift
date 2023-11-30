@@ -44,7 +44,6 @@ class TestViewController: UIViewController {
         category: "Cafe",
         images: [], // initially empty, will be filled after image upload
         tag: Tag(
-//            price: "$",
             goodForBreakfast: "Yes",
             goodForLunch: "Yes",
             goodForDinner: "No",

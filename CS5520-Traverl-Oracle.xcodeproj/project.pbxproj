@@ -55,6 +55,13 @@
 		FCB896952B09D8DB0042535C /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCB896942B09D8DB0042535C /* DBManager.swift */; };
 		FCBF29222B16916600C44BA1 /* StoreDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF29212B16916600C44BA1 /* StoreDetailView.swift */; };
 		FCBF29242B16917400C44BA1 /* StoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF29232B16917400C44BA1 /* StoreDetailViewController.swift */; };
+		FCBF29272B16BC7900C44BA1 /* ImageCarouselTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF29262B16BC7900C44BA1 /* ImageCarouselTableViewCell.swift */; };
+		FCBF29292B16BCE500C44BA1 /* StoreDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF29282B16BCE500C44BA1 /* StoreDescriptionTableViewCell.swift */; };
+		FCBF292B2B16BD0700C44BA1 /* ReviewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF292A2B16BD0700C44BA1 /* ReviewsTableViewCell.swift */; };
+		FCBF292D2B16C6C700C44BA1 /* CarouselCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF292C2B16C6C700C44BA1 /* CarouselCollectionViewCell.swift */; };
+		FCBF29302B16F18600C44BA1 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = FCBF292F2B16F18600C44BA1 /* SDWebImage */; };
+		FCBF29322B16F18600C44BA1 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FCBF29312B16F18600C44BA1 /* SDWebImageMapKit */; };
+		FCBF29342B17B8B600C44BA1 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF29332B17B8B600C44BA1 /* Review.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +110,11 @@
 		FCB896942B09D8DB0042535C /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
 		FCBF29212B16916600C44BA1 /* StoreDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailView.swift; sourceTree = "<group>"; };
 		FCBF29232B16917400C44BA1 /* StoreDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDetailViewController.swift; sourceTree = "<group>"; };
+		FCBF29262B16BC7900C44BA1 /* ImageCarouselTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCarouselTableViewCell.swift; sourceTree = "<group>"; };
+		FCBF29282B16BCE500C44BA1 /* StoreDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDescriptionTableViewCell.swift; sourceTree = "<group>"; };
+		FCBF292A2B16BD0700C44BA1 /* ReviewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewCell.swift; sourceTree = "<group>"; };
+		FCBF292C2B16C6C700C44BA1 /* CarouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionViewCell.swift; sourceTree = "<group>"; };
+		FCBF29332B17B8B600C44BA1 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,10 +122,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCBF29302B16F18600C44BA1 /* SDWebImage in Frameworks */,
 				FC40EE052B11C4D8000882D0 /* FirebaseAnalytics in Frameworks */,
 				FC40EE072B11C4D8000882D0 /* FirebaseAuth in Frameworks */,
 				FC40EE092B11C4D8000882D0 /* FirebaseFirestore in Frameworks */,
 				FC40EE0D2B11C4D8000882D0 /* FirebaseStorage in Frameworks */,
+				FCBF29322B16F18600C44BA1 /* SDWebImageMapKit in Frameworks */,
 				FC40EE0B2B11C4D8000882D0 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -231,6 +245,7 @@
 				FC40EDF92B11BE77000882D0 /* Tag.swift */,
 				FC40EE0E2B11C578000882D0 /* Conversation.swift */,
 				FC40EE102B11C598000882D0 /* MessageDAO.swift */,
+				FCBF29332B17B8B600C44BA1 /* Review.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -350,10 +365,22 @@
 		FCBF29202B16913B00C44BA1 /* StoreDetailScreen */ = {
 			isa = PBXGroup;
 			children = (
+				FCBF29252B16BBD500C44BA1 /* TableViewCell */,
 				FCBF29212B16916600C44BA1 /* StoreDetailView.swift */,
 				FCBF29232B16917400C44BA1 /* StoreDetailViewController.swift */,
 			);
 			path = StoreDetailScreen;
+			sourceTree = "<group>";
+		};
+		FCBF29252B16BBD500C44BA1 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FCBF29262B16BC7900C44BA1 /* ImageCarouselTableViewCell.swift */,
+				FCBF29282B16BCE500C44BA1 /* StoreDescriptionTableViewCell.swift */,
+				FCBF292A2B16BD0700C44BA1 /* ReviewsTableViewCell.swift */,
+				FCBF292C2B16C6C700C44BA1 /* CarouselCollectionViewCell.swift */,
+			);
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -378,6 +405,8 @@
 				FC40EE082B11C4D8000882D0 /* FirebaseFirestore */,
 				FC40EE0A2B11C4D8000882D0 /* FirebaseFirestoreSwift */,
 				FC40EE0C2B11C4D8000882D0 /* FirebaseStorage */,
+				FCBF292F2B16F18600C44BA1 /* SDWebImage */,
+				FCBF29312B16F18600C44BA1 /* SDWebImageMapKit */,
 			);
 			productName = "CS5520-Traverl-Oracle";
 			productReference = FCB896652B09CA240042535C /* CS5520-Traverl-Oracle.app */;
@@ -409,6 +438,7 @@
 			mainGroup = FCB8965C2B09CA240042535C;
 			packageReferences = (
 				FC40EE022B11C434000882D0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				FCBF292E2B16F18600C44BA1 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = FCB896662B09CA240042535C /* Products */;
 			projectDirPath = "";
@@ -450,6 +480,7 @@
 				FC40EDF82B11AF41000882D0 /* Store.swift in Sources */,
 				FC40EE112B11C598000882D0 /* MessageDAO.swift in Sources */,
 				349696722B0B1CFD00E687E0 /* RegisterView.swift in Sources */,
+				FCBF292D2B16C6C700C44BA1 /* CarouselCollectionViewCell.swift in Sources */,
 				349696782B0B1E8500E687E0 /* User.swift in Sources */,
 				3412A9CF2B167E750025733F /* AddPlaceView.swift in Sources */,
 				FCBF29222B16916600C44BA1 /* StoreDetailView.swift in Sources */,
@@ -472,9 +503,13 @@
 				FCB896932B09D8980042535C /* ProgressSpinnerViewController.swift in Sources */,
 				3E35C50A2B17D5450020C725 /* CategoryView.swift in Sources */,
 				3ECFEEB62B09E34700D05969 /* LoginView.swift in Sources */,
+				FCBF292B2B16BD0700C44BA1 /* ReviewsTableViewCell.swift in Sources */,
 				3E058DE42B1289E7004F6F99 /* AddReviewView.swift in Sources */,
 				349696702B0B1BAC00E687E0 /* RegisterViewController.swift in Sources */,
+				FCBF29342B17B8B600C44BA1 /* Review.swift in Sources */,
 				FCB896952B09D8DB0042535C /* DBManager.swift in Sources */,
+				FCBF29272B16BC7900C44BA1 /* ImageCarouselTableViewCell.swift in Sources */,
+				FCBF29292B16BCE500C44BA1 /* StoreDescriptionTableViewCell.swift in Sources */,
 				3ECFEEBE2B09E4A100D05969 /* Constants.swift in Sources */,
 				3E35C50F2B17E1820020C725 /* StoreListView.swift in Sources */,
 			);
@@ -709,6 +744,14 @@
 				minimumVersion = 10.18.0;
 			};
 		};
+		FCBF292E2B16F18600C44BA1 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.18.5;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -736,6 +779,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FC40EE022B11C434000882D0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		FCBF292F2B16F18600C44BA1 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FCBF292E2B16F18600C44BA1 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		FCBF29312B16F18600C44BA1 /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FCBF292E2B16F18600C44BA1 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
