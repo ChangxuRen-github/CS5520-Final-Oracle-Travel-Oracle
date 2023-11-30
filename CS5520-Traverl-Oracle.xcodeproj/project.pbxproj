@@ -25,6 +25,7 @@
 		3E35C50C2B17D55B0020C725 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E35C50B2B17D55B0020C725 /* CategoryViewController.swift */; };
 		3E35C50F2B17E1820020C725 /* StoreListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E35C50E2B17E1820020C725 /* StoreListView.swift */; };
 		3E35C5112B17E1900020C725 /* StoreListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E35C5102B17E1900020C725 /* StoreListViewController.swift */; };
+		3E35C5132B17EAB40020C725 /* StoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E35C5122B17EAB40020C725 /* StoreTableViewCell.swift */; };
 		3ECFEEB62B09E34700D05969 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECFEEB52B09E34700D05969 /* LoginView.swift */; };
 		3ECFEEB82B09E3B800D05969 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECFEEB72B09E3B800D05969 /* LoginViewController.swift */; };
 		3ECFEEBA2B09E42600D05969 /* DataFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECFEEB92B09E42600D05969 /* DataFormatter.swift */; };
@@ -75,6 +76,7 @@
 		3E35C50B2B17D55B0020C725 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		3E35C50E2B17E1820020C725 /* StoreListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListView.swift; sourceTree = "<group>"; };
 		3E35C5102B17E1900020C725 /* StoreListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreListViewController.swift; sourceTree = "<group>"; };
+		3E35C5122B17EAB40020C725 /* StoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTableViewCell.swift; sourceTree = "<group>"; };
 		3ECFEEB52B09E34700D05969 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		3ECFEEB72B09E3B800D05969 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3ECFEEB92B09E42600D05969 /* DataFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFormatter.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			children = (
 				3E35C50E2B17E1820020C725 /* StoreListView.swift */,
 				3E35C5102B17E1900020C725 /* StoreListViewController.swift */,
+				3E35C5122B17EAB40020C725 /* StoreTableViewCell.swift */,
 			);
 			path = StoreListScreen;
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E35C5132B17EAB40020C725 /* StoreTableViewCell.swift in Sources */,
 				FC40EDFF2B11BFAA000882D0 /* TestView.swift in Sources */,
 				3ECFEEBC2B09E47E00D05969 /* AlertUtil.swift in Sources */,
 				3E35C5112B17E1900020C725 /* StoreListViewController.swift in Sources */,

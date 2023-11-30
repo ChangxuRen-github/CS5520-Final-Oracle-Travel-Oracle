@@ -19,9 +19,8 @@ class CategoryViewController: UIViewController {
         super.viewDidLoad()
         hideKeyboardOnTapOutside()
         
-        
         let titleAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 20),
+            .font: UIFont.systemFont(ofSize: 16),
             .foregroundColor: UIColor.black,
         ]
         navigationController?.navigationBar.titleTextAttributes = titleAttributes
@@ -36,33 +35,30 @@ class CategoryViewController: UIViewController {
     }
     
     @objc func restaurantButtonTapped() {
-        print("restaurant Button was tapped")
-        navigateToStoreList()
+        navigateToStoreList(withTitle: "Restaurants", fontSize: Constants.FONT_SMALL)
     }
-    
+
     @objc func coffeeShopButtonTapped() {
-        print("coffeeShop Button was tapped")
-        navigateToStoreList()
+        navigateToStoreList(withTitle: "Coffee Shops", fontSize: Constants.FONT_SMALL)
     }
-    
+
     @objc func shoppingButtonTapped() {
-        print("shopping Button was tapped")
-        navigateToStoreList()
+        navigateToStoreList(withTitle: "Shopping", fontSize: Constants.FONT_SMALL)
     }
-    
+
     @objc func barButtonTapped() {
-        print("bar Button was tapped")
-        navigateToStoreList()
+        navigateToStoreList(withTitle: "Bars", fontSize: Constants.FONT_SMALL)
     }
-    
+
     @objc func hairSalonButtonTapped() {
-        print("hairSalon Button was tapped")
-        navigateToStoreList()
+        navigateToStoreList(withTitle: "Hair Salons", fontSize: Constants.FONT_SMALL)
     }
     
-    func navigateToStoreList() {
+    func navigateToStoreList(withTitle title: String, fontSize: CGFloat) {
         // create the controller view needs to be reached
         let storeListViewController = StoreListViewController()
+        storeListViewController.pageTitle = title
+        storeListViewController.pageTitleFontSize = fontSize
         navigationController?.pushViewController(storeListViewController, animated: true)
         }
     
