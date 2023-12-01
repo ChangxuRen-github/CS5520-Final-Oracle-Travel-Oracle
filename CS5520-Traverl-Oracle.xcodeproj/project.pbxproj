@@ -17,6 +17,8 @@
 		349696762B0B1E2F00E687E0 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349696752B0B1E2F00E687E0 /* AuthManager.swift */; };
 		349696782B0B1E8500E687E0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349696772B0B1E8500E687E0 /* User.swift */; };
 		3496967A2B0B1EDA00E687E0 /* UIElementUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349696792B0B1EDA00E687E0 /* UIElementUtil.swift */; };
+		34BA3F332B1A6D3D006C6A27 /* LocationScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BA3F322B1A6D3D006C6A27 /* LocationScreenViewController.swift */; };
+		34BA3F352B1A6D61006C6A27 /* LocationScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34BA3F342B1A6D61006C6A27 /* LocationScreenView.swift */; };
 		3E058DE42B1289E7004F6F99 /* AddReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E058DE32B1289E7004F6F99 /* AddReviewView.swift */; };
 		3E058DE62B1289F8004F6F99 /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E058DE52B1289F8004F6F99 /* AddReviewViewController.swift */; };
 		3E058DE82B12A1FC004F6F99 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E058DE72B12A1FC004F6F99 /* UIColorExtension.swift */; };
@@ -75,6 +77,8 @@
 		349696752B0B1E2F00E687E0 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		349696772B0B1E8500E687E0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		349696792B0B1EDA00E687E0 /* UIElementUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElementUtil.swift; sourceTree = "<group>"; };
+		34BA3F322B1A6D3D006C6A27 /* LocationScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationScreenViewController.swift; sourceTree = "<group>"; };
+		34BA3F342B1A6D61006C6A27 /* LocationScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationScreenView.swift; sourceTree = "<group>"; };
 		3E058DE32B1289E7004F6F99 /* AddReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewView.swift; sourceTree = "<group>"; };
 		3E058DE52B1289F8004F6F99 /* AddReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
 		3E058DE72B12A1FC004F6F99 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -152,6 +156,15 @@
 				3412A9D72B167F140025733F /* FilterScreenTableViewCell.swift */,
 			);
 			path = FilterScreen;
+			sourceTree = "<group>";
+		};
+		34BA3F312B1A6D2A006C6A27 /* LocationScreen */ = {
+			isa = PBXGroup;
+			children = (
+				34BA3F322B1A6D3D006C6A27 /* LocationScreenViewController.swift */,
+				34BA3F342B1A6D61006C6A27 /* LocationScreenView.swift */,
+			);
+			path = LocationScreen;
 			sourceTree = "<group>";
 		};
 		3E058DE22B1289BE004F6F99 /* AddReviewScreen */ = {
@@ -321,6 +334,7 @@
 		FCB896882B09D2DC0042535C /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				34BA3F312B1A6D2A006C6A27 /* LocationScreen */,
 				3E35C50D2B17E1690020C725 /* StoreListScreen */,
 				3E35C5082B17D5280020C725 /* CategoryScreen */,
 				FCBF29202B16913B00C44BA1 /* StoreDetailScreen */,
@@ -473,6 +487,7 @@
 				3ECFEEBC2B09E47E00D05969 /* AlertUtil.swift in Sources */,
 				3E35C5112B17E1900020C725 /* StoreListViewController.swift in Sources */,
 				3ECFEEB82B09E3B800D05969 /* LoginViewController.swift in Sources */,
+				34BA3F332B1A6D3D006C6A27 /* LocationScreenViewController.swift in Sources */,
 				3E35C5072B17D5120020C725 /* CategoryImageButton.swift in Sources */,
 				3412A9D42B167EE00025733F /* FilterScreenViewController.swift in Sources */,
 				3412A9D62B167EF90025733F /* FilterScreenView.swift in Sources */,
@@ -512,6 +527,7 @@
 				FCBF29292B16BCE500C44BA1 /* StoreDescriptionTableViewCell.swift in Sources */,
 				3ECFEEBE2B09E4A100D05969 /* Constants.swift in Sources */,
 				3E35C50F2B17E1820020C725 /* StoreListView.swift in Sources */,
+				34BA3F352B1A6D61006C6A27 /* LocationScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

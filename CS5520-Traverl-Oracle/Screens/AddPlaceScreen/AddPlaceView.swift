@@ -27,8 +27,7 @@ class AddPlaceView: UIView {
     var locationLabel = UILabel()
     var locationButton = UIButton()
     var addPhotoLabel = UILabel()
-    var cameraButton: UIButton!
-    var selectedImages: [UIImage] = []
+    var cameraButtons: [UIButton] = []
     var imageViews: [UIImageView] = []
     var selectedPrice: String?
     var selectedCategory: String?
@@ -52,9 +51,14 @@ class AddPlaceView: UIView {
         setupLocationRow()
         setupAddNewPlaceButton()
         setupAddPhotoLable()
-        setupCameraButton()
+        setupAddPhotoRow()
+//        setupCameraButton()
         initConstraints()
         
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     
@@ -348,27 +352,48 @@ class AddPlaceView: UIView {
             addPhotoLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
         ])
     }
+    
+    func setupAddPhotoRow() {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.alignment = .fill
+        stackView.distribution = .fillEqually
+        stackView.spacing = 10
 
-    func setupCameraButton() {
-        cameraButton = UIButton(type: .system)
-        cameraButton.setTitle("", for: .normal)
-        cameraButton.setImage(UIImage(systemName: "camera.fill"), for: .normal)
-        cameraButton.contentHorizontalAlignment = .fill
-        cameraButton.contentVerticalAlignment = .fill
-        cameraButton.imageView?.contentMode = .scaleAspectFit
-        cameraButton.translatesAutoresizingMaskIntoConstraints = false
-        cameraButton.showsMenuAsPrimaryAction = true
-        cameraButton.tintColor = UIColor(hexString: "#c1372d")
-        self.addSubview(cameraButton)
-        
+        for _ in 0..<4 {
+            let cameraButton = UIButton(type: .system)
+            setupCameraButton(cameraButton)
+            cameraButtons.append(cameraButton)
+            stackView.addArrangedSubview(cameraButton)
+        }
+
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(stackView)
+
         NSLayoutConstraint.activate([
-            cameraButton.topAnchor.constraint(equalTo: addPhotoLabel.bottomAnchor, constant: 10),
-            cameraButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            cameraButton.widthAnchor.constraint(equalToConstant: 90),
-            cameraButton.heightAnchor.constraint(equalToConstant: 90)
+            stackView.topAnchor.constraint(equalTo: addPhotoLabel.bottomAnchor, constant: 20),
+            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
+            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30),
+            stackView.heightAnchor.constraint(equalToConstant: 80)
         ])
     }
-    
+
+    func setupCameraButton(_ button: UIButton) {
+        button.setTitle("", for: .normal)
+        button.setImage(UIImage(systemName: "plus.viewfinder"), for: .normal)
+        button.contentHorizontalAlignment = .fill
+        button.contentVerticalAlignment = .fill
+        button.imageView?.contentMode = .scaleAspectFit
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.tintColor = UIColor(hexString: "#c1372d")
+
+        NSLayoutConstraint.activate([
+            button.widthAnchor.constraint(equalToConstant: 80),
+            button.heightAnchor.constraint(equalToConstant: 80)
+        ])
+    }
+
+
     func initConstraints() {
         NSLayoutConstraint.activate([
             addNewPlaceButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
@@ -379,9 +404,8 @@ class AddPlaceView: UIView {
         ])
         
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 
 }
+
+
+

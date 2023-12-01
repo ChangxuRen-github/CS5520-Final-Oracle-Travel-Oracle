@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PhotosUI
 
 class AddPlaceViewController: UIViewController {
     
@@ -14,10 +15,10 @@ class AddPlaceViewController: UIViewController {
     }
     var selectedPrice: String = ""
     var selectedCategory: String = ""
+    var currentCameraButton: UIButton?
     
     override func loadView() {
         view = AddPlaceView()
-        
     }
     
     override func viewDidLoad() {
@@ -28,13 +29,18 @@ class AddPlaceViewController: UIViewController {
             title: "Cancel",
             style: .plain,
             target: self,
-            action: #selector(onAddBarButtonTapped)
+            action: #selector(onCancelBarButtonTapped)
         )
         
         addButton.tintColor = UIColor.red
         navigationItem.rightBarButtonItem = addButton
         
-        addPlaceView.filterButton.addTarget(self, action: #selector(onButtonSubmitTapped), for: .touchUpInside)
+        addPlaceView.filterButton.addTarget(self, action: #selector(onFilterButtonSubmitTapped), for: .touchUpInside)
+        addPlaceView.locationButton.addTarget(self, action:#selector(onLocationButtonSubmitTapped), for: .touchUpInside)
+        for button in addPlaceView.cameraButtons {
+            button.addTarget(self, action: #selector(selectPhoto(sender:)), for: .touchUpInside)
+            print("Target action set for button")
+        }
         addPlaceView.pricePicker.delegate = self
         addPlaceView.pricePicker.dataSource = self
         addPlaceView.categoryPicker.delegate = self
@@ -42,24 +48,45 @@ class AddPlaceViewController: UIViewController {
         
     }
     
-    @objc func onButtonSubmitTapped() {
+    @objc func onLocationButtonSubmitTapped() {
+        let locationViewController = LocationScreenViewController()
+        navigationController?.pushViewController(locationViewController, animated: true)
+    }
+    
+    @objc func selectPhoto(sender: UIButton) {
+        var configuration = PHPickerConfiguration()
+        configuration.selectionLimit = 1
+        configuration.filter = .images
+
+        let picker = PHPickerViewController(configuration: configuration)
+        picker.delegate = self
+        present(picker, animated: true)
+        currentCameraButton = sender
+    }
+
+    func setImage(_ image: UIImage, forButton button: UIButton) {
+        button.setBackgroundImage(image, for: .normal)
+        button.imageView?.contentMode = .scaleAspectFill
+        button.imageView?.clipsToBounds = true
+        button.setTitle("", for: .normal)
+        button.setImage(nil, for: .normal)
+    }
+    
+    @objc func onFilterButtonSubmitTapped() {
         let filterPageViewController = FilterScreenController()
         navigationController?.pushViewController(filterPageViewController, animated: true)
     }
     
-    @objc func onAddBarButtonTapped(){
-        //        let newContactViewController = NewContactViewController()
-        //        newContactViewController.delegate = self
-        //        navigationController?.pushViewController(newContactViewController, animated: true)
+    @objc func onCancelBarButtonTapped(){
         print("back the previous page")
     }
     
     @objc func addPlaceButtonTapped() {
-        print("Add New Place button tapped")
-    }
-    
+        print("Test Save Store Button Tapped.")
 
+    }
 }
+
 
 
 // MARK: - UIPickerViewDelegate
@@ -69,7 +96,7 @@ extension AddPlaceViewController: UIPickerViewDelegate {
         if pickerView == addPlaceView.pricePicker {
             return ["$", "$$", "$$$", "$$$$"][row]
         } else if pickerView == addPlaceView.categoryPicker {
-            return ["Restaurant", "Coffee Shop", "Shopping"][row]
+            return ["Restaurant", "Coffee Shops", "Shopping", "Bars", "Hair Salons"][row]
         }
         return nil
     }
@@ -77,12 +104,12 @@ extension AddPlaceViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == addPlaceView.pricePicker {
             selectedPrice = ["$", "$$", "$$$", "$$$$"][row]
-            addPlaceView.priceTextField.text = selectedPrice // Update the text field
-            addPlaceView.priceTextField.resignFirstResponder() // Dismiss the picker view
+            addPlaceView.priceTextField.text = selectedPrice
+            addPlaceView.priceTextField.resignFirstResponder()
         } else if pickerView == addPlaceView.categoryPicker {
-            selectedCategory = ["Restaurant", "Coffee Shop", "Shopping"][row]
-            addPlaceView.categoryTextField.text = selectedCategory // Update the text field
-            addPlaceView.categoryTextField.resignFirstResponder() // Dismiss the picker view
+            selectedCategory = ["Restaurant", "Coffee Shops", "Shopping", "Bars", "Hair Salons"][row]
+            addPlaceView.categoryTextField.text = selectedCategory
+            addPlaceView.categoryTextField.resignFirstResponder()
         }
     }
     
@@ -93,9 +120,9 @@ extension AddPlaceViewController: UIPickerViewDataSource {
 
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == addPlaceView.pricePicker {
-            return 4 // $, $$, $$$, $$$$
+            return 4
         } else if pickerView == addPlaceView.categoryPicker {
-            return 3 // Restaurant, Coffee Shop, Shopping
+            return 5
         }
         return 0
     }
@@ -104,5 +131,22 @@ extension AddPlaceViewController: UIPickerViewDataSource {
         return 1
     }
 }
+
+extension AddPlaceViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true)
+
+        guard let itemProvider = results.first?.itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) else { return }
+
+        itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
+            DispatchQueue.main.async {
+                if let image = image as? UIImage, let button = self?.currentCameraButton {
+                    self?.setImage(image, forButton: button)
+                }
+            }
+        }
+    }
+}
+
 
 
