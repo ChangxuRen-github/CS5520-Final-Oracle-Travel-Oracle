@@ -86,7 +86,7 @@ class RegisterViewController: UIViewController {
 }
 
 
-// - Action listener
+// MARK: - Action listener
 extension RegisterViewController {
     
     func addTargetToButtons() {
@@ -151,7 +151,7 @@ extension RegisterViewController {
         return UIMenu(title: "Select source", children: menuItems)
     }
     
-    //MARK: take Photo using Camera.
+    // MARK: take Photo using Camera.
     func pickUsingCamera(){
         let cameraController = UIImagePickerController()
         cameraController.sourceType = .camera
@@ -159,7 +159,7 @@ extension RegisterViewController {
         cameraController.delegate = self
         present(cameraController, animated: true)
     }
-    //MARK: pick Photo using Gallery.
+    // MARK: pick Photo using Gallery.
     func pickPhotoFromGallery(){
         var configuration = PHPickerConfiguration()
         configuration.filter = PHPickerFilter.any(of: [.images])
@@ -219,7 +219,7 @@ extension RegisterViewController: UINavigationControllerDelegate, UIImagePickerC
     }
 }
 
-// - Validation
+// MARK: - Validation
 extension RegisterViewController {
     func isInputValid() -> Bool {
         let textFields: [UITextField] = [
@@ -257,7 +257,7 @@ extension RegisterViewController {
     }
 }
 
-// - Spinner
+// MARK: - Spinner
 extension RegisterViewController: ProgressSpinnerDelegate {
     func showActivityIndicator() {
         addChild(childProgressView)

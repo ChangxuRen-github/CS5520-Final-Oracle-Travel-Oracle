@@ -97,7 +97,7 @@ class LoginViewController: UIViewController {
     }
     
     func transitionToConversationsScreen() {
-        // TODO: transition to conversations screen - Done
+        // TODO: rename this method and transition to the corresponding screen
         print("Transition to conversations screen.")
         /*
         let conversationsViewController = ConversationsViewController()

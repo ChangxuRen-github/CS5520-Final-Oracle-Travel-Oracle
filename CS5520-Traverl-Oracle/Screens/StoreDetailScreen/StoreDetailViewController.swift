@@ -7,16 +7,27 @@
 
 import UIKit
 import FirebaseFirestore
+import FirebaseAuth
 
 class StoreDetailViewController: UIViewController {
+    // current user
+    private var user: User?
     // initialize store detail view
     private let storeDetailView = StoreDetailView()
     // store data model
     private let store: Store
     // reviews data model
     private var reviews: [Review] = []
+    // saved state
+    private var isStoreSaved = false
     // firestore listener
     private var reviewsListener: ListenerRegistration?
+    // spinner
+    private let childProgressView = ProgressSpinnerViewController()
+    
+
+    // Create a symbol configuration for the button icons
+    private let symbolConfig = UIImage.SymbolConfiguration(pointSize: 24, weight: .regular, scale: .large)
     
     override func loadView() {
         view = storeDetailView
@@ -25,14 +36,17 @@ class StoreDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         storeDetailView.tableView.separatorStyle = .none
+        setupNavigationBarButtons()
         doTableViewDelegations()
         // setup listener
         setupReviewsListener()
     }
-    
+
     init(with store: Store) {
         self.store = store
         super.init(nibName: nil, bundle: nil)
+        initializeUser()
+        initializeIsStoreSaved()
     }
     
     required init?(coder: NSCoder) {
@@ -43,6 +57,116 @@ class StoreDetailViewController: UIViewController {
         reviewsListener?.remove()
     }
 }
+
+// MARK: - Setups
+extension StoreDetailViewController {
+    private func setupNavigationBarButtons() {
+        // Initialize the buttons
+        // TODO: consider change color to dark red? .red is a bit sharp
+        let addReviewButton = UIButton(type: .system)
+        addReviewButton.setImage(UIImage(systemName: "note.text.badge.plus", withConfiguration: symbolConfig)?.withTintColor(.red, renderingMode: .alwaysOriginal), for: .normal)
+        addReviewButton.addTarget(self, action: #selector(addReviewButtonTapped), for: .touchUpInside)
+
+        let saveStoreButton = UIButton(type: .system)
+        saveStoreButton.setImage(UIImage(systemName: "heart", withConfiguration: symbolConfig)?.withTintColor(.red, renderingMode: .alwaysOriginal), for: .normal)
+        saveStoreButton.addTarget(self, action: #selector(saveStoreButtonTapped), for: .touchUpInside)
+
+        // Create a container view
+        let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
+
+        // Add buttons to the container view
+        containerView.addSubview(addReviewButton)
+        containerView.addSubview(saveStoreButton)
+
+        // Set frames or constraints for buttons
+        addReviewButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        saveStoreButton.frame = CGRect(x: 50, y: 0, width: 50, height: 50)
+        // Use the container view to create a single UIBarButtonItem
+        let barButtonItem = UIBarButtonItem(customView: containerView)
+        navigationItem.rightBarButtonItem = barButtonItem
+    }
+    
+    private func initializeUser() {
+        guard let uwUser = AuthManager.shared.currentUser else {
+            AlertUtil.showErrorAlert(viewController: self,
+                                     title: "Error!",
+                                     errorMessage: "Please sign in.")
+            return
+        }
+        DBManager.dbManager.getUser(withUID: uwUser.uid) { [weak self] result in
+            switch result {
+            case .success(let user):
+                self?.user = user
+            case .failure(let error):
+                print("Error fetching user details: \(error)")
+            }
+        }
+    }
+    
+    private func initializeIsStoreSaved() {
+        if let user = user {
+            isStoreSaved = user.savedStoreIds.contains(store.id)
+        }
+    }
+}
+
+// MARK: - Add new review
+extension StoreDetailViewController {
+    @objc func addReviewButtonTapped() {
+        guard let user = user else {
+            print("Error(StoreDetailViewController): user was not found when transition to add review screen.")
+            return
+        }
+        print("Transition to add review screen")
+        navigationController?.pushViewController(AddReviewViewController(with: user, with: store),
+                                                 animated: true)
+    }
+}
+
+// MARK: - Save store management
+extension StoreDetailViewController {
+    @objc func saveStoreButtonTapped() {
+        guard let user = user else { return }
+        print("Save store button tapped")
+        var currentUser = user
+        self.showActivityIndicator()
+        if isStoreSaved {
+            // Remove the store from saved stores
+            DBManager.dbManager.removeStoreFromSaved(for: user.uid, storeId: store.id) { [weak self] success in
+                self?.hideActivityIndicator()
+                if success {
+                    self?.isStoreSaved = false
+                    self?.updateSaveStoreButtonAppearance()
+                    currentUser.savedStoreIds.removeAll(where: { $0 == self?.store.id })
+                    print("Store removed from saved stores")
+                } else {
+                    print("Failed to remove store from saved stores")
+                }
+            }
+        } else {
+            // Add the store to saved stores
+            DBManager.dbManager.addStoreToSaved(for: user.uid, storeId: store.id) { [weak self] success in
+                self?.hideActivityIndicator()
+                if success {
+                    self?.isStoreSaved = true
+                    self?.updateSaveStoreButtonAppearance()
+                    currentUser.savedStoreIds.append((self?.store.id)!)
+                    print("Store added to saved stores")
+                } else {
+                    print("Failed to add store to saved stores")
+                }
+            }
+        }
+    }
+    
+    private func updateSaveStoreButtonAppearance() {
+        let saveStoreButtonImageName = isStoreSaved ? "heart.fill" : "heart"
+        if let saveStoreButton = (navigationItem.rightBarButtonItem?.customView as? UIView)?.subviews[1] as? UIButton {
+            saveStoreButton.setImage(UIImage(systemName: saveStoreButtonImageName, withConfiguration: symbolConfig)?.withTintColor(.red, renderingMode: .alwaysOriginal), for: .normal)
+        }
+    }
+}
+
 
 // MARK: - Data model management
 extension StoreDetailViewController {
@@ -73,6 +197,7 @@ extension StoreDetailViewController {
     }
 }
 
+ 
 // MARK: - UITableViewDataSource
 extension StoreDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func doTableViewDelegations() {
@@ -187,7 +312,20 @@ extension StoreDetailViewController: UITableViewDelegate, UITableViewDataSource 
     }
 }
 
-
+// MARK: - Spinner
+extension StoreDetailViewController: ProgressSpinnerDelegate {
+    func showActivityIndicator() {
+        addChild(childProgressView)
+        view.addSubview(childProgressView.view)
+        childProgressView.didMove(toParent: self)
+    }
+    
+    func hideActivityIndicator() {
+        childProgressView.willMove(toParent: nil)
+        childProgressView.view.removeFromSuperview()
+        childProgressView.removeFromParent()
+    }
+}
 
 
 // MARK: - Mock data

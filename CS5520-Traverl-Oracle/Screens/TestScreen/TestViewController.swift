@@ -63,6 +63,10 @@ extension TestViewController {
         testView.testSaveStoreButton.addTarget(self,
                                                action: #selector(onTestSaveStoreButtonTapped),
                                                for: .touchUpInside)
+        
+        testView.testStoreDetailScreenButton.addTarget(self,
+                                                       action: #selector(onTestStoreDetailScreenButtonTapped),
+                                                       for: .touchUpInside)
     }
     
     @objc func onTestSaveStoreButtonTapped() {
@@ -77,6 +81,11 @@ extension TestViewController {
                 print("Error adding store: \(error)")
             }
         }
+    }
+    
+    @objc func onTestStoreDetailScreenButtonTapped() {
+        let storeDetailViewController = StoreDetailViewController(with: sampleStore)
+        navigationController?.pushViewController(storeDetailViewController, animated: true)
     }
 }
 

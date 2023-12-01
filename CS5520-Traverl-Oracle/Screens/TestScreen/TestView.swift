@@ -12,6 +12,8 @@ class TestView: UIView {
     
     var testSaveStoreButton: UIButton!
     
+    var testStoreDetailScreenButton: UIButton!
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
@@ -23,6 +25,10 @@ class TestView: UIView {
         contentWrapper = UIElementUtil.createAndAddScrollView(to: self)
         testSaveStoreButton = UIElementUtil.createAndAddButton(to: contentWrapper,
                                                                title: "Save Test Store",
+                                                               color: .black,
+                                                               titleColor: .white)
+        testStoreDetailScreenButton = UIElementUtil.createAndAddButton(to: contentWrapper,
+                                                               title: "Go to store detail screen",
                                                                color: .black,
                                                                titleColor: .white)
     }
@@ -38,7 +44,13 @@ class TestView: UIView {
             testSaveStoreButton.centerXAnchor.constraint(equalTo: contentWrapper.safeAreaLayoutGuide.centerXAnchor),
             testSaveStoreButton.leadingAnchor.constraint(equalTo: contentWrapper.safeAreaLayoutGuide.leadingAnchor, constant: Constants.HORIZONTAL_MARGIN_REGULAR),
             testSaveStoreButton.trailingAnchor.constraint(equalTo: contentWrapper.safeAreaLayoutGuide.trailingAnchor, constant: -Constants.HORIZONTAL_MARGIN_REGULAR),
-            testSaveStoreButton.bottomAnchor.constraint(equalTo: contentWrapper.bottomAnchor)
+            
+            testStoreDetailScreenButton.topAnchor.constraint(equalTo: testSaveStoreButton.bottomAnchor, constant: Constants.VERTICAL_MARGIN_LARGE),
+            testStoreDetailScreenButton.centerXAnchor.constraint(equalTo: contentWrapper.safeAreaLayoutGuide.centerXAnchor),
+            testStoreDetailScreenButton.leadingAnchor.constraint(equalTo: contentWrapper.safeAreaLayoutGuide.leadingAnchor, constant: Constants.HORIZONTAL_MARGIN_REGULAR),
+            testStoreDetailScreenButton.trailingAnchor.constraint(equalTo: contentWrapper.safeAreaLayoutGuide.trailingAnchor, constant: -Constants.HORIZONTAL_MARGIN_REGULAR),
+            
+            testStoreDetailScreenButton.bottomAnchor.constraint(equalTo: contentWrapper.bottomAnchor)
         ])
     }
     

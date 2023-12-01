@@ -12,7 +12,7 @@ class ReviewsTableViewCell: UITableViewCell {
     static let IDENTIFIER: String = "Reviews"
     let CELL_BORDER_WIDTH: CGFloat  = 0
     let CELL_BORDER_RADIUS: CGFloat = 10
-    let PROFILE_IMAGE_MARGIN: CGFloat = 13
+    let PROFILE_IMAGE_MARGIN: CGFloat = 20
     let CELL_HEIGHT: CGFloat = 50
     let REVIEW_CELL_HEIGHT: CGFloat = 70
     let STAR_SIZE: CGFloat = 20
