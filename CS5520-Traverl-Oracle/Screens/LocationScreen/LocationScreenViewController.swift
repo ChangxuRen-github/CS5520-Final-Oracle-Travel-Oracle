@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol LocationScreenDelegate: AnyObject {
+    func locationScreen(_ locationScreen: LocationScreenViewController, didSelectLocation location: String)
+}
+
 class LocationScreenViewController: UIViewController {
     
     let locationScreen = LocationScreenView()
+    var location = ""
+    var delegate: LocationScreenDelegate?
     
     public struct Package {
         var address: String?
@@ -30,7 +36,7 @@ class LocationScreenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        locationScreen.saveAddressButton.addTarget(self, action: #selector(onShowProfileButtonTapped), for: .touchUpInside)
+        locationScreen.saveAddressButton.addTarget(self, action: #selector(onSaveButtonTapped), for: .touchUpInside)
         
     }
     
@@ -42,7 +48,7 @@ class LocationScreenViewController: UIViewController {
         return false
     }
     
-    @objc func onShowProfileButtonTapped() {
+    @objc func onSaveButtonTapped() {
         
         let address = locationScreen.addressTextField.text
         let cityState = locationScreen.cityStateTextField.text
@@ -58,9 +64,17 @@ class LocationScreenViewController: UIViewController {
                 
             } else if validateZipCode(zipCode){
                 
-                let package = Package(address: unwrappedAddress, cityState: unwrappedCityState, zipCode: unwrappedZipCode)
-                
-               navigationController?.popViewController(animated: true)
+                if let unwrappedAddress = address,
+                   let unwrappedCityState = cityState,
+                   let unwrappedZipCode = zipCode {
+
+                    let package = Package(address: unwrappedAddress, cityState: unwrappedCityState, zipCode: unwrappedZipCode)
+                    
+                    let locationString = "\(unwrappedAddress), \(unwrappedCityState), \(unwrappedZipCode)"
+                    delegate?.locationScreen(self, didSelectLocation: locationString)
+                    navigationController?.popViewController(animated: true)
+                }
+
                 
             } else if !validateZipCode(zipCode) {
                 

@@ -53,7 +53,8 @@ class TestViewController: UIViewController {
             liveMusic: "No",
             outdoorSeating: "Yes",
             freeWIFI: "Yes"
-        )
+        ),
+        location: ""
     )
 }
 

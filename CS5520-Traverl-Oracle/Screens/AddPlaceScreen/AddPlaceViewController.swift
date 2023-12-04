@@ -8,14 +8,21 @@
 import UIKit
 import PhotosUI
 
-class AddPlaceViewController: UIViewController {
-    
+
+class AddPlaceViewController: UIViewController, FilterScreenDelegate, LocationScreenDelegate {
+
     var addPlaceView: AddPlaceView! {
         return view as? AddPlaceView
     }
+    var userid: String="1111"
     var selectedPrice: String = ""
     var selectedCategory: String = ""
+    var selectedLocation: String = ""
+    var selectedTag = Tag(goodForBreakfast: "N/A", goodForLunch: "N/A", goodForDinner: "N/A", takesReservations: "N/A", vegetarianFriendly: "N/A", cuisine: "N/A", liveMusic: "N/A", outdoorSeating: "N/A", freeWIFI: "N/A")
     var currentCameraButton: UIButton?
+    var imageUrls: [String] = []
+    let childProgressView = ProgressSpinnerViewController()
+    let filterPageViewController = FilterScreenController()
     
     override func loadView() {
         view = AddPlaceView()
@@ -41,6 +48,9 @@ class AddPlaceViewController: UIViewController {
             button.addTarget(self, action: #selector(selectPhoto(sender:)), for: .touchUpInside)
             print("Target action set for button")
         }
+        addPlaceView.addNewPlaceButton.addTarget(self,
+                                               action: #selector(addPlaceButtonTapped),
+                                               for: .touchUpInside)
         addPlaceView.pricePicker.delegate = self
         addPlaceView.pricePicker.dataSource = self
         addPlaceView.categoryPicker.delegate = self
@@ -50,44 +60,49 @@ class AddPlaceViewController: UIViewController {
     
     @objc func onLocationButtonSubmitTapped() {
         let locationViewController = LocationScreenViewController()
+        locationViewController.delegate = self
         navigationController?.pushViewController(locationViewController, animated: true)
     }
+
     
     @objc func selectPhoto(sender: UIButton) {
-        var configuration = PHPickerConfiguration()
-        configuration.selectionLimit = 1
-        configuration.filter = .images
+        if let currentIndex = addPlaceView.cameraButtons.firstIndex(of: sender) {
+            if currentIndex == 0 || (currentIndex - 1 < addPlaceView.imageViews.count && addPlaceView.imageViews[currentIndex-1].image != nil) {
+                var configuration = PHPickerConfiguration()
+                configuration.selectionLimit = 1
+                configuration.filter = .images
 
-        let picker = PHPickerViewController(configuration: configuration)
-        picker.delegate = self
-        present(picker, animated: true)
-        currentCameraButton = sender
-    }
-
-    func setImage(_ image: UIImage, forButton button: UIButton) {
-        button.setBackgroundImage(image, for: .normal)
-        button.imageView?.contentMode = .scaleAspectFill
-        button.imageView?.clipsToBounds = true
-        button.setTitle("", for: .normal)
-        button.setImage(nil, for: .normal)
+                let picker = PHPickerViewController(configuration: configuration)
+                picker.delegate = self
+                present(picker, animated: true)
+                currentCameraButton = sender
+            } else {
+                let alertController = UIAlertController(title: "Upload Error", message: "Please upload pictures first.", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alertController.addAction(okAction)
+                present(alertController, animated: true, completion: nil)
+            }
+        }
     }
     
     @objc func onFilterButtonSubmitTapped() {
-        let filterPageViewController = FilterScreenController()
+        filterPageViewController.delegate = self
         navigationController?.pushViewController(filterPageViewController, animated: true)
     }
     
     @objc func onCancelBarButtonTapped(){
-        print("back the previous page")
+        navigationController?.popViewController(animated: true)
     }
     
-    @objc func addPlaceButtonTapped() {
-        print("Test Save Store Button Tapped.")
-
+    func filterScreen(_ filterScreen: FilterScreenController, didSelectTag tag: Tag) {
+        self.selectedTag = tag
     }
+    
+    func locationScreen(_ locationScreen: LocationScreenViewController, didSelectLocation location: String) {
+        self.selectedLocation = location
+    }
+    
 }
-
-
 
 // MARK: - UIPickerViewDelegate
 extension AddPlaceViewController: UIPickerViewDelegate {
@@ -96,7 +111,7 @@ extension AddPlaceViewController: UIPickerViewDelegate {
         if pickerView == addPlaceView.pricePicker {
             return ["$", "$$", "$$$", "$$$$"][row]
         } else if pickerView == addPlaceView.categoryPicker {
-            return ["Restaurant", "Coffee Shops", "Shopping", "Bars", "Hair Salons"][row]
+            return [Constants.STORE_CATEGORY_RESTAURANT, Constants.STORE_CATEGORY_COFEE_SHOP, Constants.STORE_CATEGORY_SHOPPING, Constants.STORE_CATEGORY_BAR, Constants.STORE_CATEGORY_HAIR_SALON][row]
         }
         return nil
     }
@@ -107,7 +122,7 @@ extension AddPlaceViewController: UIPickerViewDelegate {
             addPlaceView.priceTextField.text = selectedPrice
             addPlaceView.priceTextField.resignFirstResponder()
         } else if pickerView == addPlaceView.categoryPicker {
-            selectedCategory = ["Restaurant", "Coffee Shops", "Shopping", "Bars", "Hair Salons"][row]
+            selectedCategory = [Constants.STORE_CATEGORY_RESTAURANT, Constants.STORE_CATEGORY_COFEE_SHOP, Constants.STORE_CATEGORY_SHOPPING, Constants.STORE_CATEGORY_BAR, Constants.STORE_CATEGORY_HAIR_SALON][row]
             addPlaceView.categoryTextField.text = selectedCategory
             addPlaceView.categoryTextField.resignFirstResponder()
         }
@@ -136,17 +151,133 @@ extension AddPlaceViewController: PHPickerViewControllerDelegate {
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         picker.dismiss(animated: true)
 
-        guard let itemProvider = results.first?.itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) else { return }
-
+        guard let itemProvider = results.first?.itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) else {
+            return
+        }
+        
         itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
             DispatchQueue.main.async {
                 if let image = image as? UIImage, let button = self?.currentCameraButton {
                     self?.setImage(image, forButton: button)
+                    
+                    let imageView = UIImageView(image: image)
+                    imageView.contentMode = .scaleAspectFit
+                    self?.addPlaceView.imageViews.append(imageView)
+                }
+            }
+        }
+
+        itemProvider.loadFileRepresentation(forTypeIdentifier: UTType.image.identifier) { [weak self] url, error in
+            DispatchQueue.main.async {
+                if let imageURL = url {
+
+                    let imageURLString = imageURL.absoluteString
+                    print("Selected Image URL: \(imageURL)")
+                    self?.imageUrls.append(imageURLString)
+                    
+
                 }
             }
         }
     }
+
+    
+    func setImage(_ image: UIImage, forButton button: UIButton) {
+        button.setBackgroundImage(image, for: .normal)
+        button.imageView?.contentMode = .scaleAspectFill
+        button.imageView?.clipsToBounds = true
+        button.setTitle("", for: .normal)
+        button.setImage(nil, for: .normal)
+    }
 }
 
+// - Action listener
+extension AddPlaceViewController {
+
+    @objc func addPlaceButtonTapped() {
+        let currentDate = Date()
+        
+        // DEBUG:
+        // (1) selectedTag must not be nil
+        // (2) data passing between filter screen and add place screen
+        // (3) initilize user in init()
+
+        if let title = addPlaceView.titleTextField.text, !title.isEmpty,
+           let description = addPlaceView.descriptionTextField.text, !description.isEmpty, !imageUrls.isEmpty{
+            print(selectedTag.goodForBreakfast)
+            let store = Store(
+                id: UUID().uuidString,
+                createdAt: currentDate,
+                createdBy: userid,
+                displayName: title,
+                description: description,
+                price: selectedPrice,
+                category: selectedCategory,
+                images: imageUrls,
+                tag: Tag(
+                    goodForBreakfast: selectedTag.goodForBreakfast,
+                    goodForLunch: selectedTag.goodForLunch,
+                    goodForDinner: selectedTag.goodForDinner,
+                    takesReservations: selectedTag.takesReservations,
+                    vegetarianFriendly: selectedTag.vegetarianFriendly,
+                    cuisine: selectedTag.cuisine,
+                    liveMusic: selectedTag.liveMusic,
+                    outdoorSeating: selectedTag.outdoorSeating,
+                    freeWIFI: selectedTag.freeWIFI
+                ),
+                location: selectedLocation
+            )
+            var imageArray: [UIImage] = []
+            for imageView in addPlaceView.imageViews {
+                if let image = imageView.image {
+                    imageArray.append(image)
+                }
+            }
+            
+            
+            self.showActivityIndicator()
+            DBManager.dbManager.addStore(with: store, with: imageArray) { result in
+                self.hideActivityIndicator()
+                switch result {
+                case .success(let store):
+                    AlertUtil.showErrorAlert(viewController: self, title: "", errorMessage: "Save successfully!")
+                    self.navigationController?.popViewController(animated: true) // back to store list page
+
+                    print("Store added successfully: \(store)")
+                    
+                case .failure(let error):
+                    print("Error adding store: \(error)")
+                }
+            }
+            
+        } else {
+
+            if addPlaceView.titleTextField.text?.isEmpty ?? true {
+                AlertUtil.showErrorAlert(viewController: self, title: "Error", errorMessage: "Please enter a title.")
+            } else if addPlaceView.descriptionTextField.text?.isEmpty ?? true {
+                AlertUtil.showErrorAlert(viewController: self, title: "Error", errorMessage: "Please enter a description.")
+            } else if imageUrls.isEmpty {
+                AlertUtil.showErrorAlert(viewController: self, title: "Error", errorMessage: "Please upload at least one picture.")
+            }
+        }
+
+    }
+    
+}
+
+// - Spinner
+extension AddPlaceViewController: ProgressSpinnerDelegate {
+    func showActivityIndicator() {
+        addChild(childProgressView)
+        view.addSubview(childProgressView.view)
+        childProgressView.didMove(toParent: self)
+    }
+    
+    func hideActivityIndicator() {
+        childProgressView.willMove(toParent: nil)
+        childProgressView.view.removeFromSuperview()
+        childProgressView.removeFromParent()
+    }
+}
 
 

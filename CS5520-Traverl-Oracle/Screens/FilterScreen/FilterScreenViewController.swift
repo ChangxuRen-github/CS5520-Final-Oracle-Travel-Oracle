@@ -7,10 +7,15 @@
 
 import UIKit
 
+protocol FilterScreenDelegate: AnyObject {
+    func filterScreen(_ filterScreen: FilterScreenController, didSelectTag tag: Tag)
+}
+
 class FilterScreenController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var tableView: UITableView!
+    var delegate: FilterScreenDelegate?
     
-    var tag: Tag = Tag(goodForBreakfast: "All", goodForLunch: "All", goodForDinner: "All", takesReservations: "All", vegetarianFriendly: "All", cuisine: "All", liveMusic: "All", outdoorSeating: "All", freeWIFI: "All")
+    var tag: Tag = Tag(goodForBreakfast: "N/A", goodForLunch: "N/A", goodForDinner: "N/A", takesReservations: "N/A", vegetarianFriendly: "N/A", cuisine: "N/A", liveMusic: "N/A", outdoorSeating: "N/A", freeWIFI: "N/A")
     
     let filterTitles: [String] = [
         "Good for Breakfast", "Good for Lunch", "Good for Dinner",
@@ -19,15 +24,15 @@ class FilterScreenController: UIViewController, UITableViewDelegate, UITableView
     ]
     
     let filterOptions: [String: [String]] = [
-        "Good for Breakfast": ["All", "Yes", "No"],
-        "Good for Lunch": ["All", "Yes", "No"],
-        "Good for Dinner": ["All", "Yes", "No"],
-        "Takes Reservations": ["All", "Yes", "No"],
-        "Vegetarian Friendly": ["All", "Yes", "No"],
-        "Cuisine": ["All", "Italian", "Chinese", "American", "Other"],
-        "Live Music": ["All", "Yes", "No"],
-        "Outdoor Seating": ["All", "Yes", "No"],
-        "Free Wi-Fi": ["All", "Yes", "No"]
+        "Good for Breakfast": ["N/A", "Yes", "No"],
+        "Good for Lunch": ["N/A", "Yes", "No"],
+        "Good for Dinner": ["N/A", "Yes", "No"],
+        "Takes Reservations": ["N/A", "Yes", "No"],
+        "Vegetarian Friendly": ["N/A", "Yes", "No"],
+        "Cuisine": ["N/A", "Italian", "Chinese", "American", "Other"],
+        "Live Music": ["N/A", "Yes", "No"],
+        "Outdoor Seating": ["N/A", "Yes", "No"],
+        "Free Wi-Fi": ["N/A", "Yes", "No"]
     ]
 
     override func loadView() {
@@ -53,6 +58,7 @@ class FilterScreenController: UIViewController, UITableViewDelegate, UITableView
     }
     
     @objc private func doneTapped() {
+        delegate?.filterScreen(self, didSelectTag: tag)
         navigationController?.popViewController(animated: true)
     }
     
@@ -83,7 +89,7 @@ class FilterScreenController: UIViewController, UITableViewDelegate, UITableView
     }
 
     private func presentOptions(for filter: String, from sourceButton: UIButton) {
-        let options = filterOptions[filter] ?? ["All"]
+        let options = filterOptions[filter] ?? ["N/A"]
         var actions: [UIAction] = []
         
         for option in options {
@@ -104,13 +110,59 @@ class FilterScreenController: UIViewController, UITableViewDelegate, UITableView
         return tableView.indexPathForRow(at: point)
     }
     
+    func didSelectTag(_ tag: Tag) {
+        delegate?.filterScreen(self, didSelectTag: tag)
+    }
+    
     private func selectedValue(for filter: String) -> String {
-        // 
-        return "All"
+        switch filter {
+        case "Good for Breakfast":
+            return tag.goodForBreakfast
+        case "Good for Lunch":
+            return tag.goodForLunch
+        case "Good for Dinner":
+            return tag.goodForDinner
+        case "Takes Reservations":
+            return tag.takesReservations
+        case "Vegetarian Friendly":
+            return tag.vegetarianFriendly
+        case "Cuisine":
+            return tag.cuisine
+        case "Live Music":
+            return tag.liveMusic
+        case "Outdoor Seating":
+            return tag.outdoorSeating
+        case "Free Wi-Fi":
+            return tag.freeWIFI
+        default:
+            return "N/A"
+        }
     }
 
     private func updateTag(for filter: String, with value: String) {
-        //
+        switch filter {
+        case "Good for Breakfast":
+            tag.goodForBreakfast = value
+        case "Good for Lunch":
+            tag.goodForLunch = value
+        case "Good for Dinner":
+            tag.goodForDinner = value
+        case "Takes Reservations":
+            tag.takesReservations = value
+        case "Vegetarian Friendly":
+            tag.vegetarianFriendly = value
+        case "Cuisine":
+            tag.cuisine = value
+        case "Live Music":
+            tag.liveMusic = value
+        case "Outdoor Seating":
+            tag.outdoorSeating = value
+        case "Free Wi-Fi":
+            tag.freeWIFI = value
+        default:
+            break
+        }
     }
+
 }
 

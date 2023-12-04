@@ -24,4 +24,5 @@ struct Store: Codable {
     var images: [String]
     // saves filters
     let tag: Tag
+    let location: String
 }

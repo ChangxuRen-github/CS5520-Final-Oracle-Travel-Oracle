@@ -29,6 +29,7 @@ class AddPlaceView: UIView {
     var addPhotoLabel = UILabel()
     var cameraButtons: [UIButton] = []
     var imageViews: [UIImageView] = []
+    var imageURLs: [String] = []
     var selectedPrice: String?
     var selectedCategory: String?
     var addNewPlaceButton = UIButton()

@@ -394,7 +394,8 @@ var mockStore = Store(id: "mockId",
                                         cuisine: "MockValue",
                                         liveMusic: "MockValue",
                                         outdoorSeating: "MockValue",
-                                        freeWIFI: "MockValue"))
+                                        freeWIFI: "MockValue"),
+                                        location: "MockValue")
 var mockReviews: [Review] = [
     Review(senderId: "Mock Reviewer ID",
            senderName: "Mock Reviewer Name",
