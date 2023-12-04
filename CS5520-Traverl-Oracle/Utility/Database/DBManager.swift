@@ -401,7 +401,7 @@ extension DBManager {
         var store = store
         let dispatchGroup = DispatchGroup()
         var imageUrls = [String]()
-
+        
         for image in images {
             dispatchGroup.enter()
             uploadStoreImages(image: image) { result in
@@ -414,7 +414,7 @@ extension DBManager {
                 dispatchGroup.leave()
             }
         }
-
+        
         dispatchGroup.notify(queue: .main) {
             store.images = imageUrls
             self.addStore(store: store, completion: completion)
@@ -456,6 +456,46 @@ extension DBManager {
                         completion(.success(url.absoluteString))
                     }
                 }
+            }
+        }
+    }
+    
+    // Fetch all stores with a given category
+    public func fetchStoresByCategory(_ category: String, completion: @escaping (Result<[Store], Error>) -> Void) {
+        database.collection(STORE_COLLECTION)
+                .whereField("category", isEqualTo: category)
+                .getDocuments { (querySnapshot, error) in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                var stores: [Store] = []
+                querySnapshot?.documents.forEach { document in
+                    if let store = try? document.data(as: Store.self) {
+                        stores.append(store)
+                    } else {
+                        print("Error decoding a store document")
+                    }
+                }
+                completion(.success(stores))
+            }
+        }
+    }
+    
+    // Fetch all stores
+    public func fetchAllStores(completion: @escaping (Result<[Store], Error>) -> Void) {
+        database.collection(STORE_COLLECTION).getDocuments { (querySnapshot, error) in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                var stores: [Store] = []
+                querySnapshot?.documents.forEach { document in
+                    if let store = try? document.data(as: Store.self) {
+                        stores.append(store)
+                    } else {
+                        print("Error decoding a store document")
+                    }
+                }
+                completion(.success(stores))
             }
         }
     }

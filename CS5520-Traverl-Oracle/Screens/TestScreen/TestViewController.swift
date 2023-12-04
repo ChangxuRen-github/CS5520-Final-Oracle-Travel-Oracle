@@ -41,7 +41,7 @@ class TestViewController: UIViewController {
         displayName: "My Sample Store",
         description: "This is a sample store description.",
         price: "$$",
-        category: "Cafe",
+        category: Constants.STORE_CATEGORY_COFEE_SHOP,
         images: [], // initially empty, will be filled after image upload
         tag: Tag(
             goodForBreakfast: "Yes",

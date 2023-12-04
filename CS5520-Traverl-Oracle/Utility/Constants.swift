@@ -19,6 +19,11 @@ struct Constants {
     static let HORIZONTAL_MARGIN_LARGE = CGFloat(38)
     static let HORIZONTAL_MARGIN_SMALL = CGFloat(16)
     static let HORIZONTAL_MARGIN_TINY = CGFloat(4)
+    static let STORE_CATEGORY_RESTAURANT = "Restaurant"
+    static let STORE_CATEGORY_COFEE_SHOP = "Coffee Shop"
+    static let STORE_CATEGORY_SHOPPING = "Shopping"
+    static let STORE_CATEGORY_BAR = "Bar"
+    static let STORE_CATEGORY_HAIR_SALON = "Hair Salon"
     // MARK: - Default image URLs
     static let DEFAULT_PROFILE_IMAGE_URL = "https://firebasestorage.googleapis.com/v0/b/neu-cs5520-cxren-hw8.appspot.com/o/DefaultImages%2FScreenshot%202023-12-01%20at%202.57.29%20PM.png?alt=media&token=24b12b6e-f546-49e4-8b92-9ff6ebd6a115"
 }

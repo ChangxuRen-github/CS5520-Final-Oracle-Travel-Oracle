@@ -54,14 +54,12 @@ class EditProfileViewController: UIViewController {
         let alert = UIAlertController(title: "Update Successful", message: "Profile has been updated!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .destructive, handler: { _ in
             print("Transition from edit profile screen to main screen.")
-            // TODO: transition to main screen when profile is updated successful
-            /*
-            let conversationsViewController = ConversationsViewController()
+            // TODO: transition to main screen when profile is updated successful - Done
+            let categoryViewController = CategoryViewController()
             var viewControllers = self.navigationController!.viewControllers
             viewControllers.removeAll()
-            viewControllers.append(conversationsViewController)
+            viewControllers.append(categoryViewController)
             self.navigationController?.setViewControllers(viewControllers, animated: true)
-             */
         }))
         if self.presentedViewController == nil { // this makes sure only one error alert at a time
             self.present(alert, animated: true)

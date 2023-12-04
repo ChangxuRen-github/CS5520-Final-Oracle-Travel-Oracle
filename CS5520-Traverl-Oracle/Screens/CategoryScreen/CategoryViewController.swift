@@ -8,8 +8,12 @@
 import UIKit
 
 class CategoryViewController: UIViewController {
-    
-    let categoryView = CategoryView()
+    // Initialize the category view
+    private let categoryView = CategoryView()
+    // current user
+    private var user: User?
+    // spinner
+    private let childProgressView = ProgressSpinnerViewController()
     
     override func loadView() {
         view = categoryView
@@ -17,58 +21,128 @@ class CategoryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        hideKeyboardOnTapOutside()
-        
+        initializeUser()
+        setupNavBar()
+        addTargetToButtons()
+    }
+}
+
+// MARK: - Setups
+extension CategoryViewController {
+    private func initializeUser() {
+        guard let uwUser = AuthManager.shared.currentUser else {
+            AlertUtil.showErrorAlert(viewController: self,
+                                     title: "Error!",
+                                     errorMessage: "Please sign in.")
+            return
+        }
+        self.showActivityIndicator()
+        DBManager.dbManager.getUser(withUID: uwUser.uid) { [weak self] result in
+            self?.hideActivityIndicator()
+            switch result {
+            case .success(let user):
+                self?.user = user
+            case .failure(let error):
+                print("Error fetching user details: \(error)")
+            }
+        }
+    }
+    
+    private func setupNavBar() {
         let titleAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.systemFont(ofSize: 16),
             .foregroundColor: UIColor.black,
         ]
         navigationController?.navigationBar.titleTextAttributes = titleAttributes
         title = "Collections"
-        
-        //TODO: cilck buttons and switch category to different Store List Screen
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose,
+                                                            target: self,
+                                                            action: #selector(onAddPlaceButtonTapped))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Profile",
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(onProfileButtonTapped))
+    }
+    
+    private func addTargetToButtons() {
         categoryView.restaurantButton.addTarget(self, action: #selector(restaurantButtonTapped), for: .touchUpInside)
         categoryView.coffeeShopButton.addTarget(self, action: #selector(coffeeShopButtonTapped), for: .touchUpInside)
         categoryView.shoppingButton.addTarget(self, action: #selector(shoppingButtonTapped), for: .touchUpInside)
         categoryView.barButton.addTarget(self, action: #selector(barButtonTapped), for: .touchUpInside)
         categoryView.hairSalonButton.addTarget(self, action: #selector(hairSalonButtonTapped), for: .touchUpInside)
     }
-    
+}
+
+// MARK: - Action listeners
+extension CategoryViewController {
+    // category buttons
     @objc func restaurantButtonTapped() {
-        navigateToStoreList(withTitle: "Restaurants", fontSize: Constants.FONT_SMALL)
+        transitionToStoreListScreen(with: Constants.STORE_CATEGORY_RESTAURANT + "s",
+                                    with: Constants.STORE_CATEGORY_RESTAURANT)
     }
 
     @objc func coffeeShopButtonTapped() {
-        navigateToStoreList(withTitle: "Coffee Shops", fontSize: Constants.FONT_SMALL)
+        transitionToStoreListScreen(with: Constants.STORE_CATEGORY_COFEE_SHOP + "s",
+                                    with: Constants.STORE_CATEGORY_COFEE_SHOP)
     }
 
     @objc func shoppingButtonTapped() {
-        navigateToStoreList(withTitle: "Shopping", fontSize: Constants.FONT_SMALL)
+        transitionToStoreListScreen(with: Constants.STORE_CATEGORY_SHOPPING,
+                                    with: Constants.STORE_CATEGORY_SHOPPING)
     }
 
     @objc func barButtonTapped() {
-        navigateToStoreList(withTitle: "Bars", fontSize: Constants.FONT_SMALL)
+        transitionToStoreListScreen(with: Constants.STORE_CATEGORY_BAR + "s",
+                                    with: Constants.STORE_CATEGORY_BAR)
     }
 
     @objc func hairSalonButtonTapped() {
-        navigateToStoreList(withTitle: "Hair Salons", fontSize: Constants.FONT_SMALL)
+        transitionToStoreListScreen(with: Constants.STORE_CATEGORY_HAIR_SALON + "s",
+                                    with: Constants.STORE_CATEGORY_HAIR_SALON)
     }
     
-    func navigateToStoreList(withTitle title: String, fontSize: CGFloat) {
-        // create the controller view needs to be reached
-        let storeListViewController = StoreListViewController()
-        storeListViewController.pageTitle = title
-        storeListViewController.pageTitleFontSize = fontSize
+    @objc func onProfileButtonTapped() {
+        transitionToMyProfileScreen()
+    }
+    
+    @objc func onAddPlaceButtonTapped() {
+        transitionToAddPlaceScreen()
+    }
+}
+
+// MARK: - Screen navigation management
+extension CategoryViewController {
+    // store list screen
+    private func transitionToStoreListScreen(with title: String, with category: String) {
+        let storeListViewController = StoreListViewController(with: title, with: category)
         navigationController?.pushViewController(storeListViewController, animated: true)
-        }
-    
-    func hideKeyboardOnTapOutside() {
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboardOnTap))
-        tapRecognizer.cancelsTouchesInView = false
-        view.addGestureRecognizer(tapRecognizer)
     }
     
-    @objc func hideKeyboardOnTap() {
-        view.endEditing(true)
+    // my profile screen
+    private func transitionToMyProfileScreen() {
+        print("Transition to my profile screen.")
+        let myProfileViewController = MyProfileViewController()
+        navigationController?.pushViewController(myProfileViewController, animated: true)
+    }
+    
+    // add new store screen
+    private func transitionToAddPlaceScreen() {
+        print("Transition to add place screen.") 
+        // TODO: transition to add place screen
+    }
+}
+
+// MARK: - Spinner
+extension CategoryViewController: ProgressSpinnerDelegate {
+    func showActivityIndicator() {
+        addChild(childProgressView)
+        view.addSubview(childProgressView.view)
+        childProgressView.didMove(toParent: self)
+    }
+    
+    func hideActivityIndicator() {
+        childProgressView.willMove(toParent: nil)
+        childProgressView.view.removeFromSuperview()
+        childProgressView.removeFromParent()
     }
 }
