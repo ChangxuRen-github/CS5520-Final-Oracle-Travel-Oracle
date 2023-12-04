@@ -78,6 +78,9 @@
 		FCBF29562B1A8FCA00C44BA1 /* MessageImageViewScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF29552B1A8FCA00C44BA1 /* MessageImageViewScreenViewController.swift */; };
 		FCBF29592B1C68C800C44BA1 /* ReviewDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF29582B1C68C800C44BA1 /* ReviewDetailViewController.swift */; };
 		FCBF295B2B1C68D900C44BA1 /* ReviewDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF295A2B1C68D900C44BA1 /* ReviewDetailView.swift */; };
+		FCBF295E2B1DB3BF00C44BA1 /* SearchStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF295D2B1DB3BF00C44BA1 /* SearchStoreView.swift */; };
+		FCBF29602B1DB3CE00C44BA1 /* SearchStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF295F2B1DB3CE00C44BA1 /* SearchStoreViewController.swift */; };
+		FCBF29622B1DB3E400C44BA1 /* SearchStoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF29612B1DB3E400C44BA1 /* SearchStoreTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -146,6 +149,9 @@
 		FCBF29552B1A8FCA00C44BA1 /* MessageImageViewScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageImageViewScreenViewController.swift; sourceTree = "<group>"; };
 		FCBF29582B1C68C800C44BA1 /* ReviewDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDetailViewController.swift; sourceTree = "<group>"; };
 		FCBF295A2B1C68D900C44BA1 /* ReviewDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDetailView.swift; sourceTree = "<group>"; };
+		FCBF295D2B1DB3BF00C44BA1 /* SearchStoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStoreView.swift; sourceTree = "<group>"; };
+		FCBF295F2B1DB3CE00C44BA1 /* SearchStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStoreViewController.swift; sourceTree = "<group>"; };
+		FCBF29612B1DB3E400C44BA1 /* SearchStoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchStoreTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -362,6 +368,7 @@
 		FCB896882B09D2DC0042535C /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				FCBF295C2B1DB38A00C44BA1 /* SearchStoreScreen */,
 				34BA3F312B1A6D2A006C6A27 /* LocationScreen */,
 				FCBF29572B1C68AD00C44BA1 /* ReviewDetailScreen */,
 				FCBF29542B1A8F9600C44BA1 /* MessageImageViewScreen */,
@@ -502,6 +509,16 @@
 			path = ReviewDetailScreen;
 			sourceTree = "<group>";
 		};
+		FCBF295C2B1DB38A00C44BA1 /* SearchStoreScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FCBF295D2B1DB3BF00C44BA1 /* SearchStoreView.swift */,
+				FCBF295F2B1DB3CE00C44BA1 /* SearchStoreViewController.swift */,
+				FCBF29612B1DB3E400C44BA1 /* SearchStoreTableViewCell.swift */,
+			);
+			path = SearchStoreScreen;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -591,6 +608,7 @@
 			files = (
 				3E35C5132B17EAB40020C725 /* StoreTableViewCell.swift in Sources */,
 				FC40EDFF2B11BFAA000882D0 /* TestView.swift in Sources */,
+				FCBF29602B1DB3CE00C44BA1 /* SearchStoreViewController.swift in Sources */,
 				FCBF293F2B19ACDC00C44BA1 /* EditProfileViewController.swift in Sources */,
 				FCBF29452B19AE7B00C44BA1 /* OthersProfileViewController.swift in Sources */,
 				3ECFEEBC2B09E47E00D05969 /* AlertUtil.swift in Sources */,
@@ -627,6 +645,7 @@
 				FC40EE0F2B11C578000882D0 /* Conversation.swift in Sources */,
 				FCBF293C2B19AC3C00C44BA1 /* MyProfileView.swift in Sources */,
 				3412A9D82B167F140025733F /* FilterScreenTableViewCell.swift in Sources */,
+				FCBF295E2B1DB3BF00C44BA1 /* SearchStoreView.swift in Sources */,
 				FCBF29242B16917400C44BA1 /* StoreDetailViewController.swift in Sources */,
 				FCBF29592B1C68C800C44BA1 /* ReviewDetailViewController.swift in Sources */,
 				FCBF293A2B19ABD900C44BA1 /* MyProfileViewController.swift in Sources */,
@@ -642,6 +661,7 @@
 				349696702B0B1BAC00E687E0 /* RegisterViewController.swift in Sources */,
 				FCBF29562B1A8FCA00C44BA1 /* MessageImageViewScreenViewController.swift in Sources */,
 				FCBF29342B17B8B600C44BA1 /* Review.swift in Sources */,
+				FCBF29622B1DB3E400C44BA1 /* SearchStoreTableViewCell.swift in Sources */,
 				FCB896952B09D8DB0042535C /* DBManager.swift in Sources */,
 				FCBF29272B16BC7900C44BA1 /* ImageCarouselTableViewCell.swift in Sources */,
 				FCBF29292B16BCE500C44BA1 /* StoreDescriptionTableViewCell.swift in Sources */,
