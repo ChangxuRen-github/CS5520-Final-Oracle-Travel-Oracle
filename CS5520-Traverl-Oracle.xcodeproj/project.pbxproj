@@ -12,6 +12,9 @@
 		3412A9D42B167EE00025733F /* FilterScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3412A9D32B167EE00025733F /* FilterScreenViewController.swift */; };
 		3412A9D62B167EF90025733F /* FilterScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3412A9D52B167EF90025733F /* FilterScreenView.swift */; };
 		3412A9D82B167F140025733F /* FilterScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3412A9D72B167F140025733F /* FilterScreenTableViewCell.swift */; };
+		342108812B1DCB71009516E1 /* SavedStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342108802B1DCB71009516E1 /* SavedStoreViewController.swift */; };
+		342108832B1DCB7F009516E1 /* SavedStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342108822B1DCB7F009516E1 /* SavedStoreView.swift */; };
+		342108862B1DCBA0009516E1 /* SavedStoreScreenTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342108852B1DCBA0009516E1 /* SavedStoreScreenTableViewCell.swift */; };
 		349696702B0B1BAC00E687E0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3496966F2B0B1BAC00E687E0 /* RegisterViewController.swift */; };
 		349696722B0B1CFD00E687E0 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349696712B0B1CFD00E687E0 /* RegisterView.swift */; };
 		349696762B0B1E2F00E687E0 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349696752B0B1E2F00E687E0 /* AuthManager.swift */; };
@@ -89,6 +92,9 @@
 		3412A9D32B167EE00025733F /* FilterScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterScreenViewController.swift; sourceTree = "<group>"; };
 		3412A9D52B167EF90025733F /* FilterScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterScreenView.swift; sourceTree = "<group>"; };
 		3412A9D72B167F140025733F /* FilterScreenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterScreenTableViewCell.swift; sourceTree = "<group>"; };
+		342108802B1DCB71009516E1 /* SavedStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedStoreViewController.swift; sourceTree = "<group>"; };
+		342108822B1DCB7F009516E1 /* SavedStoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedStoreView.swift; sourceTree = "<group>"; };
+		342108852B1DCBA0009516E1 /* SavedStoreScreenTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedStoreScreenTableViewCell.swift; sourceTree = "<group>"; };
 		3496966F2B0B1BAC00E687E0 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		349696712B0B1CFD00E687E0 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		349696752B0B1E2F00E687E0 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
@@ -190,6 +196,16 @@
 				3412A9D72B167F140025733F /* FilterScreenTableViewCell.swift */,
 			);
 			path = FilterScreen;
+			sourceTree = "<group>";
+		};
+		3421087F2B1DCB41009516E1 /* SavedStoreScreen */ = {
+			isa = PBXGroup;
+			children = (
+				342108802B1DCB71009516E1 /* SavedStoreViewController.swift */,
+				342108822B1DCB7F009516E1 /* SavedStoreView.swift */,
+				342108852B1DCBA0009516E1 /* SavedStoreScreenTableViewCell.swift */,
+			);
+			path = SavedStoreScreen;
 			sourceTree = "<group>";
 		};
 		34BA3F312B1A6D2A006C6A27 /* LocationScreen */ = {
@@ -368,6 +384,7 @@
 		FCB896882B09D2DC0042535C /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				3421087F2B1DCB41009516E1 /* SavedStoreScreen */,
 				FCBF295C2B1DB38A00C44BA1 /* SearchStoreScreen */,
 				34BA3F312B1A6D2A006C6A27 /* LocationScreen */,
 				FCBF29572B1C68AD00C44BA1 /* ReviewDetailScreen */,
@@ -616,8 +633,10 @@
 				3ECFEEB82B09E3B800D05969 /* LoginViewController.swift in Sources */,
 				34BA3F332B1A6D3D006C6A27 /* LocationScreenViewController.swift in Sources */,
 				FCBF294A2B19BC9500C44BA1 /* ConversationsView.swift in Sources */,
+				342108832B1DCB7F009516E1 /* SavedStoreView.swift in Sources */,
 				3E35C5072B17D5120020C725 /* CategoryImageButton.swift in Sources */,
 				3412A9D42B167EE00025733F /* FilterScreenViewController.swift in Sources */,
+				342108862B1DCBA0009516E1 /* SavedStoreScreenTableViewCell.swift in Sources */,
 				3412A9D62B167EF90025733F /* FilterScreenView.swift in Sources */,
 				FCB896912B09D85E0042535C /* ProgressSpinnerDelegate.swift in Sources */,
 				FC40EDF82B11AF41000882D0 /* Store.swift in Sources */,
@@ -667,6 +686,7 @@
 				FCBF29292B16BCE500C44BA1 /* StoreDescriptionTableViewCell.swift in Sources */,
 				3ECFEEBE2B09E4A100D05969 /* Constants.swift in Sources */,
 				3E35C50F2B17E1820020C725 /* StoreListView.swift in Sources */,
+				342108812B1DCB71009516E1 /* SavedStoreViewController.swift in Sources */,
 				34BA3F352B1A6D61006C6A27 /* LocationScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
