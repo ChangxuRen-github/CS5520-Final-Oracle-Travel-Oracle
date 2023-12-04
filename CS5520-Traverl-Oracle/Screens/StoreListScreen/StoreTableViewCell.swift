@@ -109,8 +109,8 @@ class StoreTableViewCell: UITableViewCell {
     func configure(with model: Store) {
         storeDisplayNameLabel.text = model.displayName
         storeCreatedAtLabel.text = DateFormatter.formatDate(model.createdAt)
-        //TODO: NEE TO CHANGE TO LOCATION LATER
-        storeLocationLabel.text = model.displayName
+        //TODO: NEE TO CHANGE TO LOCATION LATER - Done
+        storeLocationLabel.text = model.location
         
         if !model.images.isEmpty {
             let firstImageUrl = model.images[0]

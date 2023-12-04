@@ -128,7 +128,10 @@ extension CategoryViewController {
     // add new store screen
     private func transitionToAddPlaceScreen() {
         print("Transition to add place screen.") 
-        // TODO: transition to add place screen
+        // TODO: transition to add place screen - Done
+        guard let uwUser = user else { return }
+        let addPlaceViewController = AddPlaceViewController(with: uwUser)
+        navigationController?.pushViewController(addPlaceViewController, animated: true)
     }
 }
 

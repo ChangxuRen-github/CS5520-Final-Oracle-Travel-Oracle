@@ -14,7 +14,7 @@ class AddPlaceViewController: UIViewController, FilterScreenDelegate, LocationSc
     var addPlaceView: AddPlaceView! {
         return view as? AddPlaceView
     }
-    var userid: String="1111"
+    var user: User
     var selectedPrice: String = ""
     var selectedCategory: String = ""
     var selectedLocation: String = ""
@@ -23,6 +23,15 @@ class AddPlaceViewController: UIViewController, FilterScreenDelegate, LocationSc
     var imageUrls: [String] = []
     let childProgressView = ProgressSpinnerViewController()
     let filterPageViewController = FilterScreenController()
+    
+    init(with user: User) {
+        self.user = user
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func loadView() {
         view = AddPlaceView()
@@ -195,20 +204,12 @@ extension AddPlaceViewController: PHPickerViewControllerDelegate {
 extension AddPlaceViewController {
 
     @objc func addPlaceButtonTapped() {
-        let currentDate = Date()
-        
-        // DEBUG:
-        // (1) selectedTag must not be nil
-        // (2) data passing between filter screen and add place screen
-        // (3) initilize user in init()
-
         if let title = addPlaceView.titleTextField.text, !title.isEmpty,
            let description = addPlaceView.descriptionTextField.text, !description.isEmpty, !imageUrls.isEmpty{
-            print(selectedTag.goodForBreakfast)
             let store = Store(
                 id: UUID().uuidString,
-                createdAt: currentDate,
-                createdBy: userid,
+                createdAt: Date(),
+                createdBy: user.uid,
                 displayName: title,
                 description: description,
                 price: selectedPrice,
@@ -240,9 +241,7 @@ extension AddPlaceViewController {
                 self.hideActivityIndicator()
                 switch result {
                 case .success(let store):
-                    AlertUtil.showErrorAlert(viewController: self, title: "", errorMessage: "Save successfully!")
-                    self.navigationController?.popViewController(animated: true) // back to store list page
-
+                    self.navigationController?.popViewController(animated: true)
                     print("Store added successfully: \(store)")
                     
                 case .failure(let error):
