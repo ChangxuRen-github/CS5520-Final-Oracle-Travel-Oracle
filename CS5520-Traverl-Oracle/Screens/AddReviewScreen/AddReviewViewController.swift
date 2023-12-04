@@ -60,10 +60,10 @@ class AddReviewViewController: UIViewController {
             return
         }
         
-        // TODO: consider upload a default project image here, and use that as the fallback
+        // TODO: consider upload a default project image here, and use that as the fallback - DONE C.Ren
         let newReview = Review(senderId: user.uid,
                                senderName: user.displayName,
-                               senderProfileImageURL: user.profileImageURL ?? "",
+                               senderProfileImageURL: user.profileImageURL ?? Constants.DEFAULT_PROFILE_IMAGE_URL,
                                storeRating: selectedRate,
                                content: trimmedText)
         self.showActivityIndicator()

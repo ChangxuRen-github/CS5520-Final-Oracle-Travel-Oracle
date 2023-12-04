@@ -47,7 +47,6 @@ class ReviewsTableViewCell: UITableViewCell {
         reviewContentLabel.numberOfLines = 3
         reviewContentLabel.lineBreakMode = .byTruncatingTail
         profilePhoto = UIElementUtil.createAndAddImageView(to: wrapperCellView, imageName: "person.crop.square.fill")
-        profilePhoto.isUserInteractionEnabled = true // enable user interaction so that users can tap on it
     }
     
     func setupUIStackView() {

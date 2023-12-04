@@ -93,7 +93,9 @@ extension StoreDetailViewController {
                                      errorMessage: "Please sign in.")
             return
         }
+        self.showActivityIndicator()
         DBManager.dbManager.getUser(withUID: uwUser.uid) { [weak self] result in
+            self?.hideActivityIndicator()
             switch result {
             case .success(let user):
                 self?.user = user
@@ -197,6 +199,26 @@ extension StoreDetailViewController {
     }
 }
 
+// MARK: - Screen transitions
+extension StoreDetailViewController {
+    private func transitionToReviewDetailScreen(for review: Review) {
+        guard let thisUser = user else { return }
+        self.showActivityIndicator()
+        DBManager.dbManager.getUser(withUID: review.senderId) { [weak self] result in
+            self?.hideActivityIndicator()
+            switch result {
+            case .success(let reviewSender):
+                self?.navigationController?.pushViewController(ReviewDetailViewController(review: review,
+                                                                                          thisUser: thisUser,
+                                                                                          thatUser: reviewSender),
+                                                         animated: true)
+            case .failure(let error):
+                AlertUtil.showErrorAlert(viewController: self!, title: "Error!", errorMessage: "Fetching sender profile failed. Please try again!")
+                print("Error fetching review sender's details: \(error)")
+            }
+        }
+    }
+}
  
 // MARK: - UITableViewDataSource
 extension StoreDetailViewController: UITableViewDelegate, UITableViewDataSource {
@@ -250,6 +272,13 @@ extension StoreDetailViewController: UITableViewDelegate, UITableViewDataSource 
             return cell
         default:
             fatalError("Unhandled section \(indexPath.section)")
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.section == 2 {
+            transitionToReviewDetailScreen(for: reviews[indexPath.row])
         }
     }
     

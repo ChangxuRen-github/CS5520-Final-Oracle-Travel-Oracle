@@ -64,6 +64,20 @@
 		FCBF29302B16F18600C44BA1 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = FCBF292F2B16F18600C44BA1 /* SDWebImage */; };
 		FCBF29322B16F18600C44BA1 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FCBF29312B16F18600C44BA1 /* SDWebImageMapKit */; };
 		FCBF29342B17B8B600C44BA1 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF29332B17B8B600C44BA1 /* Review.swift */; };
+		FCBF293A2B19ABD900C44BA1 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF29392B19ABD900C44BA1 /* MyProfileViewController.swift */; };
+		FCBF293C2B19AC3C00C44BA1 /* MyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF293B2B19AC3C00C44BA1 /* MyProfileView.swift */; };
+		FCBF293F2B19ACDC00C44BA1 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF293E2B19ACDC00C44BA1 /* EditProfileViewController.swift */; };
+		FCBF29412B19ACF000C44BA1 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF29402B19ACF000C44BA1 /* EditProfileView.swift */; };
+		FCBF29432B19AE6200C44BA1 /* OthersProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF29422B19AE6200C44BA1 /* OthersProfileView.swift */; };
+		FCBF29452B19AE7B00C44BA1 /* OthersProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF29442B19AE7B00C44BA1 /* OthersProfileViewController.swift */; };
+		FCBF29482B19BC7F00C44BA1 /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF29472B19BC7F00C44BA1 /* ConversationsViewController.swift */; };
+		FCBF294A2B19BC9500C44BA1 /* ConversationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF29492B19BC9500C44BA1 /* ConversationsView.swift */; };
+		FCBF294C2B19BCA900C44BA1 /* ConversationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF294B2B19BCA900C44BA1 /* ConversationsTableViewCell.swift */; };
+		FCBF29512B1A8F5400C44BA1 /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = FCBF29502B1A8F5400C44BA1 /* MessageKit */; };
+		FCBF29532B1A8F6800C44BA1 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF29522B1A8F6800C44BA1 /* ConversationViewController.swift */; };
+		FCBF29562B1A8FCA00C44BA1 /* MessageImageViewScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF29552B1A8FCA00C44BA1 /* MessageImageViewScreenViewController.swift */; };
+		FCBF29592B1C68C800C44BA1 /* ReviewDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF29582B1C68C800C44BA1 /* ReviewDetailViewController.swift */; };
+		FCBF295B2B1C68D900C44BA1 /* ReviewDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCBF295A2B1C68D900C44BA1 /* ReviewDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,6 +133,19 @@
 		FCBF292A2B16BD0700C44BA1 /* ReviewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewCell.swift; sourceTree = "<group>"; };
 		FCBF292C2B16C6C700C44BA1 /* CarouselCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCollectionViewCell.swift; sourceTree = "<group>"; };
 		FCBF29332B17B8B600C44BA1 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		FCBF29392B19ABD900C44BA1 /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
+		FCBF293B2B19AC3C00C44BA1 /* MyProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileView.swift; sourceTree = "<group>"; };
+		FCBF293E2B19ACDC00C44BA1 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		FCBF29402B19ACF000C44BA1 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		FCBF29422B19AE6200C44BA1 /* OthersProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersProfileView.swift; sourceTree = "<group>"; };
+		FCBF29442B19AE7B00C44BA1 /* OthersProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OthersProfileViewController.swift; sourceTree = "<group>"; };
+		FCBF29472B19BC7F00C44BA1 /* ConversationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewController.swift; sourceTree = "<group>"; };
+		FCBF29492B19BC9500C44BA1 /* ConversationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsView.swift; sourceTree = "<group>"; };
+		FCBF294B2B19BCA900C44BA1 /* ConversationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsTableViewCell.swift; sourceTree = "<group>"; };
+		FCBF29522B1A8F6800C44BA1 /* ConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
+		FCBF29552B1A8FCA00C44BA1 /* MessageImageViewScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageImageViewScreenViewController.swift; sourceTree = "<group>"; };
+		FCBF29582B1C68C800C44BA1 /* ReviewDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDetailViewController.swift; sourceTree = "<group>"; };
+		FCBF295A2B1C68D900C44BA1 /* ReviewDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +160,7 @@
 				FC40EE0D2B11C4D8000882D0 /* FirebaseStorage in Frameworks */,
 				FCBF29322B16F18600C44BA1 /* SDWebImageMapKit in Frameworks */,
 				FC40EE0B2B11C4D8000882D0 /* FirebaseFirestoreSwift in Frameworks */,
+				FCBF29512B1A8F5400C44BA1 /* MessageKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +363,11 @@
 			isa = PBXGroup;
 			children = (
 				34BA3F312B1A6D2A006C6A27 /* LocationScreen */,
+				FCBF29572B1C68AD00C44BA1 /* ReviewDetailScreen */,
+				FCBF29542B1A8F9600C44BA1 /* MessageImageViewScreen */,
+				FCBF294D2B1A8EEC00C44BA1 /* ConversationScreen */,
+				FCBF29462B19BC5B00C44BA1 /* ConversationsScreen */,
+				FCBF29352B19AB6500C44BA1 /* ProfileScreens */,
 				3E35C50D2B17E1690020C725 /* StoreListScreen */,
 				3E35C5082B17D5280020C725 /* CategoryScreen */,
 				FCBF29202B16913B00C44BA1 /* StoreDetailScreen */,
@@ -397,6 +430,78 @@
 			path = TableViewCell;
 			sourceTree = "<group>";
 		};
+		FCBF29352B19AB6500C44BA1 /* ProfileScreens */ = {
+			isa = PBXGroup;
+			children = (
+				FCBF293D2B19ACAB00C44BA1 /* EditProfileScreen */,
+				FCBF29372B19AB9F00C44BA1 /* OthersProfileScreen */,
+				FCBF29362B19AB7600C44BA1 /* MyProfileScreen */,
+			);
+			path = ProfileScreens;
+			sourceTree = "<group>";
+		};
+		FCBF29362B19AB7600C44BA1 /* MyProfileScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FCBF29392B19ABD900C44BA1 /* MyProfileViewController.swift */,
+				FCBF293B2B19AC3C00C44BA1 /* MyProfileView.swift */,
+			);
+			path = MyProfileScreen;
+			sourceTree = "<group>";
+		};
+		FCBF29372B19AB9F00C44BA1 /* OthersProfileScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FCBF29422B19AE6200C44BA1 /* OthersProfileView.swift */,
+				FCBF29442B19AE7B00C44BA1 /* OthersProfileViewController.swift */,
+			);
+			path = OthersProfileScreen;
+			sourceTree = "<group>";
+		};
+		FCBF293D2B19ACAB00C44BA1 /* EditProfileScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FCBF293E2B19ACDC00C44BA1 /* EditProfileViewController.swift */,
+				FCBF29402B19ACF000C44BA1 /* EditProfileView.swift */,
+			);
+			path = EditProfileScreen;
+			sourceTree = "<group>";
+		};
+		FCBF29462B19BC5B00C44BA1 /* ConversationsScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FCBF29472B19BC7F00C44BA1 /* ConversationsViewController.swift */,
+				FCBF29492B19BC9500C44BA1 /* ConversationsView.swift */,
+				FCBF294B2B19BCA900C44BA1 /* ConversationsTableViewCell.swift */,
+			);
+			path = ConversationsScreen;
+			sourceTree = "<group>";
+		};
+		FCBF294D2B1A8EEC00C44BA1 /* ConversationScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FCBF29522B1A8F6800C44BA1 /* ConversationViewController.swift */,
+			);
+			path = ConversationScreen;
+			sourceTree = "<group>";
+		};
+		FCBF29542B1A8F9600C44BA1 /* MessageImageViewScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FCBF29552B1A8FCA00C44BA1 /* MessageImageViewScreenViewController.swift */,
+			);
+			path = MessageImageViewScreen;
+			sourceTree = "<group>";
+		};
+		FCBF29572B1C68AD00C44BA1 /* ReviewDetailScreen */ = {
+			isa = PBXGroup;
+			children = (
+				FCBF29582B1C68C800C44BA1 /* ReviewDetailViewController.swift */,
+				FCBF295A2B1C68D900C44BA1 /* ReviewDetailView.swift */,
+			);
+			path = ReviewDetailScreen;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -421,6 +526,7 @@
 				FC40EE0C2B11C4D8000882D0 /* FirebaseStorage */,
 				FCBF292F2B16F18600C44BA1 /* SDWebImage */,
 				FCBF29312B16F18600C44BA1 /* SDWebImageMapKit */,
+				FCBF29502B1A8F5400C44BA1 /* MessageKit */,
 			);
 			productName = "CS5520-Traverl-Oracle";
 			productReference = FCB896652B09CA240042535C /* CS5520-Traverl-Oracle.app */;
@@ -453,6 +559,7 @@
 			packageReferences = (
 				FC40EE022B11C434000882D0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				FCBF292E2B16F18600C44BA1 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				FCBF294F2B1A8F5400C44BA1 /* XCRemoteSwiftPackageReference "MessageKit" */,
 			);
 			productRefGroup = FCB896662B09CA240042535C /* Products */;
 			projectDirPath = "";
@@ -484,26 +591,33 @@
 			files = (
 				3E35C5132B17EAB40020C725 /* StoreTableViewCell.swift in Sources */,
 				FC40EDFF2B11BFAA000882D0 /* TestView.swift in Sources */,
+				FCBF293F2B19ACDC00C44BA1 /* EditProfileViewController.swift in Sources */,
+				FCBF29452B19AE7B00C44BA1 /* OthersProfileViewController.swift in Sources */,
 				3ECFEEBC2B09E47E00D05969 /* AlertUtil.swift in Sources */,
 				3E35C5112B17E1900020C725 /* StoreListViewController.swift in Sources */,
 				3ECFEEB82B09E3B800D05969 /* LoginViewController.swift in Sources */,
 				34BA3F332B1A6D3D006C6A27 /* LocationScreenViewController.swift in Sources */,
+				FCBF294A2B19BC9500C44BA1 /* ConversationsView.swift in Sources */,
 				3E35C5072B17D5120020C725 /* CategoryImageButton.swift in Sources */,
 				3412A9D42B167EE00025733F /* FilterScreenViewController.swift in Sources */,
 				3412A9D62B167EF90025733F /* FilterScreenView.swift in Sources */,
 				FCB896912B09D85E0042535C /* ProgressSpinnerDelegate.swift in Sources */,
 				FC40EDF82B11AF41000882D0 /* Store.swift in Sources */,
+				FCBF29432B19AE6200C44BA1 /* OthersProfileView.swift in Sources */,
 				FC40EE112B11C598000882D0 /* MessageDAO.swift in Sources */,
 				349696722B0B1CFD00E687E0 /* RegisterView.swift in Sources */,
 				FCBF292D2B16C6C700C44BA1 /* CarouselCollectionViewCell.swift in Sources */,
 				349696782B0B1E8500E687E0 /* User.swift in Sources */,
 				3412A9CF2B167E750025733F /* AddPlaceView.swift in Sources */,
 				FCBF29222B16916600C44BA1 /* StoreDetailView.swift in Sources */,
+				FCBF29532B1A8F6800C44BA1 /* ConversationViewController.swift in Sources */,
 				349696762B0B1E2F00E687E0 /* AuthManager.swift in Sources */,
+				FCBF29412B19ACF000C44BA1 /* EditProfileView.swift in Sources */,
 				FCB8968D2B09D4BF0042535C /* WelcomeViewController.swift in Sources */,
 				FCB896692B09CA240042535C /* AppDelegate.swift in Sources */,
 				3E35C50C2B17D55B0020C725 /* CategoryViewController.swift in Sources */,
 				3496967A2B0B1EDA00E687E0 /* UIElementUtil.swift in Sources */,
+				FCBF294C2B19BCA900C44BA1 /* ConversationsTableViewCell.swift in Sources */,
 				FC40EDFD2B11BF98000882D0 /* TestViewController.swift in Sources */,
 				FCB8966B2B09CA240042535C /* SceneDelegate.swift in Sources */,
 				FC40EDFA2B11BE77000882D0 /* Tag.swift in Sources */,
@@ -511,16 +625,22 @@
 				FCB8968F2B09D54F0042535C /* WelcomeView.swift in Sources */,
 				3ECFEEBA2B09E42600D05969 /* DataFormatter.swift in Sources */,
 				FC40EE0F2B11C578000882D0 /* Conversation.swift in Sources */,
+				FCBF293C2B19AC3C00C44BA1 /* MyProfileView.swift in Sources */,
 				3412A9D82B167F140025733F /* FilterScreenTableViewCell.swift in Sources */,
 				FCBF29242B16917400C44BA1 /* StoreDetailViewController.swift in Sources */,
+				FCBF29592B1C68C800C44BA1 /* ReviewDetailViewController.swift in Sources */,
+				FCBF293A2B19ABD900C44BA1 /* MyProfileViewController.swift in Sources */,
 				3E058DE62B1289F8004F6F99 /* AddReviewViewController.swift in Sources */,
 				3E058DE82B12A1FC004F6F99 /* UIColorExtension.swift in Sources */,
 				FCB896932B09D8980042535C /* ProgressSpinnerViewController.swift in Sources */,
+				FCBF295B2B1C68D900C44BA1 /* ReviewDetailView.swift in Sources */,
+				FCBF29482B19BC7F00C44BA1 /* ConversationsViewController.swift in Sources */,
 				3E35C50A2B17D5450020C725 /* CategoryView.swift in Sources */,
 				3ECFEEB62B09E34700D05969 /* LoginView.swift in Sources */,
 				FCBF292B2B16BD0700C44BA1 /* ReviewsTableViewCell.swift in Sources */,
 				3E058DE42B1289E7004F6F99 /* AddReviewView.swift in Sources */,
 				349696702B0B1BAC00E687E0 /* RegisterViewController.swift in Sources */,
+				FCBF29562B1A8FCA00C44BA1 /* MessageImageViewScreenViewController.swift in Sources */,
 				FCBF29342B17B8B600C44BA1 /* Review.swift in Sources */,
 				FCB896952B09D8DB0042535C /* DBManager.swift in Sources */,
 				FCBF29272B16BC7900C44BA1 /* ImageCarouselTableViewCell.swift in Sources */,
@@ -768,6 +888,14 @@
 				minimumVersion = 5.18.5;
 			};
 		};
+		FCBF294F2B1A8F5400C44BA1 /* XCRemoteSwiftPackageReference "MessageKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MessageKit/MessageKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -805,6 +933,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FCBF292E2B16F18600C44BA1 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImageMapKit;
+		};
+		FCBF29502B1A8F5400C44BA1 /* MessageKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FCBF294F2B1A8F5400C44BA1 /* XCRemoteSwiftPackageReference "MessageKit" */;
+			productName = MessageKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

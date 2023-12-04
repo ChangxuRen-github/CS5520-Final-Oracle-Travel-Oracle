@@ -35,7 +35,7 @@ class TestViewController: UIViewController {
     
     // sample store
     let sampleStore = Store(
-        id: UUID().uuidString, // unique identifier
+        id: "A8724698-1657-4A4D-8394-3509ABB45AD0", // unique identifier
         createdAt: nil, // will be set on the server side
         createdBy: "user123", // example user ID
         displayName: "My Sample Store",

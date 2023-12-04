@@ -240,6 +240,37 @@ extension DBManager {
             }
         }
     }
+    
+    // get conversation between two users
+    // return an existing conversation otherwise create a new one
+    public func getConversationBetween(with thisUser: User, with thatUser: User, completion: @escaping (Result<Conversation, Error>) -> Void) {
+        getConversations(conversationIds: thisUser.conversationIds) { result in
+            switch result {
+            case .success(let conversations):
+                // Check if a conversation with thatUser already exists
+                if let existingConversation = conversations.first(where: { $0.participantIds.contains(thatUser.uid) }) {
+                    // Return the existing conversation
+                    completion(.success(existingConversation))
+                } else {
+                    // No existing conversation found, create a new one
+                    self.createConversationBetween(creatorId: thisUser.uid, participantId: thatUser.uid) { newConversationResult in
+                        switch newConversationResult {
+                        case .success(let newConversation):
+                            // Return the new conversation
+                            completion(.success(newConversation))
+                        case .failure(let error):
+                            // Handle error in creating new conversation
+                            completion(.failure(error))
+                        }
+                    }
+                }
+
+            case .failure(let error):
+                print("Error: get conversation betwen two users failed.")
+                completion(.failure(error))
+            }
+        }
+    }
 
     // Get all messages given a conversation ID
     public func getMessages(conversationId: String, completion: @escaping (Result<[MessageDAO], Error>) -> Void) {
