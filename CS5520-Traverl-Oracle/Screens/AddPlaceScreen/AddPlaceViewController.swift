@@ -86,7 +86,7 @@ class AddPlaceViewController: UIViewController, FilterScreenDelegate, LocationSc
                 present(picker, animated: true)
                 currentCameraButton = sender
             } else {
-                let alertController = UIAlertController(title: "Upload Error", message: "Please upload pictures first.", preferredStyle: .alert)
+                let alertController = UIAlertController(title: "Upload Error", message: "Please upload first picture.", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alertController.addAction(okAction)
                 present(alertController, animated: true, completion: nil)
@@ -205,7 +205,7 @@ extension AddPlaceViewController {
 
     @objc func addPlaceButtonTapped() {
         if let title = addPlaceView.titleTextField.text, !title.isEmpty,
-           let description = addPlaceView.descriptionTextField.text, !description.isEmpty, !imageUrls.isEmpty{
+           let description = addPlaceView.descriptionTextField.text, !description.isEmpty, !imageUrls.isEmpty, selectedCategory != ""{
             let store = Store(
                 id: UUID().uuidString,
                 createdAt: Date(),
@@ -250,13 +250,15 @@ extension AddPlaceViewController {
             }
             
         } else {
-
+            
             if addPlaceView.titleTextField.text?.isEmpty ?? true {
                 AlertUtil.showErrorAlert(viewController: self, title: "Error", errorMessage: "Please enter a title.")
             } else if addPlaceView.descriptionTextField.text?.isEmpty ?? true {
                 AlertUtil.showErrorAlert(viewController: self, title: "Error", errorMessage: "Please enter a description.")
             } else if imageUrls.isEmpty {
                 AlertUtil.showErrorAlert(viewController: self, title: "Error", errorMessage: "Please upload at least one picture.")
+            } else if selectedCategory == "" {
+                AlertUtil.showErrorAlert(viewController: self, title: "Error", errorMessage: "Please choose a category.")
             }
         }
 
