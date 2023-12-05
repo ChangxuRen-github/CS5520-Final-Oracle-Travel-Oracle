@@ -9,26 +9,17 @@ import UIKit
 
 protocol LocationScreenDelegate: AnyObject {
     func locationScreen(_ locationScreen: LocationScreenViewController, didSelectLocation location: String)
+    func locationScreen(_ locationScreen: LocationScreenViewController, didInputLocationData data: LocationData)
 }
+
 
 class LocationScreenViewController: UIViewController {
     
     let locationScreen = LocationScreenView()
     var location = ""
     var delegate: LocationScreenDelegate?
-    
-    public struct Package {
-        var address: String?
-        var cityState: String?
-        var zipCode: String?
-        
-        init(address: String? = nil, cityState: String? = nil, zipCode: String? = nil) {
-            self.address = address
-            self.cityState = cityState
-            self.zipCode = zipCode
-        }
-    }
-    
+    var initialLocationData: LocationData?
+
     override func loadView() {
         view = locationScreen
         title = "Add Address"
@@ -36,6 +27,11 @@ class LocationScreenViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let initialData = initialLocationData {
+            locationScreen.addressTextField.text = initialData.address
+            locationScreen.cityStateTextField.text = initialData.cityState
+            locationScreen.zipCodeTextField.text = initialData.zipCode
+        }
         locationScreen.saveAddressButton.addTarget(self, action: #selector(onSaveButtonTapped), for: .touchUpInside)
         
     }
@@ -47,6 +43,17 @@ class LocationScreenViewController: UIViewController {
         }
         return false
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        let address = locationScreen.addressTextField.text ?? ""
+        let cityState = locationScreen.cityStateTextField.text ?? ""
+        let zipCode = locationScreen.zipCodeTextField.text ?? ""
+        let data = LocationData(address: address, cityState: cityState, zipCode: zipCode)
+        delegate?.locationScreen(self, didInputLocationData: data)
+    }
+
+
     
     @objc func onSaveButtonTapped() {
         
@@ -67,8 +74,6 @@ class LocationScreenViewController: UIViewController {
                 if let unwrappedAddress = address,
                    let unwrappedCityState = cityState,
                    let unwrappedZipCode = zipCode {
-
-                    let package = Package(address: unwrappedAddress, cityState: unwrappedCityState, zipCode: unwrappedZipCode)
                     
                     let locationString = "\(unwrappedAddress), \(unwrappedCityState), \(unwrappedZipCode)"
                     delegate?.locationScreen(self, didSelectLocation: locationString)

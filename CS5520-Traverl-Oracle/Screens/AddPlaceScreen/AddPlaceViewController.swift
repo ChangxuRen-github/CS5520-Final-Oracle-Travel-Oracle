@@ -9,7 +9,7 @@ import UIKit
 import PhotosUI
 
 
-class AddPlaceViewController: UIViewController, FilterScreenDelegate, LocationScreenDelegate {
+class AddPlaceViewController: UIViewController, FilterScreenDelegate {
 
     var addPlaceView: AddPlaceView! {
         return view as? AddPlaceView
@@ -18,6 +18,7 @@ class AddPlaceViewController: UIViewController, FilterScreenDelegate, LocationSc
     var selectedPrice: String = ""
     var selectedCategory: String = ""
     var selectedLocation: String = ""
+    var selectedLocationData = LocationData(address: "", cityState: "", zipCode: "")
     var selectedTag = Tag(goodForBreakfast: "N/A", goodForLunch: "N/A", goodForDinner: "N/A", takesReservations: "N/A", vegetarianFriendly: "N/A", cuisine: "N/A", liveMusic: "N/A", outdoorSeating: "N/A", freeWIFI: "N/A")
     var currentCameraButton: UIButton?
     var imageUrls: [String] = []
@@ -67,8 +68,10 @@ class AddPlaceViewController: UIViewController, FilterScreenDelegate, LocationSc
         
     }
     
+    
     @objc func onLocationButtonSubmitTapped() {
         let locationViewController = LocationScreenViewController()
+        locationViewController.initialLocationData = self.selectedLocationData
         locationViewController.delegate = self
         navigationController?.pushViewController(locationViewController, animated: true)
     }
@@ -106,10 +109,6 @@ class AddPlaceViewController: UIViewController, FilterScreenDelegate, LocationSc
     
     func filterScreen(_ filterScreen: FilterScreenController, didSelectTag tag: Tag) {
         self.selectedTag = tag
-    }
-    
-    func locationScreen(_ locationScreen: LocationScreenViewController, didSelectLocation location: String) {
-        self.selectedLocation = location
     }
     
 }
@@ -279,6 +278,20 @@ extension AddPlaceViewController: ProgressSpinnerDelegate {
         childProgressView.willMove(toParent: nil)
         childProgressView.view.removeFromSuperview()
         childProgressView.removeFromParent()
+    }
+}
+
+extension AddPlaceViewController: LocationScreenDelegate {
+    func locationScreen(_ locationScreen: LocationScreenViewController, didInputLocationData data: LocationData) {
+        self.selectedLocationData = data
+    }
+    
+    func locationScreen(_ locationScreen: LocationScreenViewController, didSelectLocation location: String) {
+        self.selectedLocation = location
+        let components = location.components(separatedBy: ", ")
+        if components.count == 3 {
+            self.selectedLocationData = LocationData(address: components[0], cityState: components[1], zipCode: components[2])
+        }
     }
 }
 
