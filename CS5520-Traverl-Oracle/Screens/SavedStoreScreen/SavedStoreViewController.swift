@@ -7,108 +7,119 @@
 
 import UIKit
 
-class SaveScreenViewController: UIViewController {
-    let saveScreen = SaveScreenView()
-    var storesList = [(displayName: "Store 1", description: "Description for Store 1", images: ["https://example.com/image1.jpg"]),
-                      (displayName: "Store 2", description: "Description for Store 2", images: ["https://example.com/image2.jpg"])]
+class SavedStoreViewController: UIViewController {
+    // initialize saved store view
+    private let savedStoreView = SavedStoreView()
+    // current user
+    private var user: User?
+    // saved stores
+    private var savedStores: [Store] = []
+    // spinner
+    private let childProgressView = ProgressSpinnerViewController()
+
     
     override func loadView() {
-        view = saveScreen
+        view = savedStoreView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Saved Stores"
-        
-        saveScreen.tableView.delegate = self
-        saveScreen.tableView.dataSource = self
-
+        doDelegations()
+        fetchUserAndSavedStores()
     }
     
-    @objc func heartButtonTapped(sender: UIButton) {
-        print("Heart button tapped")
-        let cell = sender.superview as! SaveScreenViewCell
-        if let indexPath = saveScreen.tableView.indexPath(for: cell) {
-            
-            let alertController = UIAlertController(
-                title: "Confirm Delete",
-                message: "Are you sure you want to delete this store?",
-                preferredStyle: .alert
-            )
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            alertController.addAction(cancelAction)
-            
-            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
-                self.storesList.remove(at: indexPath.row)
-                self.saveScreen.tableView.deleteRows(at: [indexPath], with: .fade)
-                self.saveScreen.tableView.reloadData()
-            }
-            alertController.addAction(deleteAction)
-            
-            present(alertController, animated: true, completion: nil)
-
-        }
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchUserAndSavedStores()
     }
-    
-
 }
 
-extension SaveScreenViewController: UITableViewDelegate, UITableViewDataSource {
+// MARK: - Setups
+extension SavedStoreViewController {
+    // initialize user
+    private func fetchUserAndSavedStores() {
+        guard let uwUser = AuthManager.shared.currentUser else {
+            AlertUtil.showErrorAlert(viewController: self,
+                                     title: "Error!",
+                                     errorMessage: "Please sign in.")
+            return
+        }
+        self.showActivityIndicator()
+        DBManager.dbManager.getUser(withUID: uwUser.uid) { [weak self] result in
+            self?.hideActivityIndicator()
+            switch result {
+            case .success(let user):
+                self?.user = user
+                self?.fetchSavedStores()
+            case .failure(let error):
+                print("Error fetching user details: \(error)")
+            }
+        }
+    }
+    // fetch saved stores
+    private func fetchSavedStores() {
+        guard let uwUser = user else {
+            AlertUtil.showErrorAlert(viewController: self, title: "Error!", errorMessage: "Please sign in.")
+            return
+        }
+        self.showActivityIndicator()
+        DBManager.dbManager.fetchSavedStores(for: uwUser) { result in
+            self.hideActivityIndicator()
+            switch result {
+            case .success(let stores):
+                self.savedStores = stores
+                self.savedStoreView.tableView.reloadData()
+            case .failure(let error):
+                print("Error fetching stores: \(error)")
+            }
+        }
+    }
+}
+
+// MARK: - Table view management
+extension SavedStoreViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    private func doDelegations() {
+        savedStoreView.tableView.delegate = self
+        savedStoreView.tableView.dataSource = self
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return storesList.count
+        return savedStores.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "contactsList", for: indexPath) as! SaveScreenViewCell
-        cell.labelTitle.text = storesList[indexPath.row].displayName
-        cell.labelDescription.text = storesList[indexPath.row].description
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: SavedStoreScreenTableViewCell.IDENTIFIER, for: indexPath) as! SavedStoreScreenTableViewCell
+        cell.configure(with: savedStores[indexPath.row])
         // MARK: Creating an accessory button...
         let buttonOptions = UIButton(type: .system)
+        // Set the frame of the button with desired width and height
+        let buttonWidth: CGFloat = 30
+        let buttonHeight: CGFloat = 30
+        buttonOptions.frame = CGRect(x: 0, y: 0, width: buttonWidth, height: buttonHeight)
+
         buttonOptions.sizeToFit()
         buttonOptions.showsMenuAsPrimaryAction = true
-        // MARK: Setting an icon from sf symbols...
-        buttonOptions.setImage(UIImage(systemName: "slider.horizontal.3"), for: .normal)
-        
-        // MARK: Setting up a menu for button options click...
+        buttonOptions.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        buttonOptions.tintColor = .systemRed
         buttonOptions.menu = UIMenu(title: "",
                                     children: [
                                         UIAction(title: "Delete", handler: { (_) in
-                                            self.confirmDeleteAction(for: indexPath.row)
+                                            self.confirmDeleteAction(for: self.savedStores[indexPath.row], for: indexPath.row)
                                         })
                                     ])
-        // MARK: Setting the button as an accessory of the cell...
         cell.accessoryView = buttonOptions
-        
-        let imageUrlString = storesList[indexPath.row].images[0]
-        if let imageUrl = URL(string: imageUrlString) {
-            URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
-                if let error = error {
-                    print("Error: \(error.localizedDescription)")
-                    return
-                }
-                
-                if let data = data, let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        cell.profileImageView?.image = image
-                    }
-                }
-            }.resume()
-        }
-        
         cell.imageView?.clipsToBounds = true
         cell.selectionStyle = .none
         return cell
     }
 
-    func confirmDeleteAction(for index: Int) {
+    func confirmDeleteAction(for store: Store, for index: Int) {
         let alertController = UIAlertController(title: "Confirm Delete", message: "Are you sure you want to delete this store?", preferredStyle: .alert)
 
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { [weak self] _ in
-            self?.deleteStore(at: index)
+            self?.deleteStore(at: index, with: store)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
 
@@ -118,12 +129,38 @@ extension SaveScreenViewController: UITableViewDelegate, UITableViewDataSource {
         present(alertController, animated: true, completion: nil)
     }
     
-    func deleteStore(at index: Int) {
-        if index >= 0 && index < storesList.count {
-            storesList.remove(at: index)
-            saveScreen.tableView.reloadData()
+    func deleteStore(at index: Int, with store: Store) {
+        self.showActivityIndicator()
+        DBManager.dbManager.removeStoreFromSaved(for: user!.uid, storeId: store.id) { [weak self] success in
+            self?.hideActivityIndicator()
+            if success {
+                self?.savedStores.remove(at: index)
+                self?.savedStoreView.tableView.reloadData()
+                print("Store removed from saved stores")
+            } else {
+                print("Failed to remove store from saved stores")
+            }
         }
     }
-
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let storeDetailViewController = StoreDetailViewController(with: savedStores[indexPath.row])
+        navigationController?.pushViewController(storeDetailViewController, animated: true)
+    }
 }
 
+// MARK: - Spinner
+extension SavedStoreViewController: ProgressSpinnerDelegate {
+    func showActivityIndicator() {
+        addChild(childProgressView)
+        view.addSubview(childProgressView.view)
+        childProgressView.didMove(toParent: self)
+    }
+    
+    func hideActivityIndicator() {
+        childProgressView.willMove(toParent: nil)
+        childProgressView.view.removeFromSuperview()
+        childProgressView.removeFromParent()
+    }
+}

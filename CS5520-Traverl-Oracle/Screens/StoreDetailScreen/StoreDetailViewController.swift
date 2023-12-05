@@ -46,7 +46,6 @@ class StoreDetailViewController: UIViewController {
         self.store = store
         super.init(nibName: nil, bundle: nil)
         initializeUser()
-        initializeIsStoreSaved()
     }
     
     required init?(coder: NSCoder) {
@@ -99,6 +98,7 @@ extension StoreDetailViewController {
             switch result {
             case .success(let user):
                 self?.user = user
+                self?.initializeIsStoreSaved()
             case .failure(let error):
                 print("Error fetching user details: \(error)")
             }
@@ -108,6 +108,9 @@ extension StoreDetailViewController {
     private func initializeIsStoreSaved() {
         if let user = user {
             isStoreSaved = user.savedStoreIds.contains(store.id)
+            updateSaveStoreButtonAppearance()
+        } else {
+            print("StoreDetailViewController (initializeIsStoreSaved): User info retrieved failed")
         }
     }
 }
@@ -355,76 +358,3 @@ extension StoreDetailViewController: ProgressSpinnerDelegate {
         childProgressView.removeFromParent()
     }
 }
-
-
-// MARK: - Mock data
-var mockImages: [String] = [
-    "https://firebasestorage.googleapis.com:443/v0/b/neu-cs5520-travel-oracle.appspot.com/o/StoreImages%2F04A0C8BC-13A8-484A-8762-B9749263AC3E.jpg?alt=media&token=57369f06-23c0-444a-b12e-462e8200bb87",
-    "https://firebasestorage.googleapis.com:443/v0/b/neu-cs5520-travel-oracle.appspot.com/o/StoreImages%2F3595F05D-FAFD-4FD9-9154-E99773076435.jpg?alt=media&token=a6e53d68-0c5f-4de9-9e65-124e11c059d1",
-    "https://firebasestorage.googleapis.com:443/v0/b/neu-cs5520-travel-oracle.appspot.com/o/StoreImages%2F653566A1-B6BD-449A-B35B-E8A9F62614D7.jpg?alt=media&token=f50c5b28-fc67-4d10-ad2a-42dd9e93c968",
-    "https://firebasestorage.googleapis.com:443/v0/b/neu-cs5520-travel-oracle.appspot.com/o/StoreImages%2F58C7755B-D4C1-48AE-A114-96D8EA13EDD3.jpg?alt=media&token=5c714c07-0200-4a77-ad0b-11624ef76fa6"
-]
-var mockTag = Tag(goodForBreakfast: "MockValue",
-                         goodForLunch: "MockValue",
-                         goodForDinner: "MockValue",
-                         takesReservations: "MockValue",
-                         vegetarianFriendly: "MockValue",
-                         cuisine: "MockValue",
-                         liveMusic: "MockValue",
-                         outdoorSeating: "MockValue",
-                         freeWIFI: "MockValue")
-
-var mockStore = Store(id: "mockId",
-                               createdBy: "mockUser",
-                               displayName: "mockStore",
-                               description: "This is a mocked store!!!",
-                               price: "$",
-                               category: "Bar",
-                               images: [
-                                "https://firebasestorage.googleapis.com:443/v0/b/neu-cs5520-travel-oracle.appspot.com/o/StoreImages%2F04A0C8BC-13A8-484A-8762-B9749263AC3E.jpg?alt=media&token=57369f06-23c0-444a-b12e-462e8200bb87",
-                                "https://firebasestorage.googleapis.com:443/v0/b/neu-cs5520-travel-oracle.appspot.com/o/StoreImages%2F3595F05D-FAFD-4FD9-9154-E99773076435.jpg?alt=media&token=a6e53d68-0c5f-4de9-9e65-124e11c059d1",
-                                "https://firebasestorage.googleapis.com:443/v0/b/neu-cs5520-travel-oracle.appspot.com/o/StoreImages%2F653566A1-B6BD-449A-B35B-E8A9F62614D7.jpg?alt=media&token=f50c5b28-fc67-4d10-ad2a-42dd9e93c968",
-                                "https://firebasestorage.googleapis.com:443/v0/b/neu-cs5520-travel-oracle.appspot.com/o/StoreImages%2F58C7755B-D4C1-48AE-A114-96D8EA13EDD3.jpg?alt=media&token=5c714c07-0200-4a77-ad0b-11624ef76fa6"
-                            ],
-                               tag: Tag(goodForBreakfast: "MockValue",
-                                        goodForLunch: "MockValue",
-                                        goodForDinner: "MockValue",
-                                        takesReservations: "MockValue",
-                                        vegetarianFriendly: "MockValue",
-                                        cuisine: "MockValue",
-                                        liveMusic: "MockValue",
-                                        outdoorSeating: "MockValue",
-                                        freeWIFI: "MockValue"),
-                                        location: "MockValue")
-var mockReviews: [Review] = [
-    Review(senderId: "Mock Reviewer ID",
-           senderName: "Mock Reviewer Name",
-           senderProfileImageURL: "https://firebasestorage.googleapis.com:443/v0/b/neu-cs5520-travel-oracle.appspot.com/o/StoreImages%2F58C7755B-D4C1-48AE-A114-96D8EA13EDD3.jpg?alt=media&token=5c714c07-0200-4a77-ad0b-11624ef76fa6",
-           storeRating: 3,
-           content: "This is a mock review1. It is meaningless."),
-    Review(senderId: "Mock Reviewer ID",
-           senderName: "Mock Reviewer Name",
-           senderProfileImageURL: "https://firebasestorage.googleapis.com:443/v0/b/neu-cs5520-travel-oracle.appspot.com/o/StoreImages%2F58C7755B-D4C1-48AE-A114-96D8EA13EDD3.jpg?alt=media&token=5c714c07-0200-4a77-ad0b-11624ef76fa6",
-           storeRating: 1,
-           content: "This is a mock review2. It is meaningless."),
-    Review(senderId: "Mock Reviewer ID",
-           senderName: "Mock Reviewer Name",
-           senderProfileImageURL: "https://firebasestorage.googleapis.com:443/v0/b/neu-cs5520-travel-oracle.appspot.com/o/StoreImages%2F58C7755B-D4C1-48AE-A114-96D8EA13EDD3.jpg?alt=media&token=5c714c07-0200-4a77-ad0b-11624ef76fa6",
-           storeRating: 5,
-           content: "This is a mock review3. It is meaningless."),
-    Review(senderId: "Mock Reviewer ID",
-           senderName: "Mock Reviewer Name",
-           senderProfileImageURL: "https://firebasestorage.googleapis.com:443/v0/b/neu-cs5520-travel-oracle.appspot.com/o/StoreImages%2F58C7755B-D4C1-48AE-A114-96D8EA13EDD3.jpg?alt=media&token=5c714c07-0200-4a77-ad0b-11624ef76fa6",
-           storeRating: 5,
-           content: "This is a mock review3. It is meaningless."),
-    Review(senderId: "Mock Reviewer ID",
-           senderName: "Mock Reviewer Name",
-           senderProfileImageURL: "https://firebasestorage.googleapis.com:443/v0/b/neu-cs5520-travel-oracle.appspot.com/o/StoreImages%2F58C7755B-D4C1-48AE-A114-96D8EA13EDD3.jpg?alt=media&token=5c714c07-0200-4a77-ad0b-11624ef76fa6",
-           storeRating: 5,
-           content: "This is a mock review3. It is meaningless."),
-    Review(senderId: "Mock Reviewer ID",
-           senderName: "Mock Reviewer Name",
-           senderProfileImageURL: "https://firebasestorage.googleapis.com:443/v0/b/neu-cs5520-travel-oracle.appspot.com/o/StoreImages%2F58C7755B-D4C1-48AE-A114-96D8EA13EDD3.jpg?alt=media&token=5c714c07-0200-4a77-ad0b-11624ef76fa6",
-           storeRating: 5,
-           content: "This is a mock review3. It is meaningless.")
-]

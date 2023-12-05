@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import SDWebImage
 
-class SaveScreenViewCell: UITableViewCell {
+class SavedStoreScreenTableViewCell: UITableViewCell {
+    static let IDENTIFIER = "SavedStoreTableViewCell"
     var wrapperCellView: UIView!
     var profileImageView: UIImageView!
     var labelTitle: UILabel!
-    var labelDescription: UILabel!
+    var labelCategory: UILabel!
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -45,9 +47,9 @@ class SaveScreenViewCell: UITableViewCell {
     }
     
     func setupLabelDescription() {
-        labelDescription = UILabel()
-        labelDescription.translatesAutoresizingMaskIntoConstraints = false
-        wrapperCellView.addSubview(labelDescription)
+        labelCategory = UILabel()
+        labelCategory.translatesAutoresizingMaskIntoConstraints = false
+        wrapperCellView.addSubview(labelCategory)
     }
     
     
@@ -67,9 +69,9 @@ class SaveScreenViewCell: UITableViewCell {
             labelTitle.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 8),
             labelTitle.heightAnchor.constraint(equalToConstant: 20),
 
-            labelDescription.topAnchor.constraint(equalTo: labelTitle.bottomAnchor, constant: 8),
-            labelDescription.leadingAnchor.constraint(equalTo: labelTitle.leadingAnchor),
-            labelDescription.heightAnchor.constraint(equalToConstant: 20),
+            labelCategory.topAnchor.constraint(equalTo: labelTitle.bottomAnchor, constant: 8),
+            labelCategory.leadingAnchor.constraint(equalTo: labelTitle.leadingAnchor),
+            labelCategory.heightAnchor.constraint(equalToConstant: 20),
 
             wrapperCellView.heightAnchor.constraint(equalToConstant: 90)
         ])
@@ -89,6 +91,15 @@ class SaveScreenViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
+    }
+    
+    func configure(with model: Store) {
+        labelTitle.text = model.displayName
+        labelCategory.text = model.category
+        let imageUrlString = model.images[0]
+        if let imageUrl = URL(string: imageUrlString) {
+            profileImageView.sd_setImage(with: imageUrl)
+        }
     }
 }
 

@@ -147,68 +147,6 @@ extension DBManager {
             }
         }
     }
-
-    // Method to add a storeId to a user's savedStoreIds
-    public func addStoreToSaved(for userId: String, storeId: String, completion: @escaping (Bool) -> Void) {
-        // Fetch the user from Firestore
-        database.collection(USER_COLLECTION).document(userId).getDocument { (document, error) in
-            if let error = error {
-                print("Error fetching user: \(error)")
-                completion(false)
-                return
-            }
-
-            do {
-                var user = try document?.data(as: User.self)
-                // Add the storeId to savedStoreIds if not already present
-                if !(user?.savedStoreIds.contains(storeId) ?? false) {
-                    user?.savedStoreIds.append(storeId)
-                    try self.database.collection(self.USER_COLLECTION).document(userId).setData(from: user, merge: true) { error in
-                        if let error = error {
-                            print("Error adding storeId to savedStoreIds: \(error)")
-                            completion(false)
-                        } else {
-                            completion(true)
-                        }
-                    }
-                } else {
-                    completion(true) // Store ID already in savedStoreIds
-                }
-            } catch {
-                print("Error decoding user or updating Firestore: \(error)")
-                completion(false)
-            }
-        }
-    }
-
-    // Method to remove a storeId from a user's savedStoreIds
-    public func removeStoreFromSaved(for userId: String, storeId: String, completion: @escaping (Bool) -> Void) {
-        // Fetch the user from Firestore
-        database.collection(USER_COLLECTION).document(userId).getDocument { (document, error) in
-            if let error = error {
-                print("Error fetching user: \(error)")
-                completion(false)
-                return
-            }
-
-            do {
-                var user = try document?.data(as: User.self)
-                // Remove the storeId from savedStoreIds if present
-                user?.savedStoreIds.removeAll(where: { $0 == storeId })
-                try self.database.collection(self.USER_COLLECTION).document(userId).setData(from: user, merge: true) { error in
-                    if let error = error {
-                        print("Error removing storeId from savedStoreIds: \(error)")
-                        completion(false)
-                    } else {
-                        completion(true)
-                    }
-                }
-            } catch {
-                print("Error decoding user or updating Firestore: \(error)")
-                completion(false)
-            }
-        }
-    }
 }
 
 // MARK: - Conversation management
@@ -496,6 +434,98 @@ extension DBManager {
                     }
                 }
                 completion(.success(stores))
+            }
+        }
+    }
+    
+    // Fetch all saved stores
+    public func fetchSavedStores(for user: User, completion: @escaping (Result<[Store], Error>) -> Void) {
+        let savedStoreIds = user.savedStoreIds
+        guard !savedStoreIds.isEmpty else {
+            completion(.success([]))
+            return
+        }
+        let group = DispatchGroup()
+        var stores = [Store]()
+        var overallError: Error?
+        for storeId in savedStoreIds {
+            group.enter()
+            database.collection(STORE_COLLECTION).document(storeId).getDocument { (document, error) in
+                defer { group.leave() }
+                if let error = error {
+                    overallError = error
+                } else if let document = document, let store = try? document.data(as: Store.self) {
+                    stores.append(store)
+                }
+            }
+        }
+        group.notify(queue: .main) {
+            if let error = overallError {
+                completion(.failure(error))
+            } else {
+                completion(.success(stores))
+            }
+        }
+    }
+    
+    // Method to add a storeId to a user's savedStoreIds
+    public func addStoreToSaved(for userId: String, storeId: String, completion: @escaping (Bool) -> Void) {
+        // Fetch the user from Firestore
+        database.collection(USER_COLLECTION).document(userId).getDocument { (document, error) in
+            if let error = error {
+                print("Error fetching user: \(error)")
+                completion(false)
+                return
+            }
+
+            do {
+                var user = try document?.data(as: User.self)
+                // Add the storeId to savedStoreIds if not already present
+                if !(user?.savedStoreIds.contains(storeId) ?? false) {
+                    user?.savedStoreIds.append(storeId)
+                    try self.database.collection(self.USER_COLLECTION).document(userId).setData(from: user, merge: true) { error in
+                        if let error = error {
+                            print("Error adding storeId to savedStoreIds: \(error)")
+                            completion(false)
+                        } else {
+                            completion(true)
+                        }
+                    }
+                } else {
+                    completion(true) // Store ID already in savedStoreIds
+                }
+            } catch {
+                print("Error decoding user or updating Firestore: \(error)")
+                completion(false)
+            }
+        }
+    }
+
+    // Method to remove a storeId from a user's savedStoreIds
+    public func removeStoreFromSaved(for userId: String, storeId: String, completion: @escaping (Bool) -> Void) {
+        // Fetch the user from Firestore
+        database.collection(USER_COLLECTION).document(userId).getDocument { (document, error) in
+            if let error = error {
+                print("Error fetching user: \(error)")
+                completion(false)
+                return
+            }
+
+            do {
+                var user = try document?.data(as: User.self)
+                // Remove the storeId from savedStoreIds if present
+                user?.savedStoreIds.removeAll(where: { $0 == storeId })
+                try self.database.collection(self.USER_COLLECTION).document(userId).setData(from: user, merge: true) { error in
+                    if let error = error {
+                        print("Error removing storeId from savedStoreIds: \(error)")
+                        completion(false)
+                    } else {
+                        completion(true)
+                    }
+                }
+            } catch {
+                print("Error decoding user or updating Firestore: \(error)")
+                completion(false)
             }
         }
     }

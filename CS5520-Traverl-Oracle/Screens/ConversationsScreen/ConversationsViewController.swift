@@ -35,8 +35,7 @@ class ConversationsViewController: UIViewController {
         conversationsView.conversationsTableView.separatorStyle = .none
         doTableViewDelegations()
         setupNavBar()
-        initializeUser() // --- must above the following setups: C.Ren
-        setupConversationsListener()
+        initializeUser()
     }
     
     deinit {
@@ -58,7 +57,6 @@ extension ConversationsViewController {
     
     func initializeUser() {
         guard let uwUser = AuthManager.shared.currentUser else {
-            print("Here")
             AlertUtil.showErrorAlert(viewController: self,
                                      title: "Error!",
                                      errorMessage: "Please sign in.")
@@ -69,6 +67,7 @@ extension ConversationsViewController {
             switch result {
             case .success(let user):
                 self?.thisUser = user
+                self?.setupConversationsListener()
             case .failure(let error):
                 print("Error fetching user details: \(error)")
             }

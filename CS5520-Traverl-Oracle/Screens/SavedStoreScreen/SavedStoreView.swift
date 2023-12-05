@@ -7,22 +7,20 @@
 
 import UIKit
 
-class SaveScreenView: UIView {
+class SavedStoreView: UIView {
 
     var tableView: UITableView!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
-        
-        //MARK: initializing a TableView...
         setupTableView()
         initConstraints()
     }
     
     func setupTableView(){
         tableView = UITableView()
-        tableView.register(SaveScreenViewCell.self, forCellReuseIdentifier: "contactsList")
+        tableView.register(SavedStoreScreenTableViewCell.self, forCellReuseIdentifier: SavedStoreScreenTableViewCell.IDENTIFIER)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(tableView)
     }

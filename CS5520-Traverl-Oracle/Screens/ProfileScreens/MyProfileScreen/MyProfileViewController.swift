@@ -136,10 +136,17 @@ extension MyProfileViewController {
         // TODO: implement transtition -Done
         print("Transition to log in screen.")
         let loginViewController = LoginViewController()
+        /*
         var viewControllers = self.navigationController!.viewControllers
         viewControllers.removeAll()
         viewControllers.append(loginViewController)
         self.navigationController?.setViewControllers(viewControllers, animated: true)
+        */
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            window.rootViewController = UINavigationController(rootViewController: loginViewController)
+            window.makeKeyAndVisible()
+        }
     }
 }
 
