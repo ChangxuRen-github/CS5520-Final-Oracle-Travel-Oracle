@@ -8,6 +8,7 @@
 import UIKit
 
 class AddReviewView: UIView {
+    var contentWrapper: UIScrollView!
     var addReviewLabel: UILabel!
     var addReviewTextView: UITextView!
     var addReviewButton: UIButton!
@@ -17,10 +18,17 @@ class AddReviewView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
+        setupContentWrapper()
         setupUIComponents()
         setupUIStackView()
         createStars()
         initConstraints()
+    }
+    
+    func setupContentWrapper(){
+        contentWrapper = UIScrollView()
+        contentWrapper.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(contentWrapper)
     }
     
     func setupUIComponents() {
@@ -42,7 +50,7 @@ class AddReviewView: UIView {
         starsContainer.distribution = .fill  // Aligns the stars to the left
         starsContainer.spacing = 5  // Keeps the spacing equal
         starsContainer.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(starsContainer)
+        contentWrapper.addSubview(starsContainer)
     }
 
     
@@ -76,26 +84,32 @@ class AddReviewView: UIView {
 
     func initConstraints() {
         NSLayoutConstraint.activate([
+            // ScrollView Constraints
+            contentWrapper.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            contentWrapper.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor),
+            contentWrapper.widthAnchor.constraint(equalTo:self.safeAreaLayoutGuide.widthAnchor),
+            contentWrapper.heightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.heightAnchor),
+            
             // addReviewLabel constraints
-            addReviewLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 80),
-            addReviewLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.HORIZONTAL_MARGIN_SMALL),
-            addReviewLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.HORIZONTAL_MARGIN_SMALL),
+            addReviewLabel.topAnchor.constraint(equalTo: contentWrapper.topAnchor, constant: 20),
+            addReviewLabel.leadingAnchor.constraint(equalTo: contentWrapper.leadingAnchor, constant: Constants.HORIZONTAL_MARGIN_SMALL),
+            addReviewLabel.trailingAnchor.constraint(equalTo: contentWrapper.trailingAnchor, constant: -Constants.HORIZONTAL_MARGIN_SMALL),
 
             // starsContainer constraints
             starsContainer.topAnchor.constraint(equalTo: addReviewLabel.bottomAnchor, constant: Constants.HORIZONTAL_MARGIN_SMALL),
-            starsContainer.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.HORIZONTAL_MARGIN_SMALL),
+            starsContainer.leadingAnchor.constraint(equalTo: contentWrapper.leadingAnchor, constant: Constants.HORIZONTAL_MARGIN_SMALL),
             
             // addNoteTextView constraints
             addReviewTextView.topAnchor.constraint(equalTo: starsContainer.bottomAnchor, constant: Constants.HORIZONTAL_MARGIN_REGULAR),
-            addReviewTextView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.HORIZONTAL_MARGIN_SMALL),
-            addReviewTextView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.HORIZONTAL_MARGIN_SMALL),
+            addReviewTextView.leadingAnchor.constraint(equalTo: contentWrapper.leadingAnchor, constant: Constants.HORIZONTAL_MARGIN_SMALL),
+            addReviewTextView.trailingAnchor.constraint(equalTo: contentWrapper.trailingAnchor, constant: -Constants.HORIZONTAL_MARGIN_SMALL),
             addReviewTextView.heightAnchor.constraint(greaterThanOrEqualToConstant: 350),
 
             // addReviewButton constraints
-            addReviewButton.topAnchor.constraint(equalTo: addReviewTextView.bottomAnchor, constant: 200),
-            addReviewButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.HORIZONTAL_MARGIN_SMALL),
-            addReviewButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.HORIZONTAL_MARGIN_SMALL),
+            addReviewButton.leadingAnchor.constraint(equalTo: contentWrapper.leadingAnchor, constant: Constants.HORIZONTAL_MARGIN_SMALL),
+            addReviewButton.trailingAnchor.constraint(equalTo: contentWrapper.trailingAnchor, constant: -Constants.HORIZONTAL_MARGIN_SMALL),
             addReviewButton.heightAnchor.constraint(equalToConstant: Constants.HORIZONTAL_MARGIN_LARGE),
+            addReviewButton.topAnchor.constraint(equalTo: addReviewTextView.bottomAnchor, constant: 50),
         ])
     }
     

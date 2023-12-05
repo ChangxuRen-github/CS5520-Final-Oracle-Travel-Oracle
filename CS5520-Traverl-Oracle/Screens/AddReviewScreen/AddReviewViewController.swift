@@ -71,7 +71,11 @@ class AddReviewViewController: UIViewController {
             self.hideActivityIndicator()
             if success {
                 print("Review successfully added.")
-                self.navigationController?.popViewController(animated: true)
+                let alert = UIAlertController(title: "Success", message: "Thank you for your feedback!", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                    self.navigationController?.popViewController(animated: true)
+                }))
+                self.present(alert, animated: true, completion: nil)
             } else {
                 print("Failed to add review.")
                 AlertUtil.showErrorAlert(viewController: self, title: "Error", errorMessage: "Errors happened while adding the review. Please try again!")
@@ -128,7 +132,7 @@ extension AddReviewViewController: UITextViewDelegate {
         if wordCount <= 50 {
             return true
         } else {
-            AlertUtil.showErrorAlert(viewController: self, title: "Attention", errorMessage: "120 words limit exceeds.")
+            AlertUtil.showErrorAlert(viewController: self, title: "Attention", errorMessage: "50 words limit exceeds.")
             return false
         }
     }
