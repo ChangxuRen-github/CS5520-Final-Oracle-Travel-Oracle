@@ -131,7 +131,7 @@ extension CategoryViewController {
         // TODO: transition to add place screen - Done
         guard let uwUser = user else { return }
         let addPlaceViewController = AddPlaceViewController(with: uwUser)
-        navigationController?.pushViewController(addPlaceViewController, animated: true)
+        present(UINavigationController(rootViewController: addPlaceViewController), animated: true)
     }
 }
 

@@ -100,7 +100,8 @@ class AddPlaceViewController: UIViewController, FilterScreenDelegate, LocationSc
     }
     
     @objc func onCancelBarButtonTapped(){
-        navigationController?.popViewController(animated: true)
+        print("Dismiss the current view controller")
+        dismiss(animated: true, completion: nil)
     }
     
     func filterScreen(_ filterScreen: FilterScreenController, didSelectTag tag: Tag) {
@@ -241,7 +242,7 @@ extension AddPlaceViewController {
                 self.hideActivityIndicator()
                 switch result {
                 case .success(let store):
-                    self.navigationController?.popViewController(animated: true)
+                    self.dismiss(animated: true, completion: nil)
                     print("Store added successfully: \(store)")
                     
                 case .failure(let error):

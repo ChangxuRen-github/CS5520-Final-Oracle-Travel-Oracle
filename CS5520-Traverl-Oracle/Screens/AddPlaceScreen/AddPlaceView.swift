@@ -80,7 +80,7 @@ class AddPlaceView: UIView {
         self.addSubview(titleLabelContainer)
 
         NSLayoutConstraint.activate([
-            titleLabelContainer.topAnchor.constraint(equalTo: self.topAnchor, constant: 100),
+            titleLabelContainer.topAnchor.constraint(equalTo: self.topAnchor, constant: 50),
             titleLabelContainer.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: -10),
             titleLabelContainer.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 10),
             titleLabelContainer.heightAnchor.constraint(equalToConstant: 50),
