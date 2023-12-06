@@ -50,7 +50,7 @@ extension CategoryViewController {
     
     private func setupNavBar() {
         let titleAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 22),
+            .font: UIFont.boldSystemFont(ofSize: 20),
             .foregroundColor: UIColor.black,
         ]
         navigationController?.navigationBar.titleTextAttributes = titleAttributes

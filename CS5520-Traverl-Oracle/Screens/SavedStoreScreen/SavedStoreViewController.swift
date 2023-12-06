@@ -24,6 +24,12 @@ class SavedStoreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let titleAttributes: [NSAttributedString.Key: Any] = [
+                .font: UIFont.boldSystemFont(ofSize: 20)
+            ]
+        navigationController?.navigationBar.titleTextAttributes = titleAttributes
+        navigationController?.navigationBar.tintColor = UIColor(hexString: "#b34538")
+
         title = "Saved Stores"
         doDelegations()
         fetchUserAndSavedStores()

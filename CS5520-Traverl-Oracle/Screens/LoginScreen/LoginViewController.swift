@@ -33,7 +33,7 @@ class LoginViewController: UIViewController {
     
     func setupNavBar() {
         let titleAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 22),
+            .font: UIFont.boldSystemFont(ofSize: 20),
             .foregroundColor: UIColor.black,
         ]
         navigationController?.navigationBar.titleTextAttributes = titleAttributes
@@ -45,7 +45,6 @@ class LoginViewController: UIViewController {
     }
     
     @objc func onRegisterButtonTapped() {
-        // TODO: transition to register screen. -Done
         print("Transition to register screen.")
         let registerViewController = RegisterViewController()
         self.navigationController?.pushViewController(registerViewController, animated: true)
@@ -95,8 +94,7 @@ class LoginViewController: UIViewController {
     }
     
     func transitionToHomeScreen() {
-        // TODO: rename this method and transition to the corresponding screen
-        print("Transition to home screen.")
+        print("Transition to Home screen.")
         let categoryVC = CategoryViewController()
         let savedStoreVC = SavedStoreViewController()
         let conversationsVC = ConversationsViewController()
@@ -118,13 +116,21 @@ class LoginViewController: UIViewController {
         let tabBarVC = UITabBarController()
         tabBarVC.viewControllers = [categoryNavVC, savedStoreNavVC, conversationsNavVC, searchStoreNavVC]
 
+        // Set the tab bar item's text and image color
+        let customTabBarColor = UIColor(hexString: "#b34538")
+        tabBarVC.tabBar.tintColor = customTabBarColor
+        tabBarVC.tabBar.unselectedItemTintColor = customTabBarColor.withAlphaComponent(0.8)
+
+        let attributes = [NSAttributedString.Key.foregroundColor: customTabBarColor]
+        UITabBarItem.appearance().setTitleTextAttributes(attributes, for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes(attributes, for: .normal)
+
         // Transition to the tab bar controller
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
            let window = windowScene.windows.first {
             window.rootViewController = tabBarVC
             window.makeKeyAndVisible()
         }
-
     }
     
     func hideKeyboardOnTapOutside() {

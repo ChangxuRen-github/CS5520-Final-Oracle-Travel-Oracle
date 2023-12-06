@@ -169,11 +169,12 @@ extension StoreDetailViewController {
             }
         }
     }
-    
+    //TODO change the color
     private func updateSaveStoreButtonAppearance() {
         let saveStoreButtonImageName = isStoreSaved ? "heart.fill" : "heart"
+        
         if let saveStoreButton = (navigationItem.rightBarButtonItem?.customView as? UIView)?.subviews[1] as? UIButton {
-            saveStoreButton.setImage(UIImage(systemName: saveStoreButtonImageName, withConfiguration: symbolConfig)?.withTintColor(.red, renderingMode: .alwaysOriginal), for: .normal)
+            saveStoreButton.setImage(UIImage(systemName: saveStoreButtonImageName, withConfiguration: symbolConfig)?.withTintColor(UIColor(hexString: "#b34538"), renderingMode: .alwaysOriginal), for: .normal)
         }
     }
 }

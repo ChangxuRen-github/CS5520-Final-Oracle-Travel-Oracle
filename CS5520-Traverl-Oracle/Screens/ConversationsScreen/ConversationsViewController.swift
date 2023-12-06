@@ -48,7 +48,7 @@ class ConversationsViewController: UIViewController {
 extension ConversationsViewController {
     func setupNavBar() {
         let titleAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 24),
+            .font: UIFont.boldSystemFont(ofSize: 20),
             .foregroundColor: UIColor.black,
         ]
         navigationController?.navigationBar.titleTextAttributes = titleAttributes

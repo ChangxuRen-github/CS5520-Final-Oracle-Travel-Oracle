@@ -161,7 +161,7 @@ class UIElementUtil {
             button.setTitle(title, for: .normal)
 
             // Set up size and color
-            button.titleLabel?.font = UIFont.systemFont(ofSize: 24)
+            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 22)
             button.setTitleColor(.white, for: .normal)
             button.translatesAutoresizingMaskIntoConstraints = false
 

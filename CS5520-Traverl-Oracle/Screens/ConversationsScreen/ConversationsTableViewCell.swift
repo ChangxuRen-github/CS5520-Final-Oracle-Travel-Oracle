@@ -12,7 +12,7 @@ class ConversationsTableViewCell: UITableViewCell {
     static let IDENTIFIER: String = "conversations"
     let CELL_BORDER_WIDTH: CGFloat  = 0
     let CELL_BORDER_RADIUS: CGFloat = 10
-    let CELL_HEIGHT: CGFloat = 20
+    let CELL_HEIGHT: CGFloat = 22
     var wrapperCellView: UITableView!
     var nameLabel: UILabel!
     var timeLabel: UILabel!
@@ -29,17 +29,17 @@ class ConversationsTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         // source: https://www.youtube.com/watch?v=1KILMba7I8Q
-        wrapperCellView.frame = wrapperCellView.frame.inset(by: UIEdgeInsets(top: 1.5, left: 1.5, bottom: 1.5, right: 1.5))
+        wrapperCellView.frame = wrapperCellView.frame.inset(by: UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1))
     }
     
     func setupUIElements() {
         wrapperCellView = UIElementUtil.createAndAddTablesView(to: self)
         wrapperCellView.layer.borderColor = UIColor.gray.cgColor
-        wrapperCellView.layer.borderWidth = CELL_BORDER_WIDTH // 1
-        wrapperCellView.layer.cornerRadius = CELL_BORDER_RADIUS // 8
+        wrapperCellView.layer.borderWidth = CELL_BORDER_WIDTH
+        wrapperCellView.layer.cornerRadius = CELL_BORDER_RADIUS
         nameLabel = UIElementUtil.createAndAddLabel(to: wrapperCellView,
                                                     text: "Name",
-                                                    fontSize: Constants.FONT_REGULAR,
+                                                    fontSize: 20,
                                                     isCenterAligned: false,
                                                     isBold: true,
                                                     textColor: UIColor.black)
@@ -58,6 +58,7 @@ class ConversationsTableViewCell: UITableViewCell {
         profilePhoto = UIElementUtil.createAndAddImageView(to: wrapperCellView,
                                                            imageName: "person",
                                                            color: .link)
+        profilePhoto.tintColor = UIColor(hexString: "#b34538")
     }
     
     func config(with model: Conversation, with thisUser: User) {
@@ -96,7 +97,7 @@ class ConversationsTableViewCell: UITableViewCell {
             profilePhoto.heightAnchor.constraint(equalTo: wrapperCellView.heightAnchor, constant: -CELL_HEIGHT),
             profilePhoto.widthAnchor.constraint(equalTo: wrapperCellView.heightAnchor, constant: -CELL_HEIGHT),
             
-            nameLabel.topAnchor.constraint(equalTo: wrapperCellView.topAnchor, constant: Constants.VERTICAL_MARGIN_SMALL), // 4
+            nameLabel.topAnchor.constraint(equalTo: wrapperCellView.topAnchor, constant: Constants.HORIZONTAL_MARGIN_TINY), // 4
             nameLabel.leadingAnchor.constraint(equalTo: profilePhoto.trailingAnchor, constant: Constants.HORIZONTAL_MARGIN_SMALL),
             nameLabel.heightAnchor.constraint(equalToConstant: CELL_HEIGHT), //20
             nameLabel.widthAnchor.constraint(lessThanOrEqualTo: wrapperCellView.widthAnchor),
@@ -106,7 +107,7 @@ class ConversationsTableViewCell: UITableViewCell {
             timeLabel.heightAnchor.constraint(equalToConstant: CELL_HEIGHT),
             timeLabel.widthAnchor.constraint(lessThanOrEqualTo: nameLabel.widthAnchor),
             
-            lastMessageLabel.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: Constants.VERTICAL_MARGIN_SMALL),
+            lastMessageLabel.topAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: Constants.HORIZONTAL_MARGIN_TINY),
             lastMessageLabel.leadingAnchor.constraint(equalTo: timeLabel.leadingAnchor),
             lastMessageLabel.heightAnchor.constraint(equalToConstant: CELL_HEIGHT),
             lastMessageLabel.trailingAnchor.constraint(equalTo: wrapperCellView.safeAreaLayoutGuide.trailingAnchor, constant: -Constants.HORIZONTAL_MARGIN_TINY),

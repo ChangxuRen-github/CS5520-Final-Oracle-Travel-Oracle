@@ -75,6 +75,7 @@ class MyProfileView: UIView {
                                                         title: "Log Out",
                                                         color: .link,
                                                         titleColor: .white)
+        logoutButton.backgroundColor = UIColor(hexString: "#b34538")
     }
     
     // initializing UI contraints

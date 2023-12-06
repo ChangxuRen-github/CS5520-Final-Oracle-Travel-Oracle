@@ -34,7 +34,7 @@ class MyProfileViewController: UIViewController {
     
     func setupNavBar() {
         let titleAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 24),
+            .font: UIFont.boldSystemFont(ofSize: 20),
             .foregroundColor: UIColor.black,
         ]
         navigationController?.navigationBar.titleTextAttributes = titleAttributes
@@ -43,6 +43,7 @@ class MyProfileViewController: UIViewController {
                                                             style: .done,
                                                             target: self,
                                                             action: #selector(onEditButtonTapped))
+        navigationController?.navigationBar.tintColor = UIColor(hexString: "#b34538")
     }
     
     func getProfile() {

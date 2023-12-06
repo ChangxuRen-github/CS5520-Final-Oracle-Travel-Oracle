@@ -62,7 +62,7 @@ class LocationScreenView: UIView {
     func setupSaveAddressButton() {
         saveAddressButton = UIButton()
         saveAddressButton.setTitle("Save Address", for: .normal)
-        saveAddressButton.backgroundColor = UIColor(hexString: "#c1372d")
+        saveAddressButton.backgroundColor = UIColor(hexString: "#b34538")
         saveAddressButton.layer.cornerRadius = 5
         saveAddressButton.translatesAutoresizingMaskIntoConstraints = false
         scrollView.addSubview(saveAddressButton)

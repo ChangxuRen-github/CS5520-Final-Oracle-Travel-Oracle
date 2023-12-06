@@ -28,6 +28,7 @@ class SearchStoreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.tintColor = UIColor(hexString: "#b34538")
         searchStoreView.searchResultTableView.separatorStyle = .none
         setupNavBar()
         setupSearchBar()

@@ -35,7 +35,7 @@ struct Media: MediaItem {
 class ConversationViewController: MessagesViewController {
     // current conversation
     let conversation: Conversation
-    // current user TODO: shall we consider replace this with User??? C.Ren
+    // current user
     let thisUser: User
     // user to chat with
     let thatUser: User
@@ -54,6 +54,7 @@ class ConversationViewController: MessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         doDelegations()
+        setupNavBar()
         setupMediaInputButton()
         setupMessagesListener()
     }
@@ -74,6 +75,10 @@ class ConversationViewController: MessagesViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupNavBar(){
+        navigationController?.navigationBar.tintColor = UIColor(hexString: "#b34538")
     }
     
     // setup listener

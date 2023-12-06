@@ -21,7 +21,6 @@ class StoreListViewController: UIViewController {
         self.pageTitle = pageTitle
         self.category = category
         super.init(nibName: nil, bundle: nil)
-        // TODO: initilize stores array - Done
         initializeStores()
     }
     
@@ -46,7 +45,7 @@ extension StoreListViewController {
     private func setupNavBar() {
         self.title = pageTitle
         let titleAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 20),
+            .font: UIFont.boldSystemFont(ofSize: 20),
             .foregroundColor: UIColor.black
         ]
         navigationController?.navigationBar.titleTextAttributes = titleAttributes

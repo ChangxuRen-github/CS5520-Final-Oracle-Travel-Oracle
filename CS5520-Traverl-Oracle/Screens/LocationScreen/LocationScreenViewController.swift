@@ -33,7 +33,7 @@ class LocationScreenViewController: UIViewController {
             locationScreen.zipCodeTextField.text = initialData.zipCode
         }
         locationScreen.saveAddressButton.addTarget(self, action: #selector(onSaveButtonTapped), for: .touchUpInside)
-        
+        navigationController?.navigationBar.tintColor = UIColor(hexString: "#b34538")
     }
     
     func validateZipCode(_ zipCode: String?) -> Bool {

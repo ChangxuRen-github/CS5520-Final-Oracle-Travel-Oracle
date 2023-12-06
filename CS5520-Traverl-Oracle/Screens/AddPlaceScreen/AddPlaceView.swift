@@ -333,7 +333,7 @@ class AddPlaceView: UIView {
     func setupAddNewPlaceButton() {
         addNewPlaceButton = UIButton()
         addNewPlaceButton.setTitle("Add New Place", for: .normal)
-        addNewPlaceButton.backgroundColor = UIColor(hexString: "#c1372d")
+        addNewPlaceButton.backgroundColor = UIColor(hexString: "#b34538")
         addNewPlaceButton.layer.cornerRadius = 5
         addNewPlaceButton.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(addNewPlaceButton)

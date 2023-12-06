@@ -75,6 +75,7 @@ class OthersProfileView: UIView {
                                                         title: "Send message",
                                                         color: .link,
                                                         titleColor: .white)
+        messageButton.backgroundColor = UIColor(hexString: "#b34538")
     }
     
     // initializing UI contraints

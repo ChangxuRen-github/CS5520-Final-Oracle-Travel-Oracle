@@ -24,56 +24,64 @@ class SavedStoreScreenTableViewCell: UITableViewCell {
         initConstraints()
         
     }
-
     
-    func setupProfileImageView() {
-        profileImageView = UIImageView()
-        profileImageView.contentMode = .scaleAspectFit
-        profileImageView.translatesAutoresizingMaskIntoConstraints = false
-        wrapperCellView.addSubview(profileImageView)
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        wrapperCellView.frame = wrapperCellView.frame.inset(by: UIEdgeInsets(top: 2, left: 1, bottom: 1, right: 1))
     }
     
     func setupWrapperCellView() {
-        wrapperCellView = UITableViewCell()
-        wrapperCellView.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(wrapperCellView)
+        wrapperCellView = UIElementUtil.createAndAddTablesView(to: self)
+        wrapperCellView.layer.borderWidth = 0;
+        wrapperCellView.layer.cornerRadius = 8
     }
     
     func setupLabelTitle() {
-        labelTitle = UILabel()
-        labelTitle.font = UIFont.boldSystemFont(ofSize: 20)
-        labelTitle.translatesAutoresizingMaskIntoConstraints = false
-        wrapperCellView.addSubview(labelTitle)
+        labelTitle = UIElementUtil.createAndAddLabel(to: wrapperCellView,
+                                                     text: "Name",
+                                                     fontSize: Constants.FONT_SMALL,
+                                                     isCenterAligned: false,
+                                                     isBold: true,
+                                                     textColor: UIColor.black)
     }
     
     func setupLabelDescription() {
-        labelCategory = UILabel()
-        labelCategory.translatesAutoresizingMaskIntoConstraints = false
-        wrapperCellView.addSubview(labelCategory)
+        labelCategory = UIElementUtil.createAndAddLabel(to: wrapperCellView,
+                                                        text: "Category",
+                                                        fontSize: Constants.FONT_SMALL,
+                                                        isCenterAligned: false,
+                                                        isBold: true,
+                                                        textColor: UIColor.black)
+    }
+    
+    func setupProfileImageView() {
+        profileImageView = UIElementUtil.createAndAddImageView(to: wrapperCellView, imageName:"storefront", color: .link)
     }
     
     
     func initConstraints() {
         NSLayoutConstraint.activate([
             wrapperCellView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
-            wrapperCellView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            wrapperCellView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 8),
-            wrapperCellView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            wrapperCellView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 8),
+            wrapperCellView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8),
+            wrapperCellView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -8),
 
-            profileImageView.topAnchor.constraint(equalTo: wrapperCellView.topAnchor, constant: 8),
-            profileImageView.leadingAnchor.constraint(equalTo: wrapperCellView.leadingAnchor, constant: 8),
-            profileImageView.widthAnchor.constraint(equalToConstant: 80),
-            profileImageView.heightAnchor.constraint(equalToConstant: 80),
+            profileImageView.leadingAnchor.constraint(equalTo: wrapperCellView.leadingAnchor, constant: Constants.VERTICAL_MARGIN_SMALL),
+            profileImageView.centerYAnchor.constraint(equalTo: wrapperCellView.centerYAnchor),
+            profileImageView.heightAnchor.constraint(equalTo: wrapperCellView.heightAnchor, constant: -20),
+            profileImageView.widthAnchor.constraint(equalTo: wrapperCellView.heightAnchor, constant: -20),
 
-            labelTitle.topAnchor.constraint(equalTo: wrapperCellView.topAnchor, constant: 8),
-            labelTitle.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 8),
+            labelTitle.topAnchor.constraint(equalTo: wrapperCellView.topAnchor, constant: 10),
+            labelTitle.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 12),
             labelTitle.heightAnchor.constraint(equalToConstant: 20),
+            labelTitle.widthAnchor.constraint(lessThanOrEqualTo: wrapperCellView.widthAnchor),
 
-            labelCategory.topAnchor.constraint(equalTo: labelTitle.bottomAnchor, constant: 8),
+            labelCategory.topAnchor.constraint(equalTo: labelTitle.bottomAnchor, constant: 20),
             labelCategory.leadingAnchor.constraint(equalTo: labelTitle.leadingAnchor),
             labelCategory.heightAnchor.constraint(equalToConstant: 20),
+            labelCategory.widthAnchor.constraint(lessThanOrEqualTo: wrapperCellView.widthAnchor),
 
-            wrapperCellView.heightAnchor.constraint(equalToConstant: 90)
+            wrapperCellView.heightAnchor.constraint(equalToConstant: 88)
         ])
     }
 

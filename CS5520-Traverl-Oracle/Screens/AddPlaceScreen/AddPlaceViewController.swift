@@ -49,7 +49,7 @@ class AddPlaceViewController: UIViewController, FilterScreenDelegate {
             action: #selector(onCancelBarButtonTapped)
         )
         
-        addButton.tintColor = UIColor.red
+        addButton.tintColor = UIColor(hexString: "#b34538")
         navigationItem.rightBarButtonItem = addButton
         
         addPlaceView.filterButton.addTarget(self, action: #selector(onFilterButtonSubmitTapped), for: .touchUpInside)
