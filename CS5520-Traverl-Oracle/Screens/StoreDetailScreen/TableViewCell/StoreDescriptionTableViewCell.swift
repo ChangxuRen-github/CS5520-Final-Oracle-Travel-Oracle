@@ -50,10 +50,11 @@ class StoreDescriptionTableViewCell: UITableViewCell {
         wrapperCellView = UIElementUtil.createAndAddTablesView(to: self)
         storeDescriptionLabel = UIElementUtil.createAndAddLabel(to: wrapperCellView,
                                                                 text: "Store description is loading...",
-                                                                fontSize: Constants.FONT_REGULAR,
+                                                                fontSize: Constants.FONT_SMALL,
                                                                 isCenterAligned: false,
                                                                 isBold: false,
                                                                 textColor: .lightGray)
+        storeDescriptionLabel.numberOfLines = 0
         extraInfoLabel = UIElementUtil.createAndAddLabel(to: wrapperCellView,
                                                          text: "Extra info",
                                                          fontSize: Constants.FONT_REGULAR,
@@ -203,7 +204,7 @@ class StoreDescriptionTableViewCell: UITableViewCell {
                                                            constant: Constants.HORIZONTAL_MARGIN_TINY),
             storeDescriptionLabel.trailingAnchor.constraint(equalTo: wrapperCellView.safeAreaLayoutGuide.trailingAnchor,
                                                             constant: -Constants.HORIZONTAL_MARGIN_TINY),
-            storeDescriptionLabel.heightAnchor.constraint(equalToConstant: CELL_HEIGHT),
+            storeDescriptionLabel.heightAnchor.constraint(equalToConstant: 80),
             
             
             extraInfoLabel.topAnchor.constraint(equalTo: storeDescriptionLabel.bottomAnchor,
