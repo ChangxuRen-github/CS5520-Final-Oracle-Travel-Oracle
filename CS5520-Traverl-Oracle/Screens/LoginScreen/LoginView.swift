@@ -10,9 +10,9 @@ import UIKit
 class LoginView: UIView {
 
     // image height
-    let IMAGE_HEIGHT = CGFloat(100)
+    let IMAGE_HEIGHT = CGFloat(200)
     // image width
-    let IMAGE_WIDTH = CGFloat(100)
+    let IMAGE_WIDTH = CGFloat(200)
     
     var contentWrapper: UIScrollView!
     var loginImage: UIImageView!
@@ -29,11 +29,11 @@ class LoginView: UIView {
     
     func setupUIComponents() {
         contentWrapper = UIElementUtil.createAndAddScrollView(to: self)
-        loginImage = UIElementUtil.createAndAddImageView(to: contentWrapper, imageName: "message.badge.waveform", color: .link)
+        loginImage = UIElementUtil.createAndAddLogoImageView(to: contentWrapper, imageName: "LogoImage2")
         emailTextField = UIElementUtil.createAndAddTextField(to: contentWrapper, placeHolder: "Email", keyboardType: .emailAddress)
         passwordTextField = UIElementUtil.createAndAddTextField(to: contentWrapper, placeHolder: "Password", keyboardType: .default)
         passwordTextField.isSecureTextEntry = true // set password to secure text entry
-        loginButton = UIElementUtil.createAndAddButton(to: contentWrapper, title: "Log In", color: .link, titleColor: .white)
+        loginButton = UIElementUtil.createAndAddButton(to: contentWrapper, title: "Log In", color: UIColor(hexString: "#b34538"), titleColor: .white)
     }
     
     func initConstraints() {

@@ -9,7 +9,7 @@ import UIKit
 
 class StoreDescriptionTableViewCell: UITableViewCell {
     static let IDENTIFIER: String = "StoreDescription"
-    let CELL_HEIGHT: CGFloat = 30
+    let CELL_HEIGHT: CGFloat = 25
     
     var wrapperCellView: UITableView!
     var storeDescriptionLabel: UILabel!
@@ -56,134 +56,134 @@ class StoreDescriptionTableViewCell: UITableViewCell {
                                                                 textColor: .lightGray)
         extraInfoLabel = UIElementUtil.createAndAddLabel(to: wrapperCellView,
                                                          text: "Extra info",
-                                                         fontSize: Constants.FONT_LARGET,
+                                                         fontSize: Constants.FONT_REGULAR,
                                                          isCenterAligned: false,
                                                          isBold: true,
                                                          textColor: .black)
         priceTitleLabel = UIElementUtil.createAndAddLabel(to: wrapperCellView,
                                                              text: "Price",
-                                                             fontSize: Constants.FONT_REGULAR,
+                                                             fontSize: Constants.FONT_SMALL,
                                                              isCenterAligned: false,
                                                              isBold: true,
                                                              textColor: .black)
         priceValueLabel = UIElementUtil.createAndAddLabel(to: wrapperCellView,
                                                              text: "N/A",
-                                                             fontSize: Constants.FONT_REGULAR,
+                                                             fontSize: Constants.FONT_SMALL,
                                                              isCenterAligned: false,
                                                              isBold: false,
                                                              textColor: .lightGray)
         freeWIFITitleLabel = UIElementUtil.createAndAddLabel(to: wrapperCellView,
                                                              text: "Free Wi-Fi",
-                                                             fontSize: Constants.FONT_REGULAR,
+                                                             fontSize: Constants.FONT_SMALL,
                                                              isCenterAligned: false,
                                                              isBold: true,
                                                              textColor: .black)
         freeWIFIValueLabel = UIElementUtil.createAndAddLabel(to: wrapperCellView,
                                                              text: "N/A",
-                                                             fontSize: Constants.FONT_REGULAR,
+                                                             fontSize: Constants.FONT_SMALL,
                                                              isCenterAligned: false,
                                                              isBold: false,
                                                              textColor: .lightGray)
         outdoorSeatingTitleLabel = UIElementUtil.createAndAddLabel(to: wrapperCellView,
                                                              text: "Outdoor Seating",
-                                                             fontSize: Constants.FONT_REGULAR,
+                                                             fontSize: Constants.FONT_SMALL,
                                                              isCenterAligned: false,
                                                              isBold: true,
                                                              textColor: .black)
         outdoorSeatingValueLabel = UIElementUtil.createAndAddLabel(to: wrapperCellView,
                                                              text: "N/A",
-                                                             fontSize: Constants.FONT_REGULAR,
+                                                             fontSize: Constants.FONT_SMALL,
                                                              isCenterAligned: false,
                                                              isBold: false,
                                                              textColor: .lightGray)
         
         goodForBreakfastTitleLabel = UIElementUtil.createAndAddLabel(to: wrapperCellView,
                                                              text: "Good for Breakfast",
-                                                             fontSize: Constants.FONT_REGULAR,
+                                                             fontSize: Constants.FONT_SMALL,
                                                              isCenterAligned: false,
                                                              isBold: true,
                                                              textColor: .black)
         goodForBreakfastValueLabel = UIElementUtil.createAndAddLabel(to: wrapperCellView,
                                                              text: "N/A",
-                                                             fontSize: Constants.FONT_REGULAR,
+                                                             fontSize: Constants.FONT_SMALL,
                                                              isCenterAligned: false,
                                                              isBold: false,
                                                              textColor: .lightGray)
 
         goodForLunchTitleLabel = UIElementUtil.createAndAddLabel(to: wrapperCellView,
                                                              text: "Good for Lunch",
-                                                             fontSize: Constants.FONT_REGULAR,
+                                                             fontSize: Constants.FONT_SMALL,
                                                              isCenterAligned: false,
                                                              isBold: true,
                                                              textColor: .black)
         goodForLunchValueLabel = UIElementUtil.createAndAddLabel(to: wrapperCellView,
                                                              text: "N/A",
-                                                             fontSize: Constants.FONT_REGULAR,
+                                                             fontSize: Constants.FONT_SMALL,
                                                              isCenterAligned: false,
                                                              isBold: false,
                                                              textColor: .lightGray)
         
         goodForDinnerTitleLabel = UIElementUtil.createAndAddLabel(to: wrapperCellView,
                                                              text: "Good for Dinner",
-                                                             fontSize: Constants.FONT_REGULAR,
+                                                             fontSize: Constants.FONT_SMALL,
                                                              isCenterAligned: false,
                                                              isBold: true,
                                                              textColor: .black)
         goodForDinnerValueLabel = UIElementUtil.createAndAddLabel(to: wrapperCellView,
                                                              text: "N/A",
-                                                             fontSize: Constants.FONT_REGULAR,
+                                                             fontSize: Constants.FONT_SMALL,
                                                              isCenterAligned: false,
                                                              isBold: false,
                                                              textColor: .lightGray)
         
         vegetarianFriendlyTitleLabel = UIElementUtil.createAndAddLabel(to: wrapperCellView,
                                                              text: "Vegetarian Friendly",
-                                                             fontSize: Constants.FONT_REGULAR,
+                                                             fontSize: Constants.FONT_SMALL,
                                                              isCenterAligned: false,
                                                              isBold: true,
                                                              textColor: .black)
         vegetarianFriendlyValueLabel = UIElementUtil.createAndAddLabel(to: wrapperCellView,
                                                              text: "N/A",
-                                                             fontSize: Constants.FONT_REGULAR,
+                                                             fontSize: Constants.FONT_SMALL,
                                                              isCenterAligned: false,
                                                              isBold: false,
                                                              textColor: .lightGray)
         
         takesReservationsTitleLabel = UIElementUtil.createAndAddLabel(to: wrapperCellView,
                                                              text: "Takes Reservations",
-                                                             fontSize: Constants.FONT_REGULAR,
+                                                             fontSize: Constants.FONT_SMALL,
                                                              isCenterAligned: false,
                                                              isBold: true,
                                                              textColor: .black)
         takesReservationsValueLabel = UIElementUtil.createAndAddLabel(to: wrapperCellView,
                                                              text: "N/A",
-                                                             fontSize: Constants.FONT_REGULAR,
+                                                             fontSize: Constants.FONT_SMALL,
                                                              isCenterAligned: false,
                                                              isBold: false,
                                                              textColor: .lightGray)
         
         liveMusicTitleLabel = UIElementUtil.createAndAddLabel(to: wrapperCellView,
                                                              text: "Live Music",
-                                                             fontSize: Constants.FONT_REGULAR,
+                                                             fontSize: Constants.FONT_SMALL,
                                                              isCenterAligned: false,
                                                              isBold: true,
                                                              textColor: .black)
         liveMusicValueLabel = UIElementUtil.createAndAddLabel(to: wrapperCellView,
                                                              text: "N/A",
-                                                             fontSize: Constants.FONT_REGULAR,
+                                                             fontSize: Constants.FONT_SMALL,
                                                              isCenterAligned: false,
                                                              isBold: false,
                                                              textColor: .lightGray)
         
         cuisineTitleLabel = UIElementUtil.createAndAddLabel(to: wrapperCellView,
                                                              text: "Cuisine",
-                                                             fontSize: Constants.FONT_REGULAR,
+                                                             fontSize: Constants.FONT_SMALL,
                                                              isCenterAligned: false,
                                                              isBold: true,
                                                              textColor: .black)
         cuisineValueLabel = UIElementUtil.createAndAddLabel(to: wrapperCellView,
                                                              text: "N/A",
-                                                             fontSize: Constants.FONT_REGULAR,
+                                                             fontSize: Constants.FONT_SMALL,
                                                              isCenterAligned: false,
                                                              isBold: false,
                                                              textColor: .lightGray)

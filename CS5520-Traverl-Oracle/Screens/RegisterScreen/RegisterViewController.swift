@@ -32,10 +32,11 @@ class RegisterViewController: UIViewController {
     
     func setupNavBar() {
         let titleAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 24),
+            .font: UIFont.systemFont(ofSize: 22),
             .foregroundColor: UIColor.black,
         ]
         navigationController?.navigationBar.titleTextAttributes = titleAttributes
+        navigationController?.navigationBar.tintColor = UIColor(hexString: "#b34538")
         title = "Register"
     }
     
@@ -82,7 +83,6 @@ class RegisterViewController: UIViewController {
             self.present(alert, animated: true)
         }
     }
-    
 }
 
 

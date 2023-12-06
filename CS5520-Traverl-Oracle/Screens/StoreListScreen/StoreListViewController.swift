@@ -46,10 +46,11 @@ extension StoreListViewController {
     private func setupNavBar() {
         self.title = pageTitle
         let titleAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 24),
+            .font: UIFont.systemFont(ofSize: 20),
             .foregroundColor: UIColor.black
         ]
         navigationController?.navigationBar.titleTextAttributes = titleAttributes
+        navigationController?.navigationBar.tintColor = UIColor(hexString: "#b34538")
     }
     
     private func initializeStores() {

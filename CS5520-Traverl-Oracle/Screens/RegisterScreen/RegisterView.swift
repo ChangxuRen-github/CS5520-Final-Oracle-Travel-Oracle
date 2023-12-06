@@ -40,7 +40,7 @@ class RegisterView: UIView {
                                                            fontSize: Constants.FONT_SMALL,
                                                            isCenterAligned: true,
                                                            isBold: true,
-                                                           textColor: .black)
+                                                           textColor: UIColor(hexString: "#b34538"))
         nameTextField = UIElementUtil.createAndAddTextField(to: contentWrapper,
                                                             placeHolder: "Name",
                                                             keyboardType: .default)
@@ -57,7 +57,7 @@ class RegisterView: UIView {
         passwordConfirmTextField.isSecureTextEntry = true
         registerButton = UIElementUtil.createAndAddButton(to: contentWrapper,
                                                           title: "Register",
-                                                          color: .systemGreen,
+                                                          color: UIColor(hexString: "#b34538"),
                                                           titleColor: .white)
     }
     

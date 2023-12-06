@@ -50,18 +50,19 @@ extension CategoryViewController {
     
     private func setupNavBar() {
         let titleAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 16),
+            .font: UIFont.systemFont(ofSize: 22),
             .foregroundColor: UIColor.black,
         ]
         navigationController?.navigationBar.titleTextAttributes = titleAttributes
         title = "Collections"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose,
-                                                            target: self,
-                                                            action: #selector(onAddPlaceButtonTapped))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Profile",
-                                                           style: .plain,
-                                                           target: self,
-                                                           action: #selector(onProfileButtonTapped))
+        
+        let addPlaceButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(onAddPlaceButtonTapped))
+        addPlaceButton.tintColor = UIColor(hexString: "#b34538")
+        navigationItem.rightBarButtonItem = addPlaceButton
+        
+        let profileButton = UIBarButtonItem(title: "Profile", style: .plain, target: self, action: #selector(onProfileButtonTapped))
+        profileButton.tintColor = UIColor(hexString: "#b34538")
+        navigationItem.leftBarButtonItem = profileButton
     }
     
     private func addTargetToButtons() {

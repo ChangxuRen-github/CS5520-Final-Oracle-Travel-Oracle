@@ -171,4 +171,13 @@ class UIElementUtil {
 
             return button
         }
+    
+    static func createAndAddLogoImageView(to view: UIView, imageName: String) -> UIImageView {
+            let imageView = UIImageView()
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            imageView.contentMode = .scaleAspectFit
+            imageView.image = UIImage(named: imageName)
+            view.addSubview(imageView)
+            return imageView
+        }
 }

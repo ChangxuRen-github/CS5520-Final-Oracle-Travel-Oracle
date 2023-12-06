@@ -74,6 +74,15 @@ class WelcomeViewController: UIViewController {
         let tabBarVC = UITabBarController()
         tabBarVC.viewControllers = [categoryNavVC, savedStoreNavVC, conversationsNavVC, searchStoreNavVC]
 
+        // Set the tab bar item's text and image color
+        let customTabBarColor = UIColor(hexString: "#b34538")
+        tabBarVC.tabBar.tintColor = customTabBarColor
+        tabBarVC.tabBar.unselectedItemTintColor = customTabBarColor.withAlphaComponent(0.8)
+
+        let attributes = [NSAttributedString.Key.foregroundColor: customTabBarColor]
+        UITabBarItem.appearance().setTitleTextAttributes(attributes, for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes(attributes, for: .normal)
+
         // Transition to the tab bar controller
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
            let window = windowScene.windows.first {
@@ -81,6 +90,7 @@ class WelcomeViewController: UIViewController {
             window.makeKeyAndVisible()
         }
     }
+
     
     func transitionToLoginPage() {
         print("Transition to Login screen.")

@@ -22,6 +22,7 @@ class SavedStoreView: UIView {
         tableView = UITableView()
         tableView.register(SavedStoreScreenTableViewCell.self, forCellReuseIdentifier: SavedStoreScreenTableViewCell.IDENTIFIER)
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.separatorStyle = .none
         self.addSubview(tableView)
     }
     

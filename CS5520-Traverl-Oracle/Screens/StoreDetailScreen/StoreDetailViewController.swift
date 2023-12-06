@@ -27,7 +27,7 @@ class StoreDetailViewController: UIViewController {
     
 
     // Create a symbol configuration for the button icons
-    private let symbolConfig = UIImage.SymbolConfiguration(pointSize: 24, weight: .regular, scale: .large)
+    private let symbolConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .regular, scale: .large)
     
     override func loadView() {
         view = storeDetailView
@@ -61,14 +61,19 @@ class StoreDetailViewController: UIViewController {
 extension StoreDetailViewController {
     private func setupNavigationBarButtons() {
         // Initialize the buttons
-        // TODO: consider change color to dark red? .red is a bit sharp
+        
+        let customTintColor = UIColor(hexString: "#b34538")
+
         let addReviewButton = UIButton(type: .system)
-        addReviewButton.setImage(UIImage(systemName: "note.text.badge.plus", withConfiguration: symbolConfig)?.withTintColor(.red, renderingMode: .alwaysOriginal), for: .normal)
+        addReviewButton.setImage(UIImage(systemName: "note.text.badge.plus"), for: .normal)
+        addReviewButton.tintColor = customTintColor
         addReviewButton.addTarget(self, action: #selector(addReviewButtonTapped), for: .touchUpInside)
 
         let saveStoreButton = UIButton(type: .system)
-        saveStoreButton.setImage(UIImage(systemName: "heart", withConfiguration: symbolConfig)?.withTintColor(.red, renderingMode: .alwaysOriginal), for: .normal)
+        saveStoreButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        saveStoreButton.tintColor = customTintColor
         saveStoreButton.addTarget(self, action: #selector(saveStoreButtonTapped), for: .touchUpInside)
+
 
         // Create a container view
         let containerView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
@@ -78,8 +83,9 @@ extension StoreDetailViewController {
         containerView.addSubview(saveStoreButton)
 
         // Set frames or constraints for buttons
-        addReviewButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
-        saveStoreButton.frame = CGRect(x: 50, y: 0, width: 50, height: 50)
+        addReviewButton.frame = CGRect(x: 0, y: 0, width: 60, height: 45)
+        saveStoreButton.frame = CGRect(x: addReviewButton.frame.width, y: 0, width: 30, height: 45)
+
         // Use the container view to create a single UIBarButtonItem
         let barButtonItem = UIBarButtonItem(customView: containerView)
         navigationItem.rightBarButtonItem = barButtonItem
@@ -321,7 +327,7 @@ extension StoreDetailViewController: UITableViewDelegate, UITableViewDataSource 
             // TODO: replace the mocked value with the real data model - DONE
             _ = UIElementUtil.createAndAddLabel(to: headerView,
                                                 text: store.displayName.localizedCapitalized,
-                                                fontSize: Constants.FONT_LARGET,
+                                                fontSize: Constants.FONT_REGULAR,
                                                 isCenterAligned: false,
                                                 isBold: true,
                                                 textColor: .black)
@@ -331,7 +337,7 @@ extension StoreDetailViewController: UITableViewDelegate, UITableViewDataSource 
             headerView.backgroundColor = .systemBackground
             _ = UIElementUtil.createAndAddLabel(to: headerView,
                                                 text: "Reviews",
-                                                fontSize: Constants.FONT_LARGET,
+                                                fontSize: Constants.FONT_REGULAR,
                                                 isCenterAligned: false,
                                                 isBold: true,
                                                 textColor: .black)

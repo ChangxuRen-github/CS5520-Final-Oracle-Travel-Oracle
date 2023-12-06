@@ -9,9 +9,9 @@ import UIKit
 
 class WelcomeView: UIView {
     // image height
-    let IMAGE_HEIGHT = CGFloat(200)
+    let IMAGE_HEIGHT = CGFloat(300)
     // image width
-    let IMAGE_WIDTH = CGFloat(250)
+    let IMAGE_WIDTH = CGFloat(300)
     
     // welcome page image
     var welcomeImage: UIImageView!
@@ -26,7 +26,7 @@ class WelcomeView: UIView {
     }
     
     func setupUIComponents() {
-        welcomeImage = UIElementUtil.createAndAddImageView(to: self, imageName: "airplane.departure", color: .link)
+        welcomeImage = UIElementUtil.createAndAddLogoImageView(to: self, imageName: "LogoImage1")
         welcomeLabel = UIElementUtil.createAndAddLabel(to: self, text: "Welcome to Travel Oracle", fontSize: Constants.FONT_REGULAR, isCenterAligned: true, isBold: true, textColor: .black)
     }
     
