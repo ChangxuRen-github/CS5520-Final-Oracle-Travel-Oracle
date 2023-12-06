@@ -82,6 +82,7 @@ class EditProfileView: UIView {
                                                         title: "Update",
                                                         color: .link,
                                                         titleColor: .white)
+        updateButton.backgroundColor = UIColor(hexString: "#b34538")
     }
     
     // initializing UI contraints
